@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 7363053069113109345}
   - component: {fileID: 4043005843487397534}
   - component: {fileID: 878445138294947519}
+  - component: {fileID: 9188894922160552335}
+  - component: {fileID: 5044402103050635838}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -201,6 +203,33 @@ MonoBehaviour:
   lateralSpeed: 1
   startCoolTime: 0.65
   rb: {fileID: 7363053069113109345}
+--- !u!114 &9188894922160552335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021562434382082499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b580da22ffdc241ac2222b5125767e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitTags: []
+--- !u!114 &5044402103050635838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021562434382082499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b580da22ffdc241ac2222b5125767e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitTags:
+  - Water
 --- !u!1001 &8822227950152618681
 PrefabInstance:
   m_ObjectHideFlags: 0

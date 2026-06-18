@@ -30,7 +30,8 @@ public class PlayerCollision : MonoBehaviour
     protected void HitCollision()
     {
         Debug.Log("ゲームオーバー");
-        GetComponent<PlayerController>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;   // プレイヤーの機能停止
+        GameplayManager.Instance.GameOver();
     }
     protected void HitTrigger()
     {

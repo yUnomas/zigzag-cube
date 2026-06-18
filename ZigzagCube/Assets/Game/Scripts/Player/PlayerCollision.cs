@@ -13,7 +13,7 @@ public class PlayerCollision : MonoBehaviour
         GetComponent<Rigidbody>().useGravity = false;       // 重力の働きを停止
         GetComponent<PlayerController>().enabled = false;   // プレイヤーの機能停止
         transform.GetChild(0).gameObject.SetActive(false);  // モデルを非表示
-        GameplayManager.Instance.GameOver((int)transform.position.z);
+        GameplayManager.Instance.GameOver(transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)

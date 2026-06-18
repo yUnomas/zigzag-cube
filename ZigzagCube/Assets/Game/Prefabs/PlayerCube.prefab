@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5736600256908079877}
   - component: {fileID: 6424838695887320504}
   m_Layer: 0
-  m_Name: CubeModel
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,6 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitTags:
   - Water
+  - Obstacle
 --- !u!1001 &8822227950152618681
 PrefabInstance:
   m_ObjectHideFlags: 0

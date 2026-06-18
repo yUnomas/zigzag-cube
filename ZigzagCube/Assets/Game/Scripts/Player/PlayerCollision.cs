@@ -6,6 +6,16 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField, Tooltip("ヒット対象のタグ一覧")]
     private List<string> hitTags = new List<string>();
 
+    private void Death()
+    {
+        Debug.Log("ゲームオーバー");
+        GetComponent<BoxCollider>().enabled = false;        // 当たり判定を消す
+        GetComponent<Rigidbody>().useGravity = false;       // 重力の働きを停止
+        GetComponent<PlayerController>().enabled = false;   // プレイヤーの機能停止
+        transform.GetChild(0).gameObject.SetActive(false);  // モデルを非表示
+        GameplayManager.Instance.GameOver();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         foreach(string tag in hitTags)
@@ -26,15 +36,6 @@ public class PlayerCollision : MonoBehaviour
             }
         }
     }
-
-    protected void HitCollision()
-    {
-        Debug.Log("ゲームオーバー");
-        GetComponent<PlayerController>().enabled = false;   // プレイヤーの機能停止
-        GameplayManager.Instance.GameOver();
-    }
-    protected void HitTrigger()
-    {
-
-    }
+    protected void HitCollision() { Death(); }
+    protected void HitTrigger() { Death(); }
 }

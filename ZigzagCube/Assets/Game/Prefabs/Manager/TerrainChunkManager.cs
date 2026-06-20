@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class TerrainChunkManager : MonoBehaviour
 {
-    [SerializeField, Tooltip("チャンクの一辺の長さ")]
-    private float chunkLength;
-    [SerializeField, Tooltip("各チャンクのTransform情報")]
-    private List<Transform> chunks = new List<Transform>();
+    [SerializeField, Tooltip("各チャンクのTerrainChunk情報")]
+    private List<TerrainChunk> chunks = new List<TerrainChunk>();
 
     PlayerController player;
 
@@ -16,18 +14,19 @@ public class TerrainChunkManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        LoopChunk();
+        CheckChunk();
     }
 
     /// <summary>
-    /// プレイヤーがチャンクから十分離れたら、チャンクを前方に移動   </summary>
-    private void LoopChunk()
+    /// チャンク確認   </summary>
+    private void CheckChunk()
     {
+        // プレイヤーから一定以上離れたら再生成
         foreach (var chunk in chunks)
         {
-            if (player.transform.position.z - chunk.transform.position.z >= chunkLength * 2)
+            if (player.transform.position.z - chunk.transform.position.z >= chunk.Length)
             {
-                chunk.transform.position += Vector3.forward * chunkLength * chunks.Count;
+                chunk.Regenerate(chunks.Count);
             }
         }
     }

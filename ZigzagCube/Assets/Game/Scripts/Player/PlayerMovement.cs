@@ -29,24 +29,38 @@ public class PlayerMovement : BehaviorBase
     }
     public override void Execute(InputData inputData)
     {
-        // 一定時間経過後に移動
+        //** 移動処理
+        // 一定時間経過後に左右移動
         if (elapsedTime >= coolTime)
         {
-            // 現在座標に移動量を加算
-            transform.position += new Vector3(lateralDirection * lateralSpeed, 0, forwardSpeed);
-            // 経過時間のリセット
-            elapsedTime = 0;
+            MoveLateral();
+            elapsedTime = 0;    // 経過時間のリセット
         }
         else
         {
-            // タッチで回転方向の切り替え
+            // タッチで左右移動の方向切り替え
             if (inputData.isTouch)
             {
                 Debug.Log("タッチされた");
                 lateralDirection *= -1f;
             }
-            // 経過時間の増加
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime;  // 経過時間の増加
         }
+        // 常に前方移動
+        MoveForward();
+    }
+
+    /// <summary>
+    /// 前方移動    </summary>
+    private void MoveForward()
+    {
+        rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, forwardSpeed);
+    }
+    /// <summary>
+    /// 左右移動    </summary>
+    private void MoveLateral()
+    {
+        // 現在座標に移動量を加算
+        transform.position += new Vector3(lateralDirection * lateralSpeed, 0);
     }
 }

@@ -3,7 +3,15 @@
 public class GameplayManager : SceneManagerBase<GameplayManager>
 {
     private ResultData resultData = new ResultData();
+    private PlayerController player;
 
+    protected override void StateStart()
+    {
+        player = FindAnyObjectByType<PlayerController>();
+        player.enabled = true;
+
+        base.StateInit();
+    }
     /// <summary>
     /// ゲームオーバー処理    </summary>
     /// <param name="playerPosition">

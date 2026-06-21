@@ -17,9 +17,9 @@ public class ObstacleSpawner : MonoBehaviour
     {
         // スポーン範囲内からランダムに生成位置を取得
         Vector3 generatePos = new Vector3(
-                Random.Range(spawnArea.x / -2, spawnArea.x / 2),
+                (int)Random.Range(spawnArea.x / -2, spawnArea.x / 2),
                 1f,
-                Random.Range(spawnArea.x / -2, spawnArea.x / 2)
+                (int)Random.Range(spawnArea.x / -2, spawnArea.x / 2)
             );
         // 初回生成時はインスタンス生成と親設定
         if(generatedObstacle == null)

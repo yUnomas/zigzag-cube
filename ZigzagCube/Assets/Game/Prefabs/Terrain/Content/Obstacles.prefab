@@ -45,4 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {x: 7, y: 1, z: 50}
+  maxSpawnCount: 7
+  spawnIncreaseAmount: 1
+  spawnIncreasePerScore: 200
   obstaclePrefab: {fileID: 8266243944732050932, guid: cde96aeb1248f9a49a71c8ab46030e17, type: 3}

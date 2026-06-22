@@ -10,14 +10,14 @@ public class TerrainChunk : MonoBehaviour
 
     private void Start()
     {
-        obstacleSpawner.Generate();
+        obstacleSpawner.Spawn();
     }
     /// <summary>
     /// チャンクの再生成    </summary>
     public void Regenerate(int chunkCount)
     {
         LoopPosition(chunkCount);
-        obstacleSpawner.Generate();
+        obstacleSpawner.Spawn();
     }
     /// <summary>
     /// チャンクを最後尾へ移動    </summary>

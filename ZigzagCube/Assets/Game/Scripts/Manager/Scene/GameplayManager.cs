@@ -7,21 +7,31 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
 
     protected override void StateStart()
     {
+        // プレイヤーの起動
         player = FindAnyObjectByType<PlayerController>();
         player.enabled = true;
 
-        base.StateInit();
+        base.StateStart();
     }
+    protected override void StateRunning()
+    {
+        // 現在のスコアを設定
+        SetScore((int)player.transform.position.z);
+        base.StateRunning();
+    }
+
+    /// <summary>
+    /// スコア設定    </summary>
+    public void SetScore(int score) { resultData.score = score; }
+    /// <summary>
+    /// スコア取得    </summary>
+    public int GetScore() { return resultData.score; }
     /// <summary>
     /// ゲームオーバー処理    </summary>
-    /// <param name="playerPosition">
-    /// プレイヤー座標 </param>
-    public void GameOver(Vector3 playerPosition)
+    public void GameOver()
     {
-        // 直近プレイのスコア保存
-        resultData.score = (int)playerPosition.z;   // スコア(スタート位置からの移動距離)
+        //TODO: 直近プレイのスコア保存
         Debug.Log("スコア:" + resultData.score);
-
         // リザルトへ遷移
         ChangeScene(SceneType.Result, false);
     }

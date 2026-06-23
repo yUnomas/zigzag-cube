@@ -17,16 +17,16 @@ public class BootManager : SceneManagerBase<BootManager>
     protected override void StateStart()
     {
 #if UNITY_EDITOR
-        // デバッグを開始するシーンを再ロード
+        // デバッグ開始
         if (debugStartSceneType != SceneType.Boot || debugStartSceneType != SceneType.None)
         {
-            ChangeScene(debugStartSceneType, true);
+            ChangeScene(debugStartSceneType, false);
             base.StateStart();
             return;
         }
 #endif
         // ゲーム開始時に遷移するシーンを設定
-        ChangeScene(SceneType.Gameplay, true);
+        ChangeScene(SceneType.Title, true);
         base.StateStart();
     }
 }

@@ -144,7 +144,11 @@ public abstract class SceneManagerBase : MonoBehaviour
 #endif
     }
 
-    protected virtual void StateIdle() { if (asyncOperation.isDone) currentState++; }
+    protected virtual void StateIdle()
+    {
+        if (asyncOperation == null || asyncOperation.isDone)
+            currentState++;
+    }
     protected virtual void StateInit() { currentState++; }
     protected virtual void StateStart() { currentState++; }
     protected virtual void StateRunning() { if(isWaitSceneChange) currentState++; }

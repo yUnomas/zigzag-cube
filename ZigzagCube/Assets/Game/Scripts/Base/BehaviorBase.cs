@@ -6,6 +6,9 @@ public abstract class BehaviorBase : MonoBehaviour
     /// 初期化処理    </summary>
     public virtual void Initialize(){}
     /// <summary>
+    /// 終了処理    </summary>
+    public virtual void Uninitialize(){}
+    /// <summary>
     /// 実処理    </summary>
     public abstract void Execute(InputData inputData);
 }

@@ -22,7 +22,10 @@ public class PlayerForwardMove : BehaviorBase
     public override void Initialize()
     {
         speed = baseSpeed;
-        base.Initialize();
+    }
+    public override void Uninitialize()
+    {
+        rb.linearVelocity = Vector3.zero;
     }
     public override void Execute(InputData inputData)
     {

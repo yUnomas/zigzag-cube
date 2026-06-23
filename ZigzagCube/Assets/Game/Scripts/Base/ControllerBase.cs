@@ -6,6 +6,14 @@ public abstract class ControllerBase : MonoBehaviour
     [SerializeField, Tooltip("挙動リスト")]
     protected List<BehaviorBase> behaviors = new List<BehaviorBase>();
 
+    protected virtual void OnDisable()
+    {
+        // 終了
+        foreach (var behavior in behaviors)
+        {
+            behavior.Uninitialize();
+        }
+    }
     protected virtual void Start()
     {
         // 初期化
@@ -16,6 +24,7 @@ public abstract class ControllerBase : MonoBehaviour
     }
     protected virtual void Update()
     {
+        // 入力情報の取得
         InputData inputData = CreateInputData();
         // 各挙動の実行
         foreach (var behavior in behaviors)

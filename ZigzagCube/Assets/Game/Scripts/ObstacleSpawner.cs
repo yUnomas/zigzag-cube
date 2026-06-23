@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField,Tooltip("生成範囲")]
-    private Vector3 spawnArea;
+    [SerializeField,Tooltip("地面のTransform情報(生成範囲として使用)")]
+    private Transform groundTransform;
     [SerializeField, Tooltip("生成ごとの最大生成数")]
     private int maxSpawnCount = 7;
     [SerializeField, Tooltip("生成数の増加量")]
@@ -42,6 +42,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void Spawn()
     {
         HashSet<Vector3Int> usedSpawnPos = new HashSet<Vector3Int>();   // 使用済みの配置位置
+        Vector3 spawnArea = groundTransform.localScale;
 
         // 生成回数に応じたループ
         for(int spawnIndex = 0; spawnIndex < spawnCount; spawnIndex++)

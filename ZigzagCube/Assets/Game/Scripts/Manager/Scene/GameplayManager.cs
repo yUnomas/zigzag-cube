@@ -4,7 +4,13 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
 {
     private ResultData resultData = new ResultData();
     private PlayerController player;
+    private GameplayHUDController gameplayHUD;
 
+    protected override void StateInit()
+    {
+        gameplayHUD = FindAnyObjectByType<GameplayHUDController>();
+        base.StateInit();
+    }
     protected override void StateStart()
     {
         // プレイヤーの起動
@@ -15,8 +21,9 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     }
     protected override void StateRunning()
     {
-        // 現在のスコアを設定
+        // 現在のスコアを設定 / 表示更新
         SetScore((int)player.transform.position.z);
+        gameplayHUD.UpdateScoreText(GetScore());
         base.StateRunning();
     }
 

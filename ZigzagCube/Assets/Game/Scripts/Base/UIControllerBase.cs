@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public abstract class UIControllerBase : MonoBehaviour
 {
@@ -6,9 +6,9 @@ public abstract class UIControllerBase : MonoBehaviour
     private GameObject content;
 
     /// <summary>
-    /// UIï\é¶    </summary>
+    /// UIË°®Á§∫    </summary>
     public void Show() { content.SetActive(true); }
     /// <summary>
-    /// UIîÒï\é¶    </summary>
+    /// UIÈùûË°®Á§∫    </summary>
     public void Hide() { content.SetActive(false); }
 }

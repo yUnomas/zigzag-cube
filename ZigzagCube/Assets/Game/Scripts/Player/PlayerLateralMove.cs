@@ -42,21 +42,20 @@ public class PlayerLateralMove : BehaviorBase
             Debug.Log($"再移動までの時間:{coolTime}");
             lastSpeedIncreaseDirection = transform.position.z;
         }
-        // 一定時間経過後に左右移動
+
+        //** 左右移動
+        // 一定間隔
         if (elapsedTime >= coolTime)
         {
-            transform.position += new Vector3(speed * direction, 0);
+            Move();
             elapsedTime = 0;    // 経過時間のリセット
         }
-        else
-        {
-            // タッチで左右移動の方向切り替え
-            if (inputData.isTouch)
-            {
-                Debug.Log("タッチされた");
-                direction *= -1f;
-            }
-            elapsedTime += Time.deltaTime;  // 経過時間の計測
-        }
+        else elapsedTime += Time.deltaTime;  // 経過時間の計測
+        // タップで即時
+        if (inputData.isTouch) Move();
     }
+
+    /// <summary>
+    /// 移動処理    </summary>
+    private void Move() { transform.position += new Vector3(speed * direction, 0); }
 }

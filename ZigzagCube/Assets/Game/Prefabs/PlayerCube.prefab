@@ -100,7 +100,8 @@ GameObject:
   - component: {fileID: 4043005843487397534}
   - component: {fileID: 4426822634174717726}
   - component: {fileID: 6607693989263138757}
-  - component: {fileID: 5044402103050635838}
+  - component: {fileID: 3158086786328215193}
+  - component: {fileID: 1320726653804494592}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -132,7 +133,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6021562434382082499}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 3d3c7bafb08932d4ea74ae7365d0d76c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -220,7 +221,8 @@ MonoBehaviour:
   baseCoolTime: 0.65
   coolTimeDecreaseAmount: 0.05
   coolTimeDecreasePerDistance: 300
---- !u!114 &5044402103050635838
+  rb: {fileID: 7363053069113109345}
+--- !u!114 &3158086786328215193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,12 +231,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6021562434382082499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b580da22ffdc241ac2222b5125767e, type: 3}
+  m_Script: {fileID: 11500000, guid: f692ecfca339fca4cba19a9c42465360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hitTags:
   - Water
   - Obstacle
+--- !u!114 &1320726653804494592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021562434382082499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26e23a5f180ad4eb572d0cc4a27e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitTags:
+  - Wall
 --- !u!1001 &8822227950152618681
 PrefabInstance:
   m_ObjectHideFlags: 0

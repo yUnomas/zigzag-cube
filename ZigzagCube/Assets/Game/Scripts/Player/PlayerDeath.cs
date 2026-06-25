@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour
+public class PlayerDeath : MonoBehaviour
 {
     [SerializeField, Tooltip("ヒット対象のタグ一覧")]
     private List<string> hitTags = new List<string>();
@@ -18,24 +18,24 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        foreach(string tag in hitTags)
+        foreach (string tag in hitTags)
         {
-            if(collision.gameObject.tag == tag)
+            if (collision.gameObject.tag == tag)
             {
-                HitCollision();
+                Death();
+                break;
             }
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        foreach(string tag in hitTags)
+        foreach (string tag in hitTags)
         {
-            if(other.gameObject.tag == tag)
+            if (other.gameObject.tag == tag)
             {
-                HitTrigger();
+                Death();
+                break;
             }
         }
     }
-    protected void HitCollision() { Death(); }
-    protected void HitTrigger() { Death(); }
 }

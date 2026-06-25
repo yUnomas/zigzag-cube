@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerLateralMove : BehaviorBase
 {
@@ -10,6 +11,9 @@ public class PlayerLateralMove : BehaviorBase
     private float coolTimeDecreaseAmount = 1f;
     [SerializeField, Tooltip("再移動までの時間が減少する距離間隔")]
     private float coolTimeDecreasePerDistance = 100f;
+    [Header("=====")]
+    [SerializeField]
+    private Rigidbody rb;
 
     /// <summary>
     /// 速度    </summary>
@@ -17,6 +21,12 @@ public class PlayerLateralMove : BehaviorBase
     /// <summary>
     /// 移動方向    </summary>
     private float direction = 1f;
+    /// <summary>
+    /// 方向切り替え中かどうか    </summary>
+    private bool isChangeDirection;
+    /// <summary>
+    /// 跳ね返るかどうか    </summary>
+    private bool isBounce;
     /// <summary>
     /// 再移動までの時間    </summary>
     private float coolTime;
@@ -57,5 +67,27 @@ public class PlayerLateralMove : BehaviorBase
 
     /// <summary>
     /// 移動処理    </summary>
-    private void Move() { transform.position += new Vector3(speed * direction, 0); }
+    private void Move()
+    {
+        // 跳ね返りタイミングでは、移動させない
+        if (isChangeDirection && isBounce)
+        {
+            isBounce = false;
+        }
+        else
+        {
+            rb.MovePosition(rb.position + Vector3.right * direction);
+            isChangeDirection = false;
+        }
+    }
+    /// <summary>
+    /// 方向切り替え    </summary>
+    public void TriggerDirection()
+    {
+        if (isChangeDirection) return;
+
+        direction *= -1;
+        isChangeDirection = true;
+        isBounce = true;
+    }
 }

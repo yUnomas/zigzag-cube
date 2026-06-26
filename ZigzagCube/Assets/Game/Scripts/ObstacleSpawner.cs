@@ -27,7 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Update()
     {
         // 一定のスコア間隔で生成数を増加
-        int currentScore = GameplayManager.Instance.GetScore();
+        int currentScore = GameplayManager.Instance.Score;
         if (currentScore - lastSpawnIncreaseScore >= spawnIncreasePerScore)
         {
             spawnCount += spawnIncreaseAmount;

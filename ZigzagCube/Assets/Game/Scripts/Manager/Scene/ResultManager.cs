@@ -2,7 +2,8 @@
 
 public class ResultManager : SceneManagerBase<ResultManager>
 {
-    ResultHUDController resultHUD;
+    private ResultData resultData;
+    private ResultHUDController resultHUD;
 
     protected override void StateInit()
     {
@@ -10,6 +11,15 @@ public class ResultManager : SceneManagerBase<ResultManager>
         resultHUD.Show();
         base.StateInit();
     }
+    protected override void StateStart()
+    {
+        resultHUD.ShowResult(resultData);
+        base.StateStart();
+    }
+
+    /// <summary>
+    /// リザルト情報を設定    </summary>
+    public void SetResult(ResultData result) { resultData = result; }
     /// <summary>
     /// ゲームの再挑戦    </summary>
     public void RetryGame()

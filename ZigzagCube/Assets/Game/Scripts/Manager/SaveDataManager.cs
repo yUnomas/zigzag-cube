@@ -7,15 +7,15 @@ public class SaveDataManager : MonoBehaviour
     public static SaveDataManager Instance => instance;
 
     private SettingsData settingsData;
-    private GameplayData gameplayData;
+    private GameRecordData gameRecordData;
 
     //** 各データの保存先
     // 設定データ
     private const string SettingsDataFilePath = "settings.json";
     private const string SettingsDataKey = "SettingsData";
     // ゲーム進行データ
-    private const string GameplayDataFilePath = "save.json";
-    private const string GameplayDataKey = "GameplayData";
+    private const string GameRecordDataFilePath = "game.json";
+    private const string GameRecordDataKey = "GameRecordData";
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class SaveDataManager : MonoBehaviour
     private string GetFilePath<T>()
     {
         if (typeof(T) == typeof(SettingsData)) return SettingsDataFilePath;
-        if (typeof(T) == typeof(GameplayData)) return GameplayDataFilePath;
+        if (typeof(T) == typeof(GameRecordData)) return GameRecordDataFilePath;
         return string.Empty;
     }
     /// <summary>
@@ -35,7 +35,7 @@ public class SaveDataManager : MonoBehaviour
     private string GetKey<T>()
     {
         if (typeof(T) == typeof(SettingsData)) return SettingsDataKey;
-        if (typeof(T) == typeof(GameplayData)) return GameplayDataKey;
+        if (typeof(T) == typeof(GameRecordData)) return GameRecordDataKey;
         return string.Empty;
     }
 
@@ -44,15 +44,15 @@ public class SaveDataManager : MonoBehaviour
     public void CreateNewSaveData()
     {
         // 設定データは残しつつ、ゲーム進行データだけ初期化
-        gameplayData = new GameplayData();
-        Save<GameplayData>(gameplayData);
+        gameRecordData = new GameRecordData();
+        Save<GameRecordData>(gameRecordData);
     }
     /// <summary>
     /// データの取得    </summary>
     public T Get<T>() where T : class
     {
         if (typeof(T) == typeof(SettingsData)) return settingsData as T;
-        if (typeof(T) == typeof(GameplayData)) return gameplayData as T;
+        if (typeof(T) == typeof(GameRecordData)) return gameRecordData as T;
         return null;
     }
     /// <summary>
@@ -109,6 +109,6 @@ public class SaveDataManager : MonoBehaviour
     public void LoadAll()
     {
         settingsData = Load<SettingsData>();
-        gameplayData = Load<GameplayData>();
+        gameRecordData = Load<GameRecordData>();
     }
 }

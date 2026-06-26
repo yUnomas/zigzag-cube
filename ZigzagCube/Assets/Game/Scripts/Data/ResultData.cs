@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class ResultData
+public struct ResultData
 {
-    public int score = 0;
+    public int score;
+    public int highScore;
 }

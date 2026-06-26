@@ -52,7 +52,7 @@ public class ObstacleSpawner : MonoBehaviour
             while (!Input.GetKeyDown(KeyCode.Escape))
             {
                 spawnPos = new Vector3Int(
-                        (int)Random.Range(spawnArea.x / -2, spawnArea.x / 2),
+                        (int)Random.Range((spawnArea.x - 2) / -2, (spawnArea.x - 2) / 2),
                         1,
                         (int)Random.Range(spawnArea.z / -2, spawnArea.z / 2)
                     );

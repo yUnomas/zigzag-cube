@@ -5,6 +5,7 @@ public class ResultHUDController : UIControllerBase
 {
     [SerializeField] TextMeshProUGUI scoreTMP;
     [SerializeField] TextMeshProUGUI highScoreTMP;
+    [SerializeField] TextMeshProUGUI newRecordTMP;
 
     /// <summary>
     /// ゲームの再挑戦ボタンの押下イベント    </summary>
@@ -23,7 +24,19 @@ public class ResultHUDController : UIControllerBase
     /// リザルト表示    </summary>
     public void ShowResult(ResultData resultData)
     {
+        // 今回のスコア
         scoreTMP.text = resultData.score.ToString();
-        highScoreTMP.text = $"high score:{resultData.highScore}";
+        //** ハイスコアの更新状況によって、表示テキストを変更
+        // 新記録ラベル
+        if (resultData.isUpdatedHighScore)
+        {
+            newRecordTMP.enabled = true;
+        }
+        // 現在のハイスコア
+        else
+        {
+            highScoreTMP.enabled = true;
+            highScoreTMP.text = $"high score:{resultData.highScore}";
+        }
     }
 }

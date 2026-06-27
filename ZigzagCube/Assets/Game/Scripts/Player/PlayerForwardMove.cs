@@ -18,14 +18,30 @@ public class PlayerForwardMove : BehaviorBase
     /// <summary>
     /// 最後に速度が上昇した距離    </summary>
     private float lastSpeedIncreaseDirection;
+    /// <summary>
+    /// 状態可否    </summary>
+    private bool isActive;
+
+    private void FixedUpdate()
+    {
+        // プレイヤーの行動可能な状態の際に前方移動
+        if (isActive)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, speed);
+        }
+    }
 
     public override void Initialize()
     {
         speed = baseSpeed;
+        isActive = true;
+        base.Initialize();
     }
     public override void Uninitialize()
     {
         rb.linearVelocity = Vector3.zero;
+        isActive = false;
+        base.Uninitialize();
     }
     public override void Execute(InputData inputData)
     {
@@ -36,7 +52,5 @@ public class PlayerForwardMove : BehaviorBase
             Debug.Log($"現在の移動速度:{speed}");
             lastSpeedIncreaseDirection = transform.position.z;
         }
-        // 前方移動
-        rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, speed);
     }
 }

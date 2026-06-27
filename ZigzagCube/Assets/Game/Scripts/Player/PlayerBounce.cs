@@ -8,7 +8,7 @@ public class PlayerBounce : MonoBehaviour
 
     private void Bounce()
     {
-        GetComponent<PlayerLateralMove>().TriggerDirection();
+        GetComponent<PlayerMovement>().TriggerDirection();
     }
 
     private void OnCollisionEnter(Collision collision)

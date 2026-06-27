@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerLateralMove : BehaviorBase
+public class PlayerMovement : BehaviorBase
 {
     [SerializeField, Tooltip("移動速度")]
     private float baseSpeed = 1f;
@@ -30,12 +30,12 @@ public class PlayerLateralMove : BehaviorBase
 
     private void FixedUpdate()
     {
-        // プレイヤーの行動可能な状態の際に左右移動
+        // プレイヤーの行動可能な状態の際に移動処理
         if (isActive)
         {
-            rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, rb.linearVelocity.z);
+            rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
             isChangeDirection = false;
-        }        
+        }
     }
 
     public override void Initialize()
@@ -46,6 +46,7 @@ public class PlayerLateralMove : BehaviorBase
     }
     public override void Uninitialize()
     {
+        rb.linearVelocity = Vector3.zero;
         isActive = false;
         base.Uninitialize();
     }

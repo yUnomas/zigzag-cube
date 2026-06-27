@@ -98,8 +98,7 @@ GameObject:
   - component: {fileID: 4846742183487861795}
   - component: {fileID: 7363053069113109345}
   - component: {fileID: 4043005843487397534}
-  - component: {fileID: 4426822634174717726}
-  - component: {fileID: 6607693989263138757}
+  - component: {fileID: 6065147192797643880}
   - component: {fileID: 3158086786328215193}
   - component: {fileID: 1320726653804494592}
   m_Layer: 0
@@ -187,9 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviors:
-  - {fileID: 4426822634174717726}
-  - {fileID: 6607693989263138757}
---- !u!114 &4426822634174717726
+  - {fileID: 6065147192797643880}
+--- !u!114 &6065147192797643880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,29 +196,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6021562434382082499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74109e2874bfa764cacc7946cf8071b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2263d39b14a0cf840bee81b2dbd037af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 5
   speedIncreaseAmount: 1
   speedIncreasePerDistance: 100
-  rb: {fileID: 7363053069113109345}
---- !u!114 &6607693989263138757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6021562434382082499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26428c99c23ff1f41ba6d3d88ea7364a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSpeed: 1
-  baseCoolTime: 0.65
-  coolTimeDecreaseAmount: 0.05
-  coolTimeDecreasePerDistance: 300
   rb: {fileID: 7363053069113109345}
 --- !u!114 &3158086786328215193
 MonoBehaviour:

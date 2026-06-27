@@ -70,6 +70,7 @@ public class PlayerMovement : BehaviorBase
         if (isChangeDirection) return;
 
         direction *= -1;
+        rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
         isChangeDirection = true;
     }
 }

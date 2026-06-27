@@ -39,6 +39,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         {
             score = this.score,
             highScore = gameRecordData.highScore,
+            isUpdatedHighScore = this.score == gameRecordData.highScore,
         };
         ResultManager.Instance.SetResult(resultData);
 

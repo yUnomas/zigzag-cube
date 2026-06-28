@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   length: 50
   obstacleSpawner: {fileID: 2763972097204938246}
+  wallSpawner: {fileID: 124553076540298119}
 --- !u!1001 &279687913553022328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,6 +232,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58a048b539c1d64b81a40527db62129, type: 3}
+--- !u!114 &124553076540298119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8006627242255301624, guid: a58a048b539c1d64b81a40527db62129, type: 3}
+  m_PrefabInstance: {fileID: 7973554226255784063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135d24bbc16b98643946f0b8bc24c405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4272715469323505708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6191461329108367443, guid: a58a048b539c1d64b81a40527db62129, type: 3}

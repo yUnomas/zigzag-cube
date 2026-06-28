@@ -7,10 +7,12 @@ public class TerrainChunk : MonoBehaviour
     public float Length => length;
     [Header("=====")]
     [SerializeField] private ObstacleSpawner obstacleSpawner;
+    [SerializeField] private WallSpawner wallSpawner;
 
     private void Start()
     {
         obstacleSpawner.Spawn();
+        wallSpawner.Spawn();
     }
     /// <summary>
     /// チャンクの再生成    </summary>
@@ -18,6 +20,7 @@ public class TerrainChunk : MonoBehaviour
     {
         LoopPosition(chunkCount);
         obstacleSpawner.Spawn();
+        wallSpawner.Spawn();
     }
     /// <summary>
     /// チャンクを最後尾へ移動    </summary>

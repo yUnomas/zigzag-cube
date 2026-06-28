@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f9e5c11ed6a2743a79d5ac5f52c1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkLength: 50
   chunks:
   - {fileID: 1841699129479070429}
   - {fileID: 6835215254375928813}
@@ -321,6 +320,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2561814882343346795, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763972097204938246, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
+      propertyPath: isSpawnAtStart
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}

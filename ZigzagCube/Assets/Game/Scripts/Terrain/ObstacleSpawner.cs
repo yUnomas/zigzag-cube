@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    [SerializeField, Tooltip("初回生成の切り替え")]
+    private bool isSpawnAtStart;
     [SerializeField,Tooltip("地面のTransform情報(生成範囲として使用)")]
     private Transform groundTransform;
     [SerializeField, Tooltip("生成ごとの最大生成数")]
@@ -15,6 +17,9 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private GameObject obstaclePrefab;
 
     /// <summary>
+    /// 生成の有効化    </summary>
+    private bool isSpawn;
+    /// <summary>
     /// 最後に生成数が増加した際のスコア値   </summary>
     private float lastSpawnIncreaseScore;
     /// <summary>
@@ -24,6 +29,10 @@ public class ObstacleSpawner : MonoBehaviour
     /// 生成済み障害物    </summary>
     private List<GameObject> spawnedObstacles = new List<GameObject>();
 
+    private void Awake()
+    {
+        isSpawn = isSpawnAtStart;
+    }
     private void Update()
     {
         // 一定のスコア間隔で生成数を増加
@@ -41,9 +50,16 @@ public class ObstacleSpawner : MonoBehaviour
     /// 障害物の生成    </summary>
     public void Spawn()
     {
-        HashSet<Vector3Int> usedSpawnPos = new HashSet<Vector3Int>();   // 使用済みの配置位置
-        Vector3 spawnArea = groundTransform.localScale;
+        // 生成が無効化されている場合の早期リターン
+        if(!isSpawn)
+        {
+            isSpawn = true;
+            return;
+        }
 
+        // 初期値
+        HashSet<Vector3Int> usedSpawnPos = new HashSet<Vector3Int>();   // 使用済みの配置位置
+        Vector3 spawnArea = groundTransform.localScale;                 // 生成範囲
         // 生成回数に応じたループ
         for(int spawnIndex = 0; spawnIndex < spawnCount; spawnIndex++)
         {

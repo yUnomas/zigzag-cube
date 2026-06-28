@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57303530b13f504da40299704b0a613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnArea: {x: 7, y: 1, z: 50}
+  isSpawnAtStart: 1
+  groundTransform: {fileID: 0}
   maxSpawnCount: 7
   spawnIncreaseAmount: 1
   spawnIncreasePerScore: 200

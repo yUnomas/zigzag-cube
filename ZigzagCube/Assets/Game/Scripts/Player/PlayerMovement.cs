@@ -37,6 +37,9 @@ public class PlayerMovement : BehaviorBase
         {
             rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
             isChangeDirection = false;
+            
+            // 現在のプレイヤー座標を保存
+            lastPosition = transform.position;
         }
     }
 
@@ -75,7 +78,7 @@ public class PlayerMovement : BehaviorBase
                     lastPosition.z
                 );
         }
-        // 現座のプレイヤー座標を保存
+        // 現在のプレイヤー座標を保存
         lastPosition = transform.position;
     }
 

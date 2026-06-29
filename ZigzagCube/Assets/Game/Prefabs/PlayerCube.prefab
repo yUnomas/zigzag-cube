@@ -122,7 +122,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7269312455520076156}
-  - {fileID: 6680247968457262395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4846742183487861795
@@ -232,37 +231,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitTags:
   - Wall
---- !u!1001 &8822227950152618681
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3287896844556189218}
-    m_Modifications:
-    - target: {fileID: 164247200847917805, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
-      propertyPath: m_Name
-      value: GameplayCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
---- !u!4 &6680247968457262395 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
-  m_PrefabInstance: {fileID: 8822227950152618681}
-  m_PrefabAsset: {fileID: 0}

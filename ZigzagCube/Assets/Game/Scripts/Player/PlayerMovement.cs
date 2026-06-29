@@ -9,8 +9,7 @@ public class PlayerMovement : BehaviorBase
     [SerializeField, Tooltip("速度が上昇する距離間隔")]
     private float speedIncreasePerDistance = 100f;
     [Header("=====")]
-    [SerializeField]
-    private Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
 
     /// <summary>
     /// 速度    </summary>
@@ -27,6 +26,9 @@ public class PlayerMovement : BehaviorBase
     /// <summary>
     /// 状態可否    </summary>
     private bool isActive;
+    /// <summary>
+    /// 前frameのプレイヤー座標    </summary>
+    private Vector3 lastPosition;
 
     private void FixedUpdate()
     {
@@ -61,6 +63,20 @@ public class PlayerMovement : BehaviorBase
         }
         // タップで左右切り替え
         if (inputData.isTouch) TriggerDirection();
+
+        // Z座標が戻った場合に元の位置へ戻す
+        if(lastPosition.z > transform.position.z)
+        {
+            Debug.Log("プレイヤーのZ座標が戻りました");
+            transform.position = new Vector3
+                (
+                    transform.position.x,
+                    transform.position.y,
+                    lastPosition.z
+                );
+        }
+        // 現座のプレイヤー座標を保存
+        lastPosition = transform.position;
     }
 
     /// <summary>
@@ -70,7 +86,7 @@ public class PlayerMovement : BehaviorBase
         if (isChangeDirection) return;
 
         direction *= -1;
-        rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
+        transform.position += Vector3.right * speed * direction * Time.deltaTime;
         isChangeDirection = true;
     }
 }

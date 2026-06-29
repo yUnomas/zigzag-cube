@@ -77,5 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ba1747b87292e43b71f1fa5e376b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 5, y: 18, z: -12}
+  speed: 10
+  offset: {x: 5, y: 17, z: -12}
   player: {fileID: 0}

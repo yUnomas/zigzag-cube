@@ -5,9 +5,14 @@ public class PlayerDeath : MonoBehaviour
 {
     [SerializeField, Tooltip("ヒット対象のタグ一覧")]
     private List<string> hitTags = new List<string>();
+    [SerializeField, Tooltip("障害物衝突時のエフェクト")]
+    private GameObject obstacleHitEffect;
 
-    private void Death()
+    private void Death(ContactPoint contact)
     {
+        GameObject obj = Instantiate(obstacleHitEffect, contact.point, Quaternion.identity);
+        obj.GetComponent<EffectBase>().PlayOnce();
+
         Debug.Log("ゲームオーバー");
         GetComponent<BoxCollider>().enabled = false;        // 当たり判定を消す
         GetComponent<Rigidbody>().useGravity = false;       // 重力の働きを停止
@@ -22,12 +27,12 @@ public class PlayerDeath : MonoBehaviour
         {
             if (collision.gameObject.tag == tag)
             {
-                Death();
+                Death(collision.contacts[0]);
                 break;
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+/*    private void OnTriggerEnter(Collider other)
     {
         foreach (string tag in hitTags)
         {
@@ -37,5 +42,5 @@ public class PlayerDeath : MonoBehaviour
                 break;
             }
         }
-    }
+    }*/
 }

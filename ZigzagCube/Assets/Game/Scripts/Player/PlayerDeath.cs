@@ -14,8 +14,7 @@ public class PlayerDeath : MonoBehaviour
     private void Death(Vector3 deathPoint, GameObject effect)
     {
         // 衝突地点から衝突エフェクト発生
-        GameObject obj = Instantiate(effect, deathPoint, Quaternion.identity);
-        obj.GetComponent<EffectBase>().PlayOnce();
+        Instantiate(effect, deathPoint, Quaternion.identity);
         // 死亡処理
         Debug.Log("ゲームオーバー");
         GetComponent<Rigidbody>().useGravity = false;       // 重力の働きを停止

@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 
-public class EffectBase : MonoBehaviour
+public class EffectPlayer : MonoBehaviour
 {
-    protected ParticleSystem effect;
+    [SerializeField, Tooltip("再生開始切り替え")]
+    private bool playOnAwake = true;
+    [SerializeField, Tooltip("終了後の削除切り替え")]
+    private bool destroyOnFinished = true;
+    [Header("=====")]
+    [SerializeField] protected ParticleSystem effect;
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
-        effect = GetComponent<ParticleSystem>();
+        if(playOnAwake) Play();
+        if(destroyOnFinished) Destroy(effect.main.duration);
     }
-
     /// <summary>
     /// 一回だけエフェクト再生    </summary>
     public virtual void PlayOnce()

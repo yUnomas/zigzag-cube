@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1180782792870312460}
-  - component: {fileID: 4419394391656869569}
+  - component: {fileID: 4409180960995296868}
   - component: {fileID: 6498262440490133412}
   - component: {fileID: 2384022354925210695}
   m_Layer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4419394391656869569
+--- !u!114 &4409180960995296868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad015bc81238924e85979bec58ff50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnAwake: 1
+  destroyOnFinished: 1
+  effect: {fileID: 6498262440490133412}
 --- !u!198 &6498262440490133412
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -63,7 +66,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

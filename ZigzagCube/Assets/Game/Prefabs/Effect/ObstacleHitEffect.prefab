@@ -69,6 +69,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6498262440490133412, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498262440490133412, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
       propertyPath: ShapeModule.type
       value: 0
       objectReference: {fileID: 0}
@@ -162,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498262440490133412, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6498262440490133412, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
@@ -276,7 +280,8 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[1].outWeight
       value: 0.33333334
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4419394391656869569, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

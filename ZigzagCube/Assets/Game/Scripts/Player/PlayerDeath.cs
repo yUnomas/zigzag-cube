@@ -3,18 +3,21 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    [SerializeField, Tooltip("ヒット対象のタグ一覧")]
-    private List<string> hitTags = new List<string>();
     [SerializeField, Tooltip("障害物衝突時のエフェクト")]
     private GameObject obstacleHitEffect;
+    [SerializeField, Tooltip("水衝突時のエフェクト")]
+    private GameObject waterHitEffect;
 
-    private void Death(ContactPoint contact)
+    private const string waterTag = "Water";
+    private const string obstacleTag = "Obstacle";
+
+    private void Death(Vector3 deathPoint, GameObject effect)
     {
-        GameObject obj = Instantiate(obstacleHitEffect, contact.point, Quaternion.identity);
+        // 衝突地点から衝突エフェクト発生
+        GameObject obj = Instantiate(effect, deathPoint, Quaternion.identity);
         obj.GetComponent<EffectBase>().PlayOnce();
-
+        // 死亡処理
         Debug.Log("ゲームオーバー");
-        GetComponent<BoxCollider>().enabled = false;        // 当たり判定を消す
         GetComponent<Rigidbody>().useGravity = false;       // 重力の働きを停止
         GetComponent<PlayerController>().enabled = false;   // プレイヤーの機能停止
         transform.GetChild(0).gameObject.SetActive(false);  // モデルを非表示
@@ -23,24 +26,15 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        foreach (string tag in hitTags)
+        // 障害物との衝突時
+        if (collision.gameObject.CompareTag(obstacleTag))
         {
-            if (collision.gameObject.tag == tag)
-            {
-                Death(collision.contacts[0]);
-                break;
-            }
+            Death(collision.contacts[0].point, obstacleHitEffect);
+        }
+        // 水との衝突時
+        else if (collision.gameObject.CompareTag(waterTag))
+        {
+            Death(collision.contacts[0].point, waterHitEffect);
         }
     }
-/*    private void OnTriggerEnter(Collider other)
-    {
-        foreach (string tag in hitTags)
-        {
-            if (other.gameObject.tag == tag)
-            {
-                Death();
-                break;
-            }
-        }
-    }*/
 }

@@ -236,10 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f692ecfca339fca4cba19a9c42465360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitTags:
-  - Water
-  - Obstacle
   obstacleHitEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
+  waterHitEffect: {fileID: 2443725396418623342, guid: 13de9a8ce2b1bc74bb22d9255c68b858, type: 3}
 --- !u!114 &1320726653804494592
 MonoBehaviour:
   m_ObjectHideFlags: 0

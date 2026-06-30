@@ -12,7 +12,7 @@ public class PlayerBounce : MonoBehaviour
         foreach (string tag in hitTags)
         {
             // 横から壁に当たった場合、跳ね返る
-            if (collision.gameObject.tag == tag)
+            if (collision.gameObject.CompareTag(tag))
             {
                 Vector3 normal = collision.contacts[0].normal;
                 if(Mathf.Abs(normal.x) > 0.9f)

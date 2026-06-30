@@ -10,6 +10,7 @@ public class PlayerMovement : BehaviorBase
     private float speedIncreasePerDistance = 100f;
     [Header("=====")]
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject changeDirectionEffect;
 
     /// <summary>
     /// 速度    </summary>
@@ -91,5 +92,9 @@ public class PlayerMovement : BehaviorBase
         direction *= -1;
         transform.position += Vector3.right * speed * direction * Time.deltaTime;
         isChangeDirection = true;
+
+        // 方向切り替え時のエフェクト発生
+        Vector3 position = transform.position + -transform.forward;
+        Instantiate(changeDirectionEffect, position, Quaternion.identity);
     }
 }

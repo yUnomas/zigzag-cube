@@ -239,6 +239,7 @@ MonoBehaviour:
   hitTags:
   - Water
   - Obstacle
+  obstacleHitEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
 --- !u!114 &1320726653804494592
 MonoBehaviour:
   m_ObjectHideFlags: 0

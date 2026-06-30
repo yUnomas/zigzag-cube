@@ -224,6 +224,7 @@ MonoBehaviour:
   speedIncreaseAmount: 1
   speedIncreasePerDistance: 100
   rb: {fileID: 7363053069113109345}
+  changeDirectionEffect: {fileID: 4599042771555557612, guid: 24f7e670121f71246bd7aa5a96da6860, type: 3}
 --- !u!114 &3158086786328215193
 MonoBehaviour:
   m_ObjectHideFlags: 0

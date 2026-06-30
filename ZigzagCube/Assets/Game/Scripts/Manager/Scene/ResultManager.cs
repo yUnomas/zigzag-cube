@@ -21,12 +21,6 @@ public class ResultManager : SceneManagerBase<ResultManager>
     /// リザルト情報を設定    </summary>
     public void SetResult(ResultData result) { resultData = result; }
     /// <summary>
-    /// ゲームの再挑戦    </summary>
-    public void RetryGame()
-    {
-        ChangeScene(SceneType.Gameplay, true, "GameplayScene");
-    }
-    /// <summary>
     /// タイトルに戻る    </summary>
     public void BackToTile()
     {

@@ -8,14 +8,8 @@ public class ResultHUDController : UIControllerBase
     [SerializeField] TextMeshProUGUI newRecordTMP;
 
     /// <summary>
-    /// ゲームの再挑戦ボタンの押下イベント    </summary>
-    public void OnRetryButtonPressed()
-    {
-        ResultManager.Instance.RetryGame();
-    }
-    /// <summary>
-    /// タイトルへ戻るボタンの押下イベント    </summary>
-    public void OnBackToTitleButtonPressed()
+    /// （タイトルへ）戻るボタンの押下イベント    </summary>
+    public void OnReturnButtonPressed()
     {
         ResultManager.Instance.BackToTile();
     }

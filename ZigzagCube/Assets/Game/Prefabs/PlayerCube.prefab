@@ -122,6 +122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3590506079019918606}
   - {fileID: 7269312455520076156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,3 +254,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitTags:
   - Wall
+--- !u!1001 &1414045727894794336
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3287896844556189218}
+    m_Modifications:
+    - target: {fileID: 2471272614871373166, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471272614871373166, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2471272614871373166, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867066667332075807, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+      propertyPath: m_Name
+      value: PlayerMovementTrajectoryEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+--- !u!4 &3590506079019918606 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2471272614871373166, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+  m_PrefabInstance: {fileID: 1414045727894794336}
+  m_PrefabAsset: {fileID: 0}

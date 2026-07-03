@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1623311863008839337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94,6 +94,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1623311863008839337}
     m_Modifications:
+    - target: {fileID: 2949086855594731979, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
+      propertyPath: m_text
+      value: Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949086855594731979, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
+      propertyPath: m_fontSize
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4493227407121658255, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_Pivot.y
       value: 0
@@ -196,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321369995404559304, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_fontSize
-      value: 187.75
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7321369995404559304, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_fontSizeBase

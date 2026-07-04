@@ -105,6 +105,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6967459451018624269, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967459451018624269, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 3
       objectReference: {fileID: 0}
@@ -115,6 +119,14 @@ PrefabInstance:
     - target: {fileID: 7536258689303502140, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_Name
       value: Button_Small
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880915646846023390, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
+      propertyPath: m_Color.g
+      value: 0.44313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880915646846023390, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5294118
       objectReference: {fileID: 0}
     - target: {fileID: 7880915646846023390, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier

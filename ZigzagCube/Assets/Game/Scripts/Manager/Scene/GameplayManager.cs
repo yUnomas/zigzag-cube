@@ -20,6 +20,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     {
         // プレイヤーの起動
         player.enabled = true;
+        gameplayHUD.Show();
         base.StateStart();
     }
     protected override void StateRunning()

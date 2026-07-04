@@ -20,17 +20,10 @@ public class ResultHUDController : UIControllerBase
     {
         // 今回のスコア
         scoreTMP.text = resultData.score.ToString();
-        //** ハイスコアの更新状況によって、表示テキストを変更
-        // 新記録ラベル
+        // ハイスコアの更新状況によって、新記録ラベルを表示
         if (resultData.isUpdatedHighScore)
         {
             newRecordTMP.enabled = true;
-        }
-        // 現在のハイスコア
-        else
-        {
-            highScoreTMP.enabled = true;
-            highScoreTMP.text = $"high score:{resultData.highScore}";
         }
     }
 }

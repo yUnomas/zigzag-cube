@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_text
+      value: SHARE
+      objectReference: {fileID: 0}
+    - target: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_fontSize
+      value: 81
+      objectReference: {fileID: 0}
     - target: {fileID: 1471953488822001212, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -90,7 +98,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4800943005752767119, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_Name
-      value: Button_Middle (1) Variant
+      value: ShareButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_text
+      value: SHARE
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_fontSize
+      value: 81
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

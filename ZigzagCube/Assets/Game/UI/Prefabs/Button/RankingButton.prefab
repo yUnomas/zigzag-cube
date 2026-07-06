@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_text
-      value: Ranking
+      value: RANKING
       objectReference: {fileID: 0}
     - target: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_fontSize
-      value: 61.95
+      value: 59.85
       objectReference: {fileID: 0}
     - target: {fileID: 1471953488822001212, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_Pivot.x
@@ -98,15 +98,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4800943005752767119, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_Name
-      value: RankingButton Variant
+      value: RankingButton
       objectReference: {fileID: 0}
     - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_text
-      value: Ranking
+      value: RANKING
       objectReference: {fileID: 0}
     - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_fontSize
-      value: 61.95
+      value: 59.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

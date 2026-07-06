@@ -5,8 +5,13 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameplayManager : SceneManagerBase<GameplayManager>
 {
+    /// <summary>
+    /// スコア    </summary>
     private int score;
     public int Score => score;
+    /// <summary>
+    /// プレイ時間    </summary>
+    private float playTime;
 
     private PlayerController player;
     private GameplayHUDController gameplayHUD;
@@ -26,8 +31,9 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     }
     protected override void StateRunning()
     {
-        // 現在のスコアを設定 / 表示更新
-        SetScore((int)player.transform.position.z);
+        SetScore((int)player.transform.position.z); // スコア設定・表示更新
+        playTime += Time.deltaTime;                 // プレイ時間の計測
+
         base.StateRunning();
     }
     protected override void StateEnd()
@@ -47,6 +53,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
             score = this.score,
             highScore = gameRecordData.highScore,
             isUpdatedHighScore = this.score == gameRecordData.highScore,
+            playTime = this.playTime,
         };
         ResultManager.Instance.SetResult(resultData);
         

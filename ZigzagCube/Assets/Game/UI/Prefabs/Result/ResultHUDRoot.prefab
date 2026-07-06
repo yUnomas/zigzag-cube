@@ -439,6 +439,7 @@ MonoBehaviour:
   scoreTMP: {fileID: 4022574310826793913}
   highScoreTMP: {fileID: 2550044133924297115}
   newRecordTMP: {fileID: 3369607807689907792}
+  playTimeTMP: {fileID: 6258741232804445190}
 --- !u!1 &4237874458314790714
 GameObject:
   m_ObjectHideFlags: 0

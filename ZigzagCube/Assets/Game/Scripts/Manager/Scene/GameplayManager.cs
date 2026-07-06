@@ -36,6 +36,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     }
     private async Awaitable HandleEndStateAsync()
     {
+        gameplayHUD.Hide();
         //セーブデータの更新
         GameRecordData gameRecordData = SaveDataManager.Instance.Load<GameRecordData>();
         gameRecordData.highScore = Mathf.Max(gameRecordData.highScore, score);

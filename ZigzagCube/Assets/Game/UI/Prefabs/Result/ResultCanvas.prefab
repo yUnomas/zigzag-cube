@@ -355,6 +355,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3958599182622759961}
     m_Modifications:
+    - target: {fileID: 2928402088908142182, guid: b6ca3da8d8cc3224393d711f49311436, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3569590906383354210, guid: b6ca3da8d8cc3224393d711f49311436, type: 3}
       propertyPath: m_Name
       value: ResultHUDRoot

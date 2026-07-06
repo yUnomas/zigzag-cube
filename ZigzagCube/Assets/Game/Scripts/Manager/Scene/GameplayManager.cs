@@ -1,4 +1,5 @@
 ﻿using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -31,6 +32,10 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     }
     protected override void StateEnd()
     {
+        // HandleEndSateAsync()の処理待ち
+    }
+    private async Awaitable HandleEndStateAsync()
+    {
         //セーブデータの更新
         GameRecordData gameRecordData = SaveDataManager.Instance.Load<GameRecordData>();
         gameRecordData.highScore = Mathf.Max(gameRecordData.highScore, score);
@@ -43,7 +48,9 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
             isUpdatedHighScore = this.score == gameRecordData.highScore,
         };
         ResultManager.Instance.SetResult(resultData);
-
+        
+        // 1秒待機した後に状態遷移
+        await Awaitable.WaitForSecondsAsync(1.0f);
         base.StateEnd();
     }
 
@@ -61,5 +68,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         Debug.Log("スコア:" + score);
         // リザルトへ遷移
         ChangeScene(SceneType.Result, false);
+        // 終了処理の発火
+        _ = HandleEndStateAsync();
     }
 }

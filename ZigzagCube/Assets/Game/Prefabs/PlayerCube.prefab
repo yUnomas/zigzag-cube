@@ -122,8 +122,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7269312455520076156}
   - {fileID: 3590506079019918606}
+  - {fileID: 7269312455520076156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4846742183487861795
@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleHitEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
   waterHitEffect: {fileID: 2443725396418623342, guid: 13de9a8ce2b1bc74bb22d9255c68b858, type: 3}
+  playerModel: {fileID: 1793818030614699570}
 --- !u!114 &1320726653804494592
 MonoBehaviour:
   m_ObjectHideFlags: 0

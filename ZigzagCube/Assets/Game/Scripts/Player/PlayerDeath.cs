@@ -7,6 +7,7 @@ public class PlayerDeath : MonoBehaviour
     private GameObject obstacleHitEffect;
     [SerializeField, Tooltip("水衝突時のエフェクト")]
     private GameObject waterHitEffect;
+    [SerializeField] private GameObject playerModel;
 
     private const string waterTag = "Water";
     private const string obstacleTag = "Obstacle";
@@ -19,7 +20,7 @@ public class PlayerDeath : MonoBehaviour
         Debug.Log("ゲームオーバー");
         GetComponent<Rigidbody>().useGravity = false;       // 重力の働きを停止
         GetComponent<PlayerController>().enabled = false;   // プレイヤーの機能停止
-        transform.GetChild(0).gameObject.SetActive(false);  // モデルを非表示
+        playerModel.SetActive(false);                       // モデルを非表示
         GameplayManager.Instance.GameOver();
     }
 

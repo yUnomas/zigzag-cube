@@ -18,8 +18,9 @@ public class ResultHUDController : UIControllerBase
     /// リザルト表示    </summary>
     public void ShowResult(ResultData resultData)
     {
-        // 今回のスコア
+        // スコア表示
         scoreTMP.text = resultData.score.ToString();
+        highScoreTMP.text = $"High Score: {resultData.highScore}";
         // ハイスコアの更新状況によって、新記録ラベルを表示
         if (resultData.isUpdatedHighScore)
         {

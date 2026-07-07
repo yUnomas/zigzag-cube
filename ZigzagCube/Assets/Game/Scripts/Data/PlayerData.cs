@@ -20,7 +20,9 @@ public class PlayerData
         Debug.Log(randomName);
         return randomName;
     }
-    public PlayerData()
+    /// <summary>
+    /// データ作成    </summary>
+    public void Create()
     {
         name = GenerateRandomName();
         id = System.Guid.NewGuid().ToString();

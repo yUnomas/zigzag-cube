@@ -3,14 +3,14 @@ using UnityEngine.EventSystems;
 
 public class ButtonPressAnimation : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
-    [SerializeField] private GameObject buttonBase;
+    [SerializeField] private GameObject idleButton;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        buttonBase.SetActive(false);
+        idleButton.SetActive(false);
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        buttonBase.SetActive(true);
+        idleButton.SetActive(true);
     }
 }

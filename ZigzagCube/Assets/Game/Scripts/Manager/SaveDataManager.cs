@@ -63,7 +63,7 @@ public class SaveDataManager : MonoBehaviour
     /// 新規セーブデータ作成    </summary>
     public void CreateNewSaveData()
     {
-        // 設定データは残しつつ、ゲーム進行データだけ初期化
+        // ゲーム進行データだけ初期化
         gameRecordData = new GameRecordData();
         Save<GameRecordData>(gameRecordData);
     }
@@ -139,5 +139,8 @@ public class SaveDataManager : MonoBehaviour
         settingsData = Load<SettingsData>();
         gameRecordData = Load<GameRecordData>();
         playerData = Load<PlayerData>();
+
+        // 初回起動時にプレイヤーデータの新規作成
+        if (string.IsNullOrEmpty(playerData.id)) playerData.Create();
     }
 }

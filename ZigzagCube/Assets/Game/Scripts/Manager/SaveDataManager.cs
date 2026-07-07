@@ -6,28 +6,47 @@ public class SaveDataManager : MonoBehaviour
     private static SaveDataManager instance;
     public static SaveDataManager Instance => instance;
 
+    /// <summary>
+    /// 設定データ    </summary>
+    public SettingsData SettingsData => settingsData;
     private SettingsData settingsData;
+    /// <summary>
+    /// ゲーム進行データ    </summary>
+    public GameRecordData GameRecordData => gameRecordData;
     private GameRecordData gameRecordData;
+    /// <summary>
+    /// プレイヤーデータ    </summary>
+    public PlayerData PlayerData => playerData;
+    private PlayerData playerData;
 
-    //** 各データの保存先
+    //** 各データの保存パス・キー
     // 設定データ
     private const string SettingsDataFilePath = "settings.json";
     private const string SettingsDataKey = "SettingsData";
     // ゲーム進行データ
     private const string GameRecordDataFilePath = "game.json";
     private const string GameRecordDataKey = "GameRecordData";
+    // プレイヤーデータ
+    private const string PlayerDataFilePath = "player.json";
+    private const string PlayerDataKey = "PlayerData";
 
     private void Awake()
     {
         // インスタンス化
-        if (instance == null)    instance = this;
+        if (instance == null) instance = this;
     }
+    private void OnApplicationQuit()
+    {
+        SaveALL();
+    }
+
     /// <summary>
     /// ファイルパスを取得( JSON用 )    </summary>
     private string GetFilePath<T>()
     {
-        if (typeof(T) == typeof(SettingsData)) return SettingsDataFilePath;
-        if (typeof(T) == typeof(GameRecordData)) return GameRecordDataFilePath;
+        if(typeof(T) == typeof(SettingsData)) return SettingsDataFilePath;
+        if(typeof(T) == typeof(GameRecordData)) return GameRecordDataFilePath;
+        if(typeof(T) == typeof(PlayerData)) return PlayerDataFilePath;
         return string.Empty;
     }
     /// <summary>
@@ -36,6 +55,7 @@ public class SaveDataManager : MonoBehaviour
     {
         if (typeof(T) == typeof(SettingsData)) return SettingsDataKey;
         if (typeof(T) == typeof(GameRecordData)) return GameRecordDataKey;
+        if (typeof(T) == typeof(PlayerData)) return PlayerDataKey;
         return string.Empty;
     }
 
@@ -71,7 +91,7 @@ public class SaveDataManager : MonoBehaviour
         PlayerPrefs.SetString(key, json);
         PlayerPrefs.Save();
 #else
-        //** PC向けビルド、エディタ実行時
+        //** PC向けビルド・エディタ実行時
         // persistentDataPathにjsonファイルとして保存
         string path = Path.Combine(Application.persistentDataPath, filePath);
         File.WriteAllText(path, json);
@@ -105,10 +125,19 @@ public class SaveDataManager : MonoBehaviour
         else return new T();
     }
     /// <summary>
+    /// 全データのセーブ    </summary>
+    public void SaveALL()
+    {
+        Save<SettingsData>(settingsData);
+        Save<GameRecordData>(gameRecordData);
+        Save<PlayerData>(playerData);
+    }
+    /// <summary>
     /// 全データのロード    </summary>
     public void LoadAll()
     {
         settingsData = Load<SettingsData>();
         gameRecordData = Load<GameRecordData>();
+        playerData = Load<PlayerData>();
     }
 }

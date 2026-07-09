@@ -1,7 +1,4 @@
-﻿using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
-using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+﻿using UnityEngine;
 
 public class GameplayManager : SceneManagerBase<GameplayManager>
 {
@@ -12,6 +9,9 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     /// <summary>
     /// プレイ時間    </summary>
     private float playTime;
+    /// <summary>
+    /// ポーズ状態    </summary>
+    private bool isPaused;
 
     private PlayerController player;
     private GameplayHUDController gameplayHUD;
@@ -61,7 +61,6 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         await Awaitable.WaitForSecondsAsync(1.0f);
         base.StateEnd();
     }
-
     /// <summary>
     /// スコア設定    </summary>
     private void SetScore(int value)
@@ -69,6 +68,19 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         score = value;
         gameplayHUD.UpdateScoreText(score); // 表示更新
     }
+    /// <summary>
+    /// ゲームを一時停止    </summary>
+    private void Pause()
+    {
+        player.enabled = false;
+    }
+    /// <summary>
+    /// ゲームを再開    </summary>
+    private void Continue()
+    {
+        player.enabled = true;
+    }
+
     /// <summary>
     /// ゲームプレイの終了処理    </summary>
     public void GameOver()
@@ -78,5 +90,15 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         ChangeScene(SceneType.Result, false);
         // 終了処理の発火
         _ = HandleEndStateAsync();
+    }
+
+    /// <summary>
+    /// ポーズ状態の切り替え    </summary>
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused) Pause();
+        else Continue();
     }
 }

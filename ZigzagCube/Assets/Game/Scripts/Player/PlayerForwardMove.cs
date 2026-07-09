@@ -18,9 +18,6 @@ public class PlayerForwardMove : BehaviorBase
     /// <summary>
     /// 最後に速度が上昇した距離    </summary>
     private float lastSpeedIncreaseDirection;
-    /// <summary>
-    /// 状態可否    </summary>
-    private bool isActive;
 
     private void FixedUpdate()
     {
@@ -37,12 +34,7 @@ public class PlayerForwardMove : BehaviorBase
         isActive = true;
         base.Initialize();
     }
-    public override void Uninitialize()
-    {
-        rb.linearVelocity = Vector3.zero;
-        isActive = false;
-        base.Uninitialize();
-    }
+
     public override void Execute(InputData inputData)
     {
         // 一定距離の移動で速度上昇

@@ -2,11 +2,11 @@
 
 public class SettingsButton : MonoBehaviour
 {
-    private SettingsHUDRoot settingsHUD;
+    private SettingsHUDController settingsHUD;
 
     private void Awake()
     {
-        settingsHUD = FindAnyObjectByType<SettingsHUDRoot>();
+        settingsHUD = FindAnyObjectByType<SettingsHUDController>();
     }
     public void OnSettingsButtonPressed()
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SettingsHUDRoot : UIControllerBase
+public class SettingsHUDController : UIControllerBase
 {
     private GameObject settingsButton;
 

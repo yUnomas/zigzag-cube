@@ -25,11 +25,11 @@ public class PlayerMovement : BehaviorBase
     /// 最後に速度が上昇した距離    </summary>
     private float lastSpeedIncreaseDirection;
     /// <summary>
-    /// 状態可否    </summary>
-    private bool isActive;
-    /// <summary>
-    /// 前frameのプレイヤー座標    </summary>
+    /// 前フレームのプレイヤー座標    </summary>
     private Vector3 lastPosition;
+    /// <summary>
+    /// 前フレームの移動方向    </summary>
+    private float lastDirection;
 
     private void FixedUpdate()
     {
@@ -39,23 +39,21 @@ public class PlayerMovement : BehaviorBase
             rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
             isChangeDirection = false;
             
-            // 現在のプレイヤー座標を保存
+            // 現在の値保存
             lastPosition = transform.position;
         }
     }
-
+    public override void Deactivate()
+    {
+        rb.linearVelocity = Vector3.zero;
+        base.Deactivate();
+    }
     public override void Initialize()
     {
         speed = baseSpeed;
-        isActive = true;
         base.Initialize();
     }
-    public override void Uninitialize()
-    {
-        rb.linearVelocity = Vector3.zero;
-        isActive = false;
-        base.Uninitialize();
-    }
+
     public override void Execute(InputData inputData)
     {
         // 一定距離の移動で速度上昇

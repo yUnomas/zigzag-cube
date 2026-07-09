@@ -8,12 +8,21 @@ public abstract class ControllerBase : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        // 終了
+        // 停止
         foreach (var behavior in behaviors)
         {
-            behavior.Uninitialize();
+            behavior.Deactivate();
         }
     }
+    protected virtual void OnEnable()
+    {
+        // 起動
+        foreach (var behavior in behaviors)
+        {
+            behavior.Activate();
+        }
+    }
+
     protected virtual void Start()
     {
         // 初期化

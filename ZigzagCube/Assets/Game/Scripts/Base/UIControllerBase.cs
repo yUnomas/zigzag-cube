@@ -7,14 +7,15 @@ public abstract class UIControllerBase : MonoBehaviour
 
     /// <summary>
     /// UI表示    </summary>
-    public void Show() { content.SetActive(true); }
+    public virtual void Show() { content.SetActive(true); }
     /// <summary>
     /// UI非表示    </summary>
-    public void Hide() { content.SetActive(false); }
+    public virtual void Hide() { content.SetActive(false); }
     /// <summary>
     /// UI表示切り替え    </summary>
     public void Toggle()
     {
-        content.SetActive(!content.activeSelf);
+        if (content.activeSelf) Hide();
+        else Show();
     }
 }

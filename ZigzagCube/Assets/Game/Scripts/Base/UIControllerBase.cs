@@ -2,20 +2,19 @@
 
 public abstract class UIControllerBase : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject content;
+    [SerializeField] private GameObject visibleTarget;
 
     /// <summary>
     /// UI表示    </summary>
-    public virtual void Show() { content.SetActive(true); }
+    public virtual void Show() { visibleTarget.SetActive(true); }
     /// <summary>
     /// UI非表示    </summary>
-    public virtual void Hide() { content.SetActive(false); }
+    public virtual void Hide() { visibleTarget.SetActive(false); }
     /// <summary>
     /// UI表示切り替え    </summary>
     public void Toggle()
     {
-        if (content.activeSelf) Hide();
+        if (visibleTarget.activeSelf) Hide();
         else Show();
     }
 }

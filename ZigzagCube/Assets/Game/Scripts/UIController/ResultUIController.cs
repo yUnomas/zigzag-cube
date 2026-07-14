@@ -2,13 +2,14 @@
 using TMPro;
 using UnityEngine;
 
-public class ResultHUDController : UIControllerBase
+public class ResultUIController : UIControllerBase
 {
-    [SerializeField] TextMeshProUGUI scoreTMP;
-    [SerializeField] TextMeshProUGUI highScoreTMP;
-    [SerializeField] TextMeshProUGUI newRecordTMP;
-    [SerializeField] TextMeshProUGUI playTimeTMP;
-    
+    [SerializeField] private TextMeshProUGUI scoreTMP;
+    [SerializeField] private TextMeshProUGUI highScoreTMP;
+    [SerializeField] private TextMeshProUGUI newRecordTMP;
+    [SerializeField] private TextMeshProUGUI playTimeTMP;
+    [SerializeField] private RankingUIController rankingUI;
+
     /// <summary>
     /// プレイ時間の表示更新    </summary>
     private void UpdatePlayTime(float playTime)
@@ -41,9 +42,21 @@ public class ResultHUDController : UIControllerBase
         }
     }
     /// <summary>
-    /// （タイトルへ）戻るボタンの押下イベント    </summary>
-    public void OnReturnButtonPressed()
+    /// （タイトルへ）戻るボタンが押された際のイベント    </summary>
+    public void OnClickReturn()
     {
         ResultManager.Instance.BackToTile();
+    }
+    /// <summary>
+    /// ランキング画面を開くボタンが押された際のイベント    </summary>
+    public void OnClickOpenRanking()
+    {
+        rankingUI.Show();
+    }
+    /// <summary>
+    /// 設定画面を閉じるボタンが押された際のイベント    </summary>
+    public void OnClickCloseRanking()
+    {
+        rankingUI.Hide();
     }
 }

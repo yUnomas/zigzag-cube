@@ -17,7 +17,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     private bool isPaused;
 
     private PlayerController player;
-    private GameplayHUDController gameplayHUD;
+    private GameplayUIController gameplayUI;
     private ResultManager resultManager;
     private SaveDataManager saveDataManager;
 
@@ -28,7 +28,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     }
     protected override void StateInit()
     {
-        gameplayHUD = FindAnyObjectByType<GameplayHUDController>();
+        gameplayUI = FindAnyObjectByType<GameplayUIController>();
         player = FindAnyObjectByType<PlayerController>();
         base.StateInit();
     }
@@ -36,7 +36,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     {
         // プレイヤーの起動
         player.enabled = true;
-        gameplayHUD.Show();
+        gameplayUI.Show();
         base.StateStart();
     }
     protected override void StateRunning()
@@ -52,7 +52,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     }
     private async Awaitable HandleEndStateAsync()
     {
-        gameplayHUD.Hide();
+        gameplayUI.Hide();
         //セーブデータの更新
         GameProgressData gameProgressData = saveDataManager.GameProgressData;
         gameProgressData.highScore = Mathf.Max(gameProgressData.highScore, score);
@@ -80,7 +80,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     private void SetScore(int value)
     {
         score = value;
-        gameplayHUD.UpdateScoreText(score); // 表示更新
+        gameplayUI.UpdateScoreText(score); // 表示更新
     }
     /// <summary>
     /// ゲームを一時停止    </summary>

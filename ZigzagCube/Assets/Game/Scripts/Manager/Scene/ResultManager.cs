@@ -3,17 +3,17 @@
 public class ResultManager : SceneManagerBase<ResultManager>
 {
     private ResultData resultData;
-    private ResultHUDController resultHUD;
+    private ResultUIController resultUI;
 
     protected override void StateInit()
     {
-        resultHUD = FindAnyObjectByType<ResultHUDController>();
-        resultHUD.Show();
+        resultUI = FindAnyObjectByType<ResultUIController>();
+        resultUI.Show();
         base.StateInit();
     }
     protected override void StateStart()
     {
-        resultHUD.ShowResult(resultData);
+        resultUI.ShowResult(resultData);
         base.StateStart();
     }
 

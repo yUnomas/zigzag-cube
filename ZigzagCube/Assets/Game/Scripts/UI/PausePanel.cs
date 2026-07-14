@@ -3,14 +3,14 @@ using UnityEngine.EventSystems;
 
 public class PausePanel : MonoBehaviour, IPointerClickHandler
 {
-    GameplayPopupController gameplayPopup;
+    GameplayUIController gameplayUI;
 
     private void Awake()
     {
-        gameplayPopup = FindAnyObjectByType<GameplayPopupController>();
+        gameplayUI = FindAnyObjectByType<GameplayUIController>();
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        gameplayPopup.OnPausePanelTapped();
+        gameplayUI.OnClickPausePanel();
     }
 }

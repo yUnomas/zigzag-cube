@@ -94,11 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3812746101001729440, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_text
-      value: x
+      value: BACK
       objectReference: {fileID: 0}
     - target: {fileID: 3812746101001729440, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_fontSize
-      value: 140
+      value: 68.4
       objectReference: {fileID: 0}
     - target: {fileID: 6542658812349400992, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_LocalScale.x
@@ -122,15 +122,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8400042230796714327, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_Name
-      value: CloseButton
+      value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 8763549155122683811, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_text
-      value: x
+      value: BACK
       objectReference: {fileID: 0}
     - target: {fileID: 8763549155122683811, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_fontSize
-      value: 140
+      value: 68.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763549155122683811, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8763549155122683811, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_HorizontalAlignment

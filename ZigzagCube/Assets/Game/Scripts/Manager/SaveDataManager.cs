@@ -12,8 +12,8 @@ public class SaveDataManager : MonoBehaviour
     private SettingsData settingsData;
     /// <summary>
     /// ゲーム進行データ    </summary>
-    public GameRecordData GameRecordData => gameRecordData;
-    private GameRecordData gameRecordData;
+    public GameProgressData GameProgressData => gameProgressData;
+    private GameProgressData gameProgressData;
     /// <summary>
     /// プレイヤーデータ    </summary>
     public PlayerData PlayerData => playerData;
@@ -24,8 +24,8 @@ public class SaveDataManager : MonoBehaviour
     private const string SettingsDataFilePath = "settings.json";
     private const string SettingsDataKey = "SettingsData";
     // ゲーム進行データ
-    private const string GameRecordDataFilePath = "game.json";
-    private const string GameRecordDataKey = "GameRecordData";
+    private const string GameProgressDataFilePath = "game.json";
+    private const string GameProgressDataKey = "GameProgressData";
     // プレイヤーデータ
     private const string PlayerDataFilePath = "player.json";
     private const string PlayerDataKey = "PlayerData";
@@ -45,7 +45,7 @@ public class SaveDataManager : MonoBehaviour
     private string GetFilePath<T>()
     {
         if(typeof(T) == typeof(SettingsData)) return SettingsDataFilePath;
-        if(typeof(T) == typeof(GameRecordData)) return GameRecordDataFilePath;
+        if(typeof(T) == typeof(GameProgressData)) return GameProgressDataFilePath;
         if(typeof(T) == typeof(PlayerData)) return PlayerDataFilePath;
         return string.Empty;
     }
@@ -54,7 +54,7 @@ public class SaveDataManager : MonoBehaviour
     private string GetKey<T>()
     {
         if (typeof(T) == typeof(SettingsData)) return SettingsDataKey;
-        if (typeof(T) == typeof(GameRecordData)) return GameRecordDataKey;
+        if (typeof(T) == typeof(GameProgressData)) return GameProgressDataKey;
         if (typeof(T) == typeof(PlayerData)) return PlayerDataKey;
         return string.Empty;
     }
@@ -64,15 +64,15 @@ public class SaveDataManager : MonoBehaviour
     public void CreateNewSaveData()
     {
         // ゲーム進行データだけ初期化
-        gameRecordData = new GameRecordData();
-        Save<GameRecordData>(gameRecordData);
+        gameProgressData = new GameProgressData();
+        Save<GameProgressData>(gameProgressData);
     }
     /// <summary>
     /// データの取得    </summary>
     public T Get<T>() where T : class
     {
         if (typeof(T) == typeof(SettingsData)) return settingsData as T;
-        if (typeof(T) == typeof(GameRecordData)) return gameRecordData as T;
+        if (typeof(T) == typeof(GameProgressData)) return gameProgressData as T;
         return null;
     }
     /// <summary>
@@ -129,7 +129,7 @@ public class SaveDataManager : MonoBehaviour
     public void SaveALL()
     {
         Save<SettingsData>(settingsData);
-        Save<GameRecordData>(gameRecordData);
+        Save<GameProgressData>(gameProgressData);
         Save<PlayerData>(playerData);
     }
     /// <summary>
@@ -137,7 +137,7 @@ public class SaveDataManager : MonoBehaviour
     public void LoadAll()
     {
         settingsData = Load<SettingsData>();
-        gameRecordData = Load<GameRecordData>();
+        gameProgressData = Load<GameProgressData>();
         playerData = Load<PlayerData>();
 
         // 初回起動時にプレイヤーデータの新規作成

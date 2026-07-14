@@ -211,5 +211,4 @@ public abstract class SceneManagerBase<T> : SceneManagerBase where T : SceneMana
             sceneName = SceneManager.GetActiveScene().name;
         }
     }
-    protected virtual void Start(){}
 }

@@ -2,12 +2,12 @@
 
 public class TitleManager : SceneManagerBase<TitleManager>
 {
-    private TitleHUDController titleHUD;
+    private TitleUIController titleUI;
 
     protected override void StateInit()
     {
-        titleHUD = FindAnyObjectByType<TitleHUDController>();
-        titleHUD.Show();
+        titleUI = FindAnyObjectByType<TitleUIController>();
+        titleUI.Show();
         base.StateInit();
     }
     /// <summary>

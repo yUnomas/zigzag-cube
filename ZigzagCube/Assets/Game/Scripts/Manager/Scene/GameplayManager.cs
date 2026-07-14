@@ -2,6 +2,9 @@
 
 public class GameplayManager : SceneManagerBase<GameplayManager>
 {
+    [SerializeField]
+    private int maxRecordCount = 5;
+
     /// <summary>
     /// スコア    </summary>
     private int score;
@@ -15,7 +18,14 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
 
     private PlayerController player;
     private GameplayHUDController gameplayHUD;
+    private ResultManager resultManager;
+    private SaveDataManager saveDataManager;
 
+    private void Start()
+    {
+        resultManager = ResultManager.Instance;
+        saveDataManager = SaveDataManager.Instance;
+    }
     protected override void StateInit()
     {
         gameplayHUD = FindAnyObjectByType<GameplayHUDController>();
@@ -44,18 +54,22 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     {
         gameplayHUD.Hide();
         //セーブデータの更新
-        GameRecordData gameRecordData = SaveDataManager.Instance.Load<GameRecordData>();
-        gameRecordData.highScore = Mathf.Max(gameRecordData.highScore, score);
-        SaveDataManager.Instance.Save(gameRecordData);
+        GameProgressData gameProgressData = saveDataManager.GameProgressData;
+        gameProgressData.highScore = Mathf.Max(gameProgressData.highScore, score);
+        gameProgressData.AddScoreRecord(
+            this.score,
+            saveDataManager.PlayerData.name,
+            maxRecordCount);
+        saveDataManager.Save(gameProgressData);
         // リザルト情報を作成しマネージャーに渡す
         ResultData resultData = new ResultData
         {
             score = this.score,
-            highScore = gameRecordData.highScore,
-            isUpdatedHighScore = this.score == gameRecordData.highScore,
+            highScore = gameProgressData.highScore,
+            isUpdatedHighScore = this.score == gameProgressData.highScore,
             playTime = this.playTime,
         };
-        ResultManager.Instance.SetResult(resultData);
+        resultManager.SetResult(resultData);
         
         // 1秒待機した後に状態遷移
         await Awaitable.WaitForSecondsAsync(1.0f);

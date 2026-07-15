@@ -18,15 +18,17 @@ public class RankingUIController : UIControllerBase
         // ランキング表示数のループ
         for (int i = 0; i < rankingItems.Count; i++)
         {
+            rankingItems[i].UpdateRank(i + 1);  // 順位更新
+
             // スコア履歴が記録されていれば、ランキングとしてスコア表示
             if (i < records.Count)
             {
-                rankingItems[i].SetRanking(i + 1, records[i]);
+                rankingItems[i].SetRanking(records[i]);
             }
             // スコア履歴がないため、ランキング表示を初期化
             else
             {
-                rankingItems[i].SetDefault(i + 1);
+                rankingItems[i].Clear();
             }
         }
     }

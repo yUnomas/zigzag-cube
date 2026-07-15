@@ -16,6 +16,7 @@ public class TitleUIController : UIControllerBase
     /// 設定画面を開くボタンが押された際のイベント    </summary>
     public void OnClickOpenSettings()
     {
+        Hide();
         settingsUI.Show();
     }
     /// <summary>
@@ -23,11 +24,13 @@ public class TitleUIController : UIControllerBase
     public void OnClickCloseSettings()
     {
         settingsUI.Hide();
+        Show();
     }
     /// <summary>
     /// ランキング画面を開くボタンが押された際のイベント    </summary>
     public void OnClickOpenRanking()
     {
+        Hide();
         rankingUI.Show();
     }
     /// <summary>
@@ -35,5 +38,6 @@ public class TitleUIController : UIControllerBase
     public void OnClickCloseRanking()
     {
         rankingUI.Hide();
+        Show();
     }
 }

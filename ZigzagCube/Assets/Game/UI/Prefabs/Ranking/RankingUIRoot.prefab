@@ -166,6 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visibleTarget: {fileID: 1445202388933833322}
+  rankingItems:
+  - {fileID: 5233014044946431658}
+  - {fileID: 8987048965186299509}
+  - {fileID: 8189601972468813776}
+  - {fileID: 7303742289480544192}
+  - {fileID: 4804046471345759392}
 --- !u!1 &4457208934424950252
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +473,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6412533831730479120, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_Name
-      value: RankingItem (3)
+      value: RankingItem_004
       objectReference: {fileID: 0}
     - target: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,6 +509,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
   m_PrefabInstance: {fileID: 70420123676946808}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7303742289480544192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7324599366188129976, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
+  m_PrefabInstance: {fileID: 70420123676946808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4795a0e416d3ab643abdf2931ce5f091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1441569465050747240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,7 +530,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6412533831730479120, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_Name
-      value: RankingItem (2)
+      value: RankingItem_003
       objectReference: {fileID: 0}
     - target: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -549,6 +566,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
   m_PrefabInstance: {fileID: 1441569465050747240}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8189601972468813776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7324599366188129976, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
+  m_PrefabInstance: {fileID: 1441569465050747240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4795a0e416d3ab643abdf2931ce5f091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1524724575386123041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -613,7 +641,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6412533831730479120, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_Name
-      value: RankingItem (1)
+      value: RankingItem_002
       objectReference: {fileID: 0}
     - target: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -649,6 +677,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
   m_PrefabInstance: {fileID: 1809986612315650253}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8987048965186299509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7324599366188129976, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
+  m_PrefabInstance: {fileID: 1809986612315650253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4795a0e416d3ab643abdf2931ce5f091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2813996056159304216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -659,7 +698,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6412533831730479120, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_Name
-      value: RankingItem (4)
+      value: RankingItem_005
       objectReference: {fileID: 0}
     - target: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -690,6 +729,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
+--- !u!114 &4804046471345759392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7324599366188129976, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
+  m_PrefabInstance: {fileID: 2813996056159304216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4795a0e416d3ab643abdf2931ce5f091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8948155858599833980 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
@@ -705,7 +755,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6412533831730479120, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_Name
-      value: RankingItem
+      value: RankingItem_001
       objectReference: {fileID: 0}
     - target: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -736,6 +786,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
+--- !u!114 &5233014044946431658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7324599366188129976, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}
+  m_PrefabInstance: {fileID: 3258726913347723282}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4795a0e416d3ab643abdf2931ce5f091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8510180435191229302 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6567214559589157732, guid: 9cc487b41dbfa114c8eee9d6592f5c10, type: 3}

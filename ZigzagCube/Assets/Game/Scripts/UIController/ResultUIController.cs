@@ -51,6 +51,7 @@ public class ResultUIController : UIControllerBase
     /// ランキング画面を開くボタンが押された際のイベント    </summary>
     public void OnClickOpenRanking()
     {
+        Hide();
         rankingUI.Show();
     }
     /// <summary>
@@ -58,5 +59,6 @@ public class ResultUIController : UIControllerBase
     public void OnClickCloseRanking()
     {
         rankingUI.Hide();
+        Show();
     }
 }

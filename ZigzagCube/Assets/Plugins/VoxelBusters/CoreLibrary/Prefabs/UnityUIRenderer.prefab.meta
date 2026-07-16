@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b8b2730da8ec14db686316d122a0939e
+timeCreated: 1547474282
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/CoreLibrary/Prefabs/UnityUIRenderer.prefab
+  uploadId: 891732

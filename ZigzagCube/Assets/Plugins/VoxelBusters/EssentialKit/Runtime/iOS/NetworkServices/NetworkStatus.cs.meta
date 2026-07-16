@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: abde3f2d1e63d4dbcaa03cb3f071c643
+timeCreated: 1553497736
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Runtime/iOS/NetworkServices/NetworkStatus.cs
+  uploadId: 891732

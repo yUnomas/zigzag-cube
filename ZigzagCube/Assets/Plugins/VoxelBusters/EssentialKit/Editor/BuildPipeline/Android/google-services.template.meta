@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e78c6d4e6915c4b88baa6bfeabe1624a
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Editor/BuildPipeline/Android/google-services.template
+  uploadId: 891732

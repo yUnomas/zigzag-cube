@@ -10,6 +10,8 @@ public class ResultUIController : UIControllerBase
     [SerializeField] private TextMeshProUGUI playTimeTMP;
     [SerializeField] private RankingUIController rankingUI;
 
+    private ResultData resultData;
+
     /// <summary>
     /// プレイ時間の表示更新    </summary>
     private void UpdatePlayTime(float playTime)
@@ -29,14 +31,16 @@ public class ResultUIController : UIControllerBase
 
     /// <summary>
     /// リザルト表示    </summary>
-    public void ShowResult(ResultData resultData)
+    public void ShowResult(ResultData result)
     {
+        resultData = result;
+
         // 数値の表示更新
-        scoreTMP.text = resultData.score.ToString();
-        highScoreTMP.text = $"High Score: {resultData.highScore}";
-        UpdatePlayTime(resultData.playTime);
+        scoreTMP.text = result.score.ToString();
+        highScoreTMP.text = $"High Score: {result.highScore}";
+        UpdatePlayTime(result.playTime);
         // ハイスコアの更新状況によって、新記録ラベルを表示
-        if (resultData.isUpdatedHighScore)
+        if (result.isUpdatedHighScore)
         {
             newRecordTMP.enabled = true;
         }
@@ -60,5 +64,11 @@ public class ResultUIController : UIControllerBase
     {
         rankingUI.Hide();
         Show();
+    }
+    /// <summary>
+    /// 共有ボタンが押された際のイベント    </summary>
+    public void OnClickShare()
+    {
+        GetComponent<SocialShareModule>().ShareResult(resultData);
     }
 }

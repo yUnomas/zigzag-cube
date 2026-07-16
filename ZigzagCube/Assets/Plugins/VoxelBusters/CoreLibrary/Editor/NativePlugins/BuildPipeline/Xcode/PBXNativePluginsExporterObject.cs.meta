@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: d4ef977ceb472480b934e1aee1b94354
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/CoreLibrary/Editor/NativePlugins/BuildPipeline/Xcode/PBXNativePluginsExporterObject.cs
+  uploadId: 891732

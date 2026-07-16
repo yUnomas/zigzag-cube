@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7e41aefa6c66948efb2c65bba17057de
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Examples/Prefabs/BillingServices/BillingProductInfo.prefab
+  uploadId: 891732

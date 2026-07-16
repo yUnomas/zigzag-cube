@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 04e9e1c1cdd944945881a4eee8f5e267
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Runtime/Core/SharingServices/SharingServicesErrorCode.cs
+  uploadId: 891732

@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 17400e3226cc646cdb12ab1c73a123f1
+timeCreated: 1548444608
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/CoreLibrary/Editor/NativePlugins/BuildPipeline/Android/Base/Attribute.cs
+  uploadId: 891732

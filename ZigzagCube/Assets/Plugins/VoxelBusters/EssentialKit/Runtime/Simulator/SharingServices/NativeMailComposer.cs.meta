@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 4113644d1f86d42279e1cd84227f22aa
+timeCreated: 1576937871
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Runtime/Simulator/SharingServices/NativeMailComposer.cs
+  uploadId: 891732

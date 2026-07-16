@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1cb91d1d6ede2417186584b82bff147d
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Runtime/Android/VoxelBusters.EssentialKit.AndroidModule.asmdef
+  uploadId: 891732

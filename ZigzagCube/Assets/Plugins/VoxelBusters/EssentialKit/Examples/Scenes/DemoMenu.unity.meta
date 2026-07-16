@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: da59bc017da8c40aba71c41ff276f950
+timeCreated: 1549375031
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Examples/Scenes/DemoMenu.unity
+  uploadId: 891732

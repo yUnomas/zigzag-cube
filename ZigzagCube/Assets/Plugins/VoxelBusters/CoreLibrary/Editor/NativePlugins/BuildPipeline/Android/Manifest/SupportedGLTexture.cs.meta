@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: a95f31e815d6946d58d3729c2051ddc5
+timeCreated: 1548481272
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/CoreLibrary/Editor/NativePlugins/BuildPipeline/Android/Manifest/SupportedGLTexture.cs
+  uploadId: 891732

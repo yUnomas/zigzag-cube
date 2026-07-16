@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: bbc24d7a3226243369fde812d74138b1
+timeCreated: 1551939905
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Runtime/iOS/AddressBook/AddressBookBinding.cs
+  uploadId: 891732

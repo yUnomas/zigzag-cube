@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 9580d50a136a4e82bc7455653474cfd7
+timeCreated: 1738339060
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Runtime/Core/NativeUI/TextInputFieldOptions.cs
+  uploadId: 891732

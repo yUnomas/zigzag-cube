@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 777dc7f6ff7534d52acfc9dd9270427c
+timeCreated: 1547278783
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Runtime/Core/AddressBook/NativeAddressBookContactData.cs
+  uploadId: 891732

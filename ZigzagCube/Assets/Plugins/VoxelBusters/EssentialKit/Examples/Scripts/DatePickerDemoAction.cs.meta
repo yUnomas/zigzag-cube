@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 3d0946b0907ee4c6ba7626f03eef3e38
+timeCreated: 1549358384
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140137
+  packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
+    & More
+  packageVersion: 3.7.4
+  assetPath: Assets/Plugins/VoxelBusters/EssentialKit/Examples/Scripts/DatePickerDemoAction.cs
+  uploadId: 891732

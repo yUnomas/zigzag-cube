@@ -43,6 +43,7 @@ public class ResultUIController : UIControllerBase
         if (result.isUpdatedHighScore)
         {
             newRecordTMP.enabled = true;
+            AudioManager.Instance.PlaySE("NewRecord");
         }
     }
     /// <summary>

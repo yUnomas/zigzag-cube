@@ -34,9 +34,9 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     }
     protected override void StateStart()
     {
-        // プレイヤーの起動
-        player.enabled = true;
+        Continue();
         gameplayUI.Show();
+        AudioManager.Instance.PlayBGM("GameplayMain");
         base.StateStart();
     }
     protected override void StateRunning()
@@ -70,7 +70,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
             playTime = this.playTime,
         };
         resultManager.SetResult(resultData);
-        
+
         // 1秒待機した後に状態遷移
         await Awaitable.WaitForSecondsAsync(1.0f);
         base.StateEnd();

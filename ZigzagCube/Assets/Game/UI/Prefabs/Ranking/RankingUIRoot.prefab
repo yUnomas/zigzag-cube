@@ -846,6 +846,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6539370438393316122, guid: 6bdaa9188f15a9146b7f7989254542c2, type: 3}
+      propertyPath: audioID
+      value: UIButtonClose
+      objectReference: {fileID: 0}
     - target: {fileID: 9210523112131868102, guid: 6bdaa9188f15a9146b7f7989254542c2, type: 3}
       propertyPath: m_Name
       value: BackButton

@@ -942,6 +942,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6539370438393316122, guid: 8fcfcb34d79d9fb40a38ff29a029c96f, type: 3}
+      propertyPath: audioID
+      value: UIButtonClose
+      objectReference: {fileID: 0}
     - target: {fileID: 8464910050757844896, guid: 8fcfcb34d79d9fb40a38ff29a029c96f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

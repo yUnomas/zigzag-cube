@@ -91,8 +91,9 @@ public class PlayerMovement : BehaviorBase
         transform.position += Vector3.right * speed * direction * Time.deltaTime;
         isChangeDirection = true;
 
-        // 方向切り替え時のエフェクト発生
+        // エフェクト・SEの再生
         Vector3 position = transform.position + -transform.forward;
         Instantiate(changeDirectionEffect, position, Quaternion.identity);
+        AudioManager.Instance.PlaySE("PlayerChangeDirection");
     }
 }

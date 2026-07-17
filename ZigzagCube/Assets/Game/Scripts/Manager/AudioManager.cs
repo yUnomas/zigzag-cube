@@ -10,7 +10,6 @@ public enum AudioType
 }
 public class AudioManager : MonoBehaviour
 {
-    [Header("設定不可")]
     [SerializeField]
     private AudioMixer audioMixer;
     [SerializeField]
@@ -19,112 +18,168 @@ public class AudioManager : MonoBehaviour
     private List<AudioSource> d2Sources;
     [SerializeField]
     private List<AudioSource> d3Sources;
+    [SerializeField] private List<AudioData> audioDataList;
+
+    public static AudioManager Instance => instance;
+    private static AudioManager instance;
 
     /// <summary>
-    /// インスタンス    </summary>
-    private static AudioManager instance;
-    public static AudioManager Instance => instance;
+    /// 高速検索用の音声データ辞書    </summary>
+    private Dictionary<string, AudioData> audioDataDict = new();
 
     private void Awake()
     {
         // インスタンス化
-        if(instance == null) instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            InitializeDictionary();
+        }
     }
 
     /// <summary>
-    /// 利用可能な2Dソースを取得    </summary>
-    /// <param name="def">
-    /// 再生する音声データ    </param>
-    /// <param name="isAllowDuplicate">
-    /// 重複を許可するかどうか </param>
-    private AudioSource GetAvailable2DSource(AudioDefinition def, bool isAllowDuplicate)
+    /// 検索用の辞書を初期化    </summary>
+    private void InitializeDictionary()
     {
-        foreach(AudioSource source in d2Sources)
+        // リストから辞書へ変換
+        foreach (var data in audioDataList)
         {
-            if(!source.isPlaying) return source;
-            else if (!isAllowDuplicate)
+            if (data != null && !string.IsNullOrEmpty(data.id))
             {
-                if(source.clip == def.clip) return source;
+                audioDataDict.Add(data.id, data);
             }
         }
-        return null;
     }
     /// <summary>
-    /// 利用可能な3Dソースを取得    </summary>
-    /// <param name="def">
-    /// 再生する音声データ    </param>
+    /// 音声データの取得(有無の確認込み)    </summary>
+    private AudioData TryGetData(string id)
+    {
+        if (audioDataDict.ContainsKey(id))
+        {
+            return audioDataDict[id];
+        }
+        else
+        {
+            Debug.LogWarning($"音声ID: {id} が見つかりません");
+            return null;
+        }
+    }
+    /// <summary>
+    /// 使用可能な2Dソースを取得    </summary>
     /// <param name="isAllowDuplicate">
     /// 重複を許可するかどうか </param>
-    private AudioSource GetAvailable3DSource(AudioDefinition def, bool isAllowDuplicate)
+    private AudioSource TryGetAvailable2DSource(AudioClip clip, bool isAllowDuplicate)
     {
+        AudioSource availableSource = null;
+        foreach (AudioSource source in d2Sources)
+        {
+            // 重複禁止時に音声被りが発生したら処理終了
+            if (!isAllowDuplicate && source.clip == clip && source.isPlaying)
+            {
+                Debug.LogWarning($"音声: {clip} の重複再生は許可されていません");
+                return null;
+            }
+            // 再生していないソースを保持
+            if (!source.isPlaying) availableSource = source;
+        }
+        // 利用可能なソースがあれば、ソースを返す
+        if (availableSource) return availableSource;
+        else
+        {
+            Debug.LogWarning($"再生可能な3D用SEソースが見つかりません");
+            return null;
+        }
+    }
+    /// <summary>
+    /// 使用可能な3Dソースを取得    </summary>
+    /// <param name="isAllowDuplicate">
+    /// 重複を許可するかどうか </param>
+    private AudioSource TryGetAvailable3DSource(AudioClip clip, bool isAllowDuplicate)
+    {
+        AudioSource availableSource = null;
         foreach (AudioSource source in d3Sources)
         {
-            if (!source.isPlaying) return source;
-            else if (!isAllowDuplicate)
+            // 重複禁止時に音声被りが発生したら処理終了
+            if (isAllowDuplicate && source.clip == clip && source.isPlaying)
             {
-                if (source.clip == def.clip) return source;
+                Debug.LogWarning($"音声: {clip} の重複再生は許可されていません");
+                return null;
             }
+            // 再生していないソースを保持
+            if (!source.isPlaying) availableSource = source;
         }
-        return null;
+        // 利用可能なソースがあれば、ソースを返す
+        if (availableSource) return availableSource;
+        else
+        {
+            Debug.LogWarning($"再生可能な3D用SEソースが見つかりません");
+            return null;
+        }
     }
 
     /// <summary>
     /// BGMを再生    </summary>
-    /// <param name="def">
-    /// 再生する音声データ    </param>
-    public void PlayBGM(AudioDefinition def)
+    /// <param name="id">
+    /// 再生する音声ID    </param>
+    public void PlayBGM(string id)
     {
-        if(bgmSource.clip != def.clip)
-        {
-            bgmSource.clip = def.clip;
-            bgmSource.volume = def.volume;
-            bgmSource.loop = def.isLoop;
-            bgmSource.Play();
-        }
+        // 音声データの取得
+        AudioData data = TryGetData(id);
+        if (data == null) return;
+
+        // ソースに各種情報を設定して再生
+        bgmSource.clip = data.clip;
+        bgmSource.volume = data.volume;
+        bgmSource.loop = data.isLoop;
+        bgmSource.Play();
     }
     /// <summary>
     /// BGMを停止    </summary>
     public void StopBGM(){bgmSource.Stop(); bgmSource.clip = null; }
     /// <summary>
     /// SEを再生(2Dがメイン)    </summary>
-    /// <param name="data">
-    /// 再生する音声データ    </param>
+    /// <param name="id">
+    /// 再生する音声ID    </param>
     /// <param name="isAllowDuplicate">
     /// 重複を許可するかどうか </param>
-    public void PlaySE(AudioDefinition def, bool isAllowDuplicate = true)
+    public void PlaySE(string id, bool isAllowDuplicate = true)
     {
-        // 再生可能であれば、再生
-        AudioSource source = GetAvailable2DSource(def, isAllowDuplicate);
-        if(source != null)
-        {
-            source.clip = def.clip;
-            source.volume = def.volume;
-            source.loop = def.isLoop;
-            source.Play();
-        }
-        else Debug.Log("2D用SEソースが足りていません。");
+        // 音声データの取得
+        AudioData data = TryGetData(id);
+        if(data == null) return;
+        // 再生可能な音声ソースの取得
+        AudioSource source = TryGetAvailable2DSource(data.clip, isAllowDuplicate);
+        if (source == null) return;
+
+        // ソースに各種情報を設定して再生
+        source.clip = data.clip;
+        source.volume = data.volume;
+        source.loop = data.isLoop;
+        source.Play();
     }
     /// <summary>
     /// SEを再生(3Dがメイン)    </summary>
-    /// <param name="def">
-    /// 再生する音声データ    </param>
+    /// <param name="id">
+    /// 再生する音声ID    </param>
     /// <param name="position">
     /// 再生する位置    </param>
     /// <param name="isAllowDuplicate">
     /// 重複を許可するかどうか </param>
-    public void PlaySE(AudioDefinition def, Vector3 position, bool isAllowDuplicate = true)
+    public void PlaySE(string id, Vector3 position, bool isAllowDuplicate = true)
     {
-        // 再生可能であれば、再生
-        AudioSource source = GetAvailable3DSource(def, isAllowDuplicate);
-        if (source != null)
-        {
-            source.gameObject.transform.position = position;
-            source.clip = def.clip;
-            source.volume = def.volume;
-            source.loop = def.isLoop;
-            source.Play();
-        }
-        else Debug.Log("3D用SEソースが足りていません。");
+        // 音声データの取得
+        AudioData data = TryGetData(id);
+        if (data == null) return;
+        // 再生可能な音声ソースの取得
+        AudioSource source = TryGetAvailable2DSource(data.clip, isAllowDuplicate);
+        if (source == null) return;
+
+        // ソースに各種情報を設定して再生
+        source.gameObject.transform.position = position;
+        source.clip = data.clip;
+        source.volume = data.volume;
+        source.loop = data.isLoop;
+        source.Play();
     }
 
     /// <summary>

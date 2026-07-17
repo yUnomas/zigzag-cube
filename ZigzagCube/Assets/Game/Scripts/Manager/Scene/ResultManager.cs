@@ -9,6 +9,7 @@ public class ResultManager : SceneManagerBase<ResultManager>
     {
         resultUI = FindAnyObjectByType<ResultUIController>();
         resultUI.Show();
+        AudioManager.Instance.PlaySE("ResultClear");
         base.StateInit();
     }
     protected override void StateStart()

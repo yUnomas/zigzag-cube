@@ -29,5 +29,6 @@ public class PlayerBounce : MonoBehaviour
     private void Bounce()
     {
         GetComponent<PlayerMovement>().TriggerDirection();
+        AudioManager.Instance.PlaySE("WallHit", false);
     }
 }

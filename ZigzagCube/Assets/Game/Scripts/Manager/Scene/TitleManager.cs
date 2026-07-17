@@ -10,6 +10,11 @@ public class TitleManager : SceneManagerBase<TitleManager>
         titleUI.Show();
         base.StateInit();
     }
+    protected override void StateStart()
+    {
+        AudioManager.Instance.PlayBGM("TitleMain");
+        base.StateStart();
+    }
     /// <summary>
     /// ゲーム開始    </summary>
     public void StartGame()

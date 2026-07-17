@@ -12,10 +12,11 @@ public class PlayerDeath : MonoBehaviour
     private const string waterTag = "Water";
     private const string obstacleTag = "Obstacle";
 
-    private void Death(Vector3 deathPoint, GameObject effect)
+    private void Death(Vector3 deathPoint, GameObject effect, string audioID)
     {
-        // 衝突地点から衝突エフェクト発生
+        // エフェクト・SEの再生
         Instantiate(effect, deathPoint, Quaternion.identity);
+        AudioManager.Instance.PlaySE(audioID, false);
         // 死亡処理
         Debug.Log("ゲームオーバー");
         GetComponent<Rigidbody>().useGravity = false;       // 重力の働きを停止
@@ -29,12 +30,12 @@ public class PlayerDeath : MonoBehaviour
         // 障害物との衝突時
         if (collision.gameObject.CompareTag(obstacleTag))
         {
-            Death(collision.contacts[0].point, obstacleHitEffect);
+            Death(collision.contacts[0].point, obstacleHitEffect, "PlayerBreak");
         }
         // 水との衝突時
         else if (collision.gameObject.CompareTag(waterTag))
         {
-            Death(collision.contacts[0].point, waterHitEffect);
+            Death(collision.contacts[0].point, waterHitEffect, "WaterSplash");
         }
     }
 }

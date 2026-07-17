@@ -627,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a75389faf6f2442bf86c2dd257bd34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioID: UIButtonConfirm
   idleButton: {fileID: 672243662489747282}
 --- !u!1 &8712400472243383632
 GameObject:

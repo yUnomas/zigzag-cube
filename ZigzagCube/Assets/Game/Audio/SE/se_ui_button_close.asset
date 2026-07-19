@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: se_ui_button_close
   m_EditorClassIdentifier: 
   id: UIButtonClose
-  clip: {fileID: 8300000, guid: cf8b92848cd0d51479fc876233d630e6, type: 3}
+  clip: {fileID: 8300000, guid: 6670cbbdac81021428641ddaca82e230, type: 3}
   volume: 1
   isLoop: 0

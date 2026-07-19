@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: UIButtonConfirm
   clip: {fileID: 8300000, guid: cf8b92848cd0d51479fc876233d630e6, type: 3}
+  mixerGroup: {fileID: -7838678155760449193, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 0

@@ -7,6 +7,7 @@ public enum AudioType
     Master,
     BGM,
     SE,
+    SFX,
 }
 public class AudioManager : MonoBehaviour
 {
@@ -153,6 +154,7 @@ public class AudioManager : MonoBehaviour
 
         // ソースに各種情報を設定して再生
         source.clip = data.clip;
+        source.outputAudioMixerGroup = data.mixerGroup;
         source.volume = data.volume;
         source.loop = data.isLoop;
         source.Play();
@@ -177,6 +179,7 @@ public class AudioManager : MonoBehaviour
         // ソースに各種情報を設定して再生
         source.gameObject.transform.position = position;
         source.clip = data.clip;
+        source.outputAudioMixerGroup = data.mixerGroup;
         source.volume = data.volume;
         source.loop = data.isLoop;
         source.Play();
@@ -195,5 +198,15 @@ public class AudioManager : MonoBehaviour
         // デシベル変換後、AudioMixerにセット
         float dB = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20f;
         audioMixer.SetFloat(type.ToString() + "Volume", dB);
+    }
+
+    /// <summary>
+    /// 設定の反映    </summary>
+    public void ApplySettings(SettingsData settingsData)
+    {
+        SetVolume(AudioType.Master, settingsData.masterVolume);
+        SetVolume(AudioType.BGM, settingsData.bgmVolume);
+        SetVolume(AudioType.SE, settingsData.seVolume);
+        SetVolume(AudioType.SFX, settingsData.sfxVolume);
     }
 }

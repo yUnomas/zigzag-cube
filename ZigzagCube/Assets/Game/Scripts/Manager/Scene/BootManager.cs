@@ -11,7 +11,9 @@ public class BootManager : SceneManagerBase<BootManager>
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
 
-        SaveDataManager.Instance.LoadAll();
+        SaveDataManager saveDataManager = SaveDataManager.Instance;
+        saveDataManager.LoadAll();
+        AudioManager.Instance.ApplySettings(saveDataManager.SettingsData);
         base.StateInit();
     }
     protected override void StateStart()

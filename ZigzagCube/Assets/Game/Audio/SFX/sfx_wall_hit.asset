@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: WallHit
   clip: {fileID: 8300000, guid: 66d7a70b98c4c23449615eefd3b6e5a3, type: 3}
+  mixerGroup: {fileID: -1138199545658143175, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 0

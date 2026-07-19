@@ -1,7 +1,8 @@
 ﻿public class SettingsData
 {
     // 音量設定
-    public float masterVolume = 0.5f;
-    public float bgmVolume = 0.5f;
-    public float seVolume = 0.5f;
+    public float masterVolume = 1f;
+    public float bgmVolume = 1f;
+    public float seVolume = 1f;
+    public float sfxVolume = 1f;
 }

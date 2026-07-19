@@ -146,7 +146,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_text
-      value: ON
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_fontSize
@@ -240,6 +244,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2549601918831661281, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902855856600904739, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902855856600904739, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4800943005752767119, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_Name
       value: AudioToggleButton
@@ -274,7 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_text
-      value: ON
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_fontSize
@@ -287,6 +307,30 @@ PrefabInstance:
     - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800054892549217816, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800054892549217816, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648054956362908384, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50248dfe9f091104b8067ea8d6c949d9, type: 3}
+    - target: {fileID: 6648054956362908384, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967970975963810963, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50248dfe9f091104b8067ea8d6c949d9, type: 3}
+    - target: {fileID: 7967970975963810963, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7472240370398577747, guid: be91c955ace0aec45978d2520240ee86, type: 3}
@@ -305,22 +349,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2549601918831661281, guid: be91c955ace0aec45978d2520240ee86, type: 3}
   m_PrefabInstance: {fileID: 2484597167812054253}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2350885913836817045 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 205768918362982008, guid: be91c955ace0aec45978d2520240ee86, type: 3}
-  m_PrefabInstance: {fileID: 2484597167812054253}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &3897410365411087057 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1471953488822001212, guid: be91c955ace0aec45978d2520240ee86, type: 3}
   m_PrefabInstance: {fileID: 2484597167812054253}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5541930679737188478 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7967970975963810963, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+  m_PrefabInstance: {fileID: 2484597167812054253}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6979294986175725154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4800943005752767119, guid: be91c955ace0aec45978d2520240ee86, type: 3}
@@ -341,16 +385,18 @@ MonoBehaviour:
   audioID: UIButtonConfirm
   idleButton: {fileID: 79110523580095500}
   type: 0
-  buttonIdleLabel: {fileID: 7915075996330696854}
-  buttonPressedLabel: {fileID: 2350885913836817045}
---- !u!114 &7915075996330696854 stripped
+  buttonIdleImage: {fileID: 5541930679737188478}
+  buttonPressedImage: {fileID: 9095491375329725965}
+  volumeOnIcon: {fileID: 21300000, guid: 50248dfe9f091104b8067ea8d6c949d9, type: 3}
+  volumeOffIcon: {fileID: 21300000, guid: 65a3366b8023e3c47bc5a0bead8cd4bb, type: 3}
+--- !u!114 &9095491375329725965 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6648054956362908384, guid: be91c955ace0aec45978d2520240ee86, type: 3}
   m_PrefabInstance: {fileID: 2484597167812054253}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

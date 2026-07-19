@@ -1,13 +1,14 @@
-﻿using TMPro;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioToggleButton : UIButtonController
 {
     [SerializeField, Tooltip("音声タイプ")]
     private AudioType type;
-    [SerializeField] private TextMeshProUGUI buttonIdleLabel;
-    [SerializeField] private TextMeshProUGUI buttonPressedLabel;
+    [SerializeField] private Image buttonIdleImage;
+    [SerializeField] private Image buttonPressedImage;
+    [SerializeField] private Sprite volumeOnIcon;
+    [SerializeField] private Sprite volumeOffIcon;
     
     /// <summary>
     /// ミュート状態    </summary>
@@ -54,10 +55,10 @@ public class AudioToggleButton : UIButtonController
     /// ボタンの表示切り替え    </summary>
     private void ToggleButtonVisual()
     {
-        buttonIdleLabel.text = isMute ? "OFF" : "ON";
-        buttonPressedLabel.text = isMute ? "OFF" : "ON";
-        buttonIdleLabel.color = isMute ? Color.red : Color.white;
-        buttonPressedLabel.color = isMute ? Color.red / 2 : Color.white / 2;
+        buttonIdleImage.sprite = isMute ? volumeOffIcon : volumeOnIcon;
+        buttonPressedImage.sprite = isMute ? volumeOffIcon : volumeOnIcon;
+        buttonIdleImage.color = isMute ? Color.red : Color.white;
+        buttonPressedImage.color = isMute ? Color.red / 2 : Color.white / 2;
     }
 
     public void OnClick()

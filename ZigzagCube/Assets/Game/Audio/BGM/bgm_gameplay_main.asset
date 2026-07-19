@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: GameplayMain
   clip: {fileID: 8300000, guid: 9608feac21b1b13468e866e7677869a8, type: 3}
+  mixerGroup: {fileID: 2714052797050844384, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 1

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: PlayerBreak
   clip: {fileID: 8300000, guid: 3b12c76f531f4e547ae861e3f9397c0c, type: 3}
+  mixerGroup: {fileID: -1138199545658143175, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 0

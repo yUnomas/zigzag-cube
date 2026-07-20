@@ -3,18 +3,10 @@ using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
+    [SerializeField] private InterstitialAdHandler interstitialAdHandler;
+
     public static AdsManager Instance => instance;
     private static AdsManager instance;
-
-#if UNITY_IOS
-    private const string InterstitialAdUnitId =
-        "ca-app-pub-3940256099942544/4411468910";
-#elif UNITY_ANDROID
-    private const string InterstitialAdUnitId =
-        "ca-app-pub-3940256099942544/1033173712";
-#else
-    private const string InterstitialAdUnitId = "unused";
-#endif
 
     private void Awake()
     {
@@ -37,8 +29,16 @@ public class AdsManager : MonoBehaviour
                 Debug.LogError("Google Mobile Adsの初期化に失敗");
                 return;
             }
-
             Debug.Log("Google Mobile Adsの初期化が完了");
+
+            interstitialAdHandler.Load();
         });
+    }
+    public void ShowAd(AdType type)
+    {
+        switch (type)
+        {
+            case AdType.Interstitial: interstitialAdHandler.Show(); break;
+        }
     }
 }

@@ -2,13 +2,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum AudioType
-{
-    Master,
-    BGM,
-    SE,
-    SFX,
-}
 public class AudioManager : MonoBehaviour
 {
     [SerializeField]

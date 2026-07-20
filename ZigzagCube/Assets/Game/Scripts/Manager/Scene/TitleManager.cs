@@ -15,6 +15,7 @@ public class TitleManager : SceneManagerBase<TitleManager>
         AudioManager.Instance.PlayBGM("TitleMain");
         base.StateStart();
     }
+
     /// <summary>
     /// ゲーム開始    </summary>
     public void StartGame()

@@ -6,8 +6,11 @@ public class TitleManager : SceneManagerBase<TitleManager>
 
     protected override void StateInit()
     {
+        // タイトルUI表示
         titleUI = FindAnyObjectByType<TitleUIController>();
         titleUI.Show();
+        // インタースティシャル広告の表示を試みる
+        AdsManager.Instance.TryShowAd(AdType.Interstitial);
         base.StateInit();
     }
     protected override void StateStart()

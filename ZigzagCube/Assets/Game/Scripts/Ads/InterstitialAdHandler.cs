@@ -71,12 +71,15 @@ public class InterstitialAdHandler : MonoBehaviour
 
     public void Show()
     {
+        interstitialAd.Show();
+    }
+    public void TryShow()
+    {
         if (interstitialAd == null || !interstitialAd.CanShowAd())
         {
             Debug.Log("インタースティシャル広告の表示不可");
             return;
         }
-
-        interstitialAd.Show();
+        Show();
     }
 }

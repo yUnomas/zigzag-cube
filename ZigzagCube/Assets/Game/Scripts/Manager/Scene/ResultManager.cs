@@ -25,6 +25,9 @@ public class ResultManager : SceneManagerBase<ResultManager>
     /// タイトルに戻る    </summary>
     public void BackToTile()
     {
+        if (AdsManager.Instance.IsInterstitialTiming()) Debug.Log("インタースティシャル広告の表示を行うため、遷移のみ");
+        else Debug.Log("インタースティシャル広告の表示を行わないため、遷移アニメを実行");
+
         ChangeScene(SceneType.Title, true, "GameplayScene");
     }
 }

@@ -6,9 +6,9 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     private int maxRecordCount = 5;
 
     /// <summary>
-    /// スコア    </summary>
-    private int score;
+    /// ゲーム内スコア    </summary>
     public int Score => score;
+    private int score;
     /// <summary>
     /// プレイ時間    </summary>
     private float playTime;
@@ -50,6 +50,12 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     {
         // HandleEndSateAsync()の処理待ち
     }
+    protected override void StateUninit()
+    {
+        AudioManager.Instance.StopBGM();
+        base.StateUninit();
+    }
+
     private async Awaitable HandleEndStateAsync()
     {
         gameplayUI.Hide();
@@ -70,7 +76,8 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
             playTime = this.playTime,
         };
         resultManager.SetResult(resultData);
-
+        // マネージャーのゲーム終了イベント発火
+        AdsManager.Instance.OnGameplayEnded();
         // 1秒待機した後に状態遷移
         await Awaitable.WaitForSecondsAsync(1.0f);
         base.StateEnd();

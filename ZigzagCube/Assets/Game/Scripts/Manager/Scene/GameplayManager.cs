@@ -108,7 +108,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     {
         Debug.Log("スコア:" + score);
         // リザルトへ遷移
-        ChangeScene(SceneType.Result, false);
+        ChangeSceneWithoutLoad(SceneType.Result);
         // 終了処理の発火
         _ = HandleEndStateAsync();
     }

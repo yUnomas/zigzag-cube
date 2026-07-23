@@ -1,4 +1,5 @@
-﻿using GoogleMobileAds.Api;
+﻿using System;
+using GoogleMobileAds.Api;
 using UnityEngine;
 
 public class InterstitialAdHandler : MonoBehaviour
@@ -71,15 +72,11 @@ public class InterstitialAdHandler : MonoBehaviour
 
     public void Show()
     {
-        interstitialAd.Show();
-    }
-    public void TryShow()
-    {
         if (interstitialAd == null || !interstitialAd.CanShowAd())
         {
             Debug.Log("インタースティシャル広告の表示不可");
             return;
         }
-        Show();
+        interstitialAd.Show();
     }
 }

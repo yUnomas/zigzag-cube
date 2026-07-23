@@ -1,4 +1,5 @@
-﻿using GoogleMobileAds.Api;
+﻿using System;
+using GoogleMobileAds.Api;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class AdsManager : MonoBehaviour
     [SerializeField, Tooltip("広告の表示間隔")]
     private int displayInterval = 3;
     [SerializeField] private InterstitialAdHandler interstitialAdHandler;
+    [SerializeField] private RewardedAdHandler rewardedAdHandler;
 
     public static AdsManager Instance => instance;
     private static AdsManager instance;
@@ -38,6 +40,7 @@ public class AdsManager : MonoBehaviour
             Debug.Log("Google Mobile Adsの初期化が完了");
 
             interstitialAdHandler.Load();
+            rewardedAdHandler.Load();
         });
     }
     /// <summary>
@@ -47,6 +50,7 @@ public class AdsManager : MonoBehaviour
         switch (type)
         {
             case AdType.Interstitial: interstitialAdHandler.Show(); break;
+            case AdType.Rewarded: rewardedAdHandler.Show(); break;
         }
     }
     /// <summary>
@@ -69,6 +73,12 @@ public class AdsManager : MonoBehaviour
     public bool IsInterstitialTiming()
     {
         return sessionPlayCount == 1 || (sessionPlayCount - 1) % displayInterval == 0;
+    }
+    /// <summary>
+    /// リワード広告の報酬を設定    </summary>
+    public void SetReward(Action action)
+    {
+        rewardedAdHandler.SetReward(action);
     }
 
     /// <summary>

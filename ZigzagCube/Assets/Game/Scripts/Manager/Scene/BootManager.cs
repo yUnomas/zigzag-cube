@@ -22,7 +22,7 @@ public class BootManager : SceneManagerBase<BootManager>
         // デバッグ開始
         if (debugStartSceneType != SceneType.Boot || debugStartSceneType != SceneType.None)
         {
-            ChangeScene(debugStartSceneType);
+            ChangeScene(debugStartSceneType, false, "GameplayScene");
             base.StateStart();
             return;
         }

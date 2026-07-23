@@ -68,6 +68,7 @@ public abstract class SceneManagerBase : MonoBehaviour
     private static AsyncOperation asyncOperation;
 
     private SceneType tmpNextSceneType;
+    private bool tmpIsTransition;
     private bool tmpIsLoadScene;
     private string tmpLoadSceneName;
     private bool isWaitSceneChange; // シーン遷移の待機状態かどうか
@@ -157,40 +158,64 @@ public abstract class SceneManagerBase : MonoBehaviour
     {
         // シーン遷移待ち状態であれば、シーン遷移
         if (isWaitSceneChange)
-            ChangeScene(tmpNextSceneType, tmpIsLoadScene, tmpLoadSceneName);
+            HandleSceneChange(tmpNextSceneType, tmpIsTransition, tmpIsLoadScene, tmpLoadSceneName);
+    }
+    private void HandleSceneChange(SceneType nextSceneType, bool isTransition, bool isLoadScene, string loadSceneName = "")
+    {
+        // 後処理状態ならシーン遷移実行
+        if (currentState == SceneState.Uninit)
+        {
+            isWaitSceneChange = false;
+            if (nextSceneType == SceneType.Quit) QuitApplication();  //ゲーム終了
+            else
+            {
+                // シーンのロード有無で処理分岐
+                if (isLoadScene)
+                {
+                    string sceneName = GetSceneName(nextSceneType);
+                    // 遷移アニメーションの有無で処理分岐
+                    if (isTransition) FadeManager.Instance.FadeOut(-1, () => LoadScene(sceneName), true);
+                    else LoadScene(sceneName);
+                }
+                else ChangeSceneManager(nextSceneType);  // マネージャーだけ切り替え
+            }
+        }
+        else isWaitSceneChange = true;  // 後処理状態まで待機
     }
 
     /// <summary>
     /// シーン遷移    </summary>
     /// <param name="nextSceneType">
-    /// 遷移先シーンの種類    </param>
-    /// <param name="isLoadScene">
-    /// シーンをロードするかどうか    </param>
+    /// 遷移シーンタイプ    </param>
+    /// <param name="isTransition">
+    /// 遷移アニメーションの有無    </param>
     /// <param name="loadSceneName">
     /// ロードするシーン名(入力が無ければ、シーンの種類名 + Scene)    </param>
-    public void ChangeScene(SceneType nextSceneType, bool isLoadScene = true, string loadSceneName = "")
+    public void ChangeScene(SceneType nextSceneType, bool isTransition = true, string loadSceneName = "")
     {
         // 値の仮保存
         tmpNextSceneType = nextSceneType;
-        tmpIsLoadScene = isLoadScene;
+        tmpIsTransition = isTransition;
+        tmpIsLoadScene = true;
         tmpLoadSceneName = loadSceneName;
-        //** 後処理状態かどうかで分岐
-        if (currentState == SceneState.Uninit)
-        {
-            isWaitSceneChange = false;
-            if (tmpNextSceneType == SceneType.Quit) QuitApplication();  //ゲーム終了
-            else
-            {
-                //** シーンのロード有無で分岐
-                if (tmpIsLoadScene)
-                {
-                    string sceneName = GetSceneName(tmpNextSceneType);
-                    FadeManager.Instance.FadeOut(-1, () => LoadScene(sceneName), true);
-                }
-                else ChangeSceneManager(tmpNextSceneType);  // マネージャーだけ切り替え
-            }
-        }
-        else isWaitSceneChange = true;  // 後処理状態まで待機
+        // 本処理
+        HandleSceneChange(tmpNextSceneType, tmpIsTransition, tmpIsLoadScene, tmpLoadSceneName);
+    }
+    /// <summary>
+    /// 同シーンでのシーン遷移    </summary>
+    /// <param name="nextSceneType">
+    /// 遷移シーンタイプ    </param>
+    /// <param name="isTransition">
+    /// 遷移アニメーションの有無    </param>
+    public void ChangeSceneWithoutLoad(SceneType nextSceneType, bool isTransition = false)
+    {
+        // 値の仮保存
+        tmpNextSceneType = nextSceneType;
+        tmpIsTransition = isTransition;
+        tmpIsLoadScene = false;
+        tmpLoadSceneName = "";
+        // 本処理
+        HandleSceneChange(tmpNextSceneType, tmpIsTransition, tmpIsLoadScene, tmpLoadSceneName);
     }
 }
 /// <summary>

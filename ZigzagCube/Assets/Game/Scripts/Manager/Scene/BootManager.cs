@@ -22,13 +22,13 @@ public class BootManager : SceneManagerBase<BootManager>
         // デバッグ開始
         if (debugStartSceneType != SceneType.Boot || debugStartSceneType != SceneType.None)
         {
-            ChangeScene(debugStartSceneType, false);
+            ChangeScene(debugStartSceneType);
             base.StateStart();
             return;
         }
 #endif
         // ゲーム開始時に遷移するシーンを設定
-        ChangeScene(SceneType.Title, true);
+        ChangeScene(SceneType.Title, true, "GameplayScene");
         base.StateStart();
     }
 }

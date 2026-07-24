@@ -3,42 +3,45 @@ using UnityEngine;
 
 public abstract class ControllerBase : MonoBehaviour
 {
-    [SerializeField, Tooltip("挙動リスト")]
-    protected List<BehaviorBase> behaviors = new List<BehaviorBase>();
-
-    protected virtual void OnDisable()
-    {
-        // 停止
-        foreach (var behavior in behaviors)
-        {
-            behavior.Deactivate();
-        }
-    }
-    protected virtual void OnEnable()
-    {
-        // 起動
-        foreach (var behavior in behaviors)
-        {
-            behavior.Activate();
-        }
-    }
+    [SerializeField, Tooltip("アクティブ状態")]
+    private bool isActive = true;
+    public bool IsActive => isActive;
+    [SerializeField, Tooltip("モジュールリスト")]
+    protected List<ModuleBase> modules = new List<ModuleBase>();
 
     protected virtual void Start()
     {
         // 初期化
-        foreach (var behavior in behaviors)
+        foreach (var module in modules)
         {
-            behavior.Initialize();
+            module.SetController(this);
+            module.Initialize();
+
+            // 初期状態に応じてActivate/Deactivateを実行
+            if (isActive) module.Activate();
+            else module.Deactivate();
         }
     }
     protected virtual void Update()
     {
+        if (!isActive) return;
+
         // 入力情報の取得
         InputData inputData = CreateInputData();
         // 各挙動の実行
-        foreach (var behavior in behaviors)
+        foreach (var module in modules)
         {
-            behavior.Execute(inputData);
+            module.Execute(inputData);
+        }
+    }
+    protected virtual void FixedUpdate()
+    {
+        if (!isActive) return;
+
+        // 各挙動の実行
+        foreach (var module in modules)
+        {
+            module.FixedExecute();
         }
     }
 
@@ -46,7 +49,19 @@ public abstract class ControllerBase : MonoBehaviour
     /// 入力情報の作成    </summary>
     protected virtual InputData CreateInputData()
     {
-        InputData data = new InputData();
-        return data;
+        return new InputData();
+    }
+    /// <summary>
+    /// アクティブを設定    </summary>
+    public virtual void SetActive(bool value)
+    {
+        if (isActive == value) return;
+
+        isActive = value;
+        foreach (var module in modules)
+        {
+            if (value) module.Activate();
+            else module.Deactivate();
+        }
     }
 }

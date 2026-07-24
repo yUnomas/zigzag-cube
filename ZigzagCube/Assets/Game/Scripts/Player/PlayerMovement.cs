@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : BehaviorBase
+public class PlayerMovement : ModuleBase<PlayerController>
 {
     [SerializeField, Tooltip("移動速度")]
     private float baseSpeed = 1f;
@@ -27,33 +27,20 @@ public class PlayerMovement : BehaviorBase
     /// <summary>
     /// 前フレームのプレイヤー座標    </summary>
     private Vector3 lastPosition;
-    /// <summary>
-    /// 前フレームの移動方向    </summary>
-    private float lastDirection;
 
-    private void FixedUpdate()
+    public override void Activate()
     {
-        // プレイヤーの行動可能な状態の際に移動処理
-        if (isActive)
-        {
-            rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
-            isChangeDirection = false;
-            
-            // 現在の値保存
-            lastPosition = transform.position;
-        }
+        rb.useGravity = true;
     }
     public override void Deactivate()
     {
         rb.linearVelocity = Vector3.zero;
-        base.Deactivate();
+        rb.useGravity = true;
     }
     public override void Initialize()
     {
         speed = baseSpeed;
-        base.Initialize();
     }
-
     public override void Execute(InputData inputData)
     {
         // 一定距離の移動で速度上昇
@@ -78,6 +65,14 @@ public class PlayerMovement : BehaviorBase
                 );
         }
         // 現在のプレイヤー座標を保存
+        lastPosition = transform.position;
+    }
+    public override void FixedExecute()
+    {
+        rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
+        isChangeDirection = false;
+
+        // 現在の値保存
         lastPosition = transform.position;
     }
 

@@ -93,13 +93,13 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     /// ゲームを一時停止    </summary>
     private void Pause()
     {
-        player.enabled = false;
+        player.ChangeState(PlayerState.Idle);
     }
     /// <summary>
     /// ゲームを再開    </summary>
     private void Continue()
     {
-        player.enabled = true;
+        player.ChangeState(PlayerState.Alive);
     }
 
     /// <summary>

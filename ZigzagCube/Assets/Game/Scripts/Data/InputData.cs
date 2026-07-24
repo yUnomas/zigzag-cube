@@ -1,4 +1,4 @@
-﻿public class InputData
+﻿public struct InputData
 {
     /// <summary>
     /// タッチ入力の有無    </summary>

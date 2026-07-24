@@ -202,13 +202,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6021562434382082499}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93684b3c7f0b4c6498dd9235656eaf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviors:
+  isActive: 0
+  modules:
   - {fileID: 6065147192797643880}
+  - {fileID: 3158086786328215193}
+  - {fileID: 1320726653804494592}
+  model: {fileID: 1793818030614699570}
 --- !u!114 &6065147192797643880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleHitEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
   waterHitEffect: {fileID: 2443725396418623342, guid: 13de9a8ce2b1bc74bb22d9255c68b858, type: 3}
-  playerModel: {fileID: 1793818030614699570}
 --- !u!114 &1320726653804494592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,8 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26e23a5f180ad4eb572d0cc4a27e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitTags:
-  - Wall
+  playerMovement: {fileID: 6065147192797643880}
 --- !u!1001 &1414045727894794336
 PrefabInstance:
   m_ObjectHideFlags: 0

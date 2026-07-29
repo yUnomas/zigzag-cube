@@ -5,17 +5,15 @@ public class ResultManager : SceneManagerBase<ResultManager>
     private ResultData resultData;
     private ResultUIController resultUI;
 
-    protected override void StateInit()
+    protected override void OnInit()
     {
         resultUI = FindAnyObjectByType<ResultUIController>();
         resultUI.Show();
         AudioManager.Instance.PlaySE("ResultClear");
-        base.StateInit();
     }
-    protected override void StateStart()
+    protected override void OnStart()
     {
         resultUI.ShowResult(resultData);
-        base.StateStart();
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameplayManager : SceneManagerBase<GameplayManager>
 {
@@ -13,8 +14,14 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     /// プレイ時間    </summary>
     private float playTime;
     /// <summary>
+    /// プレイ可能状態 </summary>
+    private bool isPlaying;
+    /// <summary>
     /// ポーズ状態    </summary>
     private bool isPaused;
+    /// <summary>
+    /// 一度コンティニューしたかどうか    </summary>
+    private bool hasContinued;
 
     private PlayerController player;
     private GameplayUIController gameplayUI;
@@ -26,37 +33,26 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         resultManager = ResultManager.Instance;
         saveDataManager = SaveDataManager.Instance;
     }
-    protected override void StateInit()
+    protected override void OnInit()
     {
-        gameplayUI = FindAnyObjectByType<GameplayUIController>();
         player = FindAnyObjectByType<PlayerController>();
-        base.StateInit();
+        gameplayUI = FindAnyObjectByType<GameplayUIController>();
     }
-    protected override void StateStart()
+    protected override void OnStart()
     {
-        Continue();
+        isPlaying = true;
+        player.ChangeState(PlayerState.Alive);
         gameplayUI.Show();
         AudioManager.Instance.PlayBGM("GameplayMain");
-        base.StateStart();
     }
-    protected override void StateRunning()
+    protected override void OnUpdate()
     {
+        if (isPaused || !isPlaying) return;
+
         SetScore((int)player.transform.position.z); // スコア設定・表示更新
         playTime += Time.deltaTime;                 // プレイ時間の計測
-
-        base.StateRunning();
     }
-    protected override void StateEnd()
-    {
-        // HandleEndSateAsync()の処理待ち
-    }
-    protected override void StateUninit()
-    {
-        AudioManager.Instance.StopBGM();
-        base.StateUninit();
-    }
-
-    private async Awaitable HandleEndStateAsync()
+    protected override void OnEnd()
     {
         gameplayUI.Hide();
         //セーブデータの更新
@@ -72,15 +68,24 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         {
             score = this.score,
             highScore = gameProgressData.highScore,
-            isUpdatedHighScore = this.score == gameProgressData.highScore,
+            isUpdatedHighScore = this.score > gameProgressData.highScore,
             playTime = this.playTime,
         };
         resultManager.SetResult(resultData);
         // マネージャーのゲーム終了イベント発火
         AdsManager.Instance.OnGameplayEnded();
-        // 1秒待機した後に状態遷移
-        await Awaitable.WaitForSecondsAsync(1.0f);
-        base.StateEnd();
+    }
+    protected override void OnUninit()
+    {
+        hasContinued = false;
+        playTime = 0f;
+        AudioManager.Instance.StopBGM();
+    }
+
+    private async Awaitable WaitForDeathAnimationAsync(Action onCompleted)
+    {
+        await Awaitable.WaitForSecondsAsync(1f);
+        onCompleted?.Invoke();
     }
     /// <summary>
     /// スコア設定    </summary>
@@ -93,24 +98,40 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     /// ゲームを一時停止    </summary>
     private void Pause()
     {
-        player.ChangeState(PlayerState.Idle);
+        Time.timeScale = 0f;
     }
     /// <summary>
     /// ゲームを再開    </summary>
-    private void Continue()
+    private void Resume()
     {
-        player.ChangeState(PlayerState.Alive);
+        Time.timeScale = 1f;
     }
-
-    /// <summary>
-    /// ゲームプレイの終了処理    </summary>
-    public void GameOver()
+    private void FinishGame()
     {
         Debug.Log("スコア:" + score);
         // リザルトへ遷移
         ChangeSceneWithoutLoad(SceneType.Result);
-        // 終了処理の発火
-        _ = HandleEndStateAsync();
+    }
+    private void Continue()
+    {
+        isPlaying = true;
+        hasContinued = true;
+        player.ChangeState(PlayerState.Reviving);
+    }
+
+    public void GameOver()
+    {
+        if (!isPlaying) return;
+
+        isPlaying = false;
+        if (hasContinued)
+        {
+            _ = WaitForDeathAnimationAsync(() => FinishGame());
+        }
+        else
+        {
+            _ = WaitForDeathAnimationAsync(() => gameplayUI.ShowContinueUI());
+        }
     }
 
     /// <summary>
@@ -120,6 +141,20 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         isPaused = !isPaused;
 
         if (isPaused) Pause();
-        else Continue();
+        else Resume();
+    }
+    /// <summary>
+    /// コンティニュー画面で"Yes"が選択された    </summary>
+    public void OnSelectedContinue()
+    {
+        // リワード広告の視聴後にコンティニュー
+        AdsManager.Instance.SetReward(() => Continue());
+        AdsManager.Instance.ShowAd(AdType.Rewarded);
+    }
+    /// <summary>
+    /// コンティニュー画面で"No"が選択された    </summary>
+    public void OnSelectedGiveUp()
+    {
+        FinishGame();
     }
 }

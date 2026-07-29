@@ -27,7 +27,7 @@ public class PlayerController : ControllerBase
             case PlayerState.Death:
                 {
                     Debug.Log("死亡");
-                    model.SetActive(false);                             // モデルを非表示
+                    model.SetActive(false); // モデルを非表示
                     SetActive(false);
                     GameplayManager.Instance.GameOver();
                 }
@@ -35,8 +35,8 @@ public class PlayerController : ControllerBase
             case PlayerState.Reviving:
                 {
                     Debug.Log("復活");
-                    model.SetActive(false);                             // モデルを非表示
-                    SetActive(true);
+                    model.SetActive(true);  // モデルを表示
+                    ChangeState(PlayerState.Alive);
                 }
                 break;
         }

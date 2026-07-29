@@ -4,19 +4,17 @@ public class TitleManager : SceneManagerBase<TitleManager>
 {
     private TitleUIController titleUI;
 
-    protected override void StateInit()
+    protected override void OnInit()
     {
         // タイトルUI表示
         titleUI = FindAnyObjectByType<TitleUIController>();
         titleUI.Show();
         // インタースティシャル広告の表示を試みる
         AdsManager.Instance.TryShowAd(AdType.Interstitial);
-        base.StateInit();
     }
-    protected override void StateStart()
+    protected override void OnStart()
     {
         AudioManager.Instance.PlayBGM("TitleMain");
-        base.StateStart();
     }
 
     /// <summary>

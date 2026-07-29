@@ -5,6 +5,7 @@ public class GameplayUIController : UIControllerBase
 {
     [SerializeField] private TextMeshProUGUI scoreTMP;
     [SerializeField] private PauseUIController pauseUI;
+    [SerializeField] private ContinueUIController continueUI;
 
     /// <summary>
     /// スコアの表示更新    </summary>
@@ -13,6 +14,12 @@ public class GameplayUIController : UIControllerBase
     public void UpdateScoreText(int score)
     {
         scoreTMP.text = $"{score}";
+    }
+    /// <summary>
+    /// コンティニュー画面の表示    </summary>
+    public void ShowContinueUI()
+    {
+        continueUI.Show();
     }
 
     /// <summary>

@@ -12,7 +12,7 @@ public class TerrainChunk : MonoBehaviour
     private void Start()
     {
         obstacleSpawner.Spawn();
-        wallSpawner.Spawn();
+        wallSpawner?.Spawn();
     }
     /// <summary>
     /// チャンクの再生成    </summary>
@@ -20,7 +20,7 @@ public class TerrainChunk : MonoBehaviour
     {
         LoopPosition(chunkCount);
         obstacleSpawner.Spawn();
-        wallSpawner.Spawn();
+        wallSpawner?.Spawn();
     }
     /// <summary>
     /// チャンクを最後尾へ移動    </summary>

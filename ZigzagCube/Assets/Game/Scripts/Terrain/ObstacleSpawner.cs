@@ -57,7 +57,7 @@ public class ObstacleSpawner : MonoBehaviour
             return;
         }
 
-        // 初期値
+        // 初期値の取得
         HashSet<Vector3Int> usedSpawnPos = new HashSet<Vector3Int>();   // 使用済みの配置位置
         Vector3 spawnArea = groundTransform.localScale;                 // 生成範囲
         // 生成回数に応じたループ

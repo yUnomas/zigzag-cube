@@ -6,7 +6,7 @@ public class TerrainChunkManager : MonoBehaviour
     [SerializeField, Tooltip("各チャンクのTerrainChunk情報")]
     private List<TerrainChunk> chunks = new List<TerrainChunk>();
 
-    PlayerController player;
+    private PlayerController player;
 
     private void Awake()
     {

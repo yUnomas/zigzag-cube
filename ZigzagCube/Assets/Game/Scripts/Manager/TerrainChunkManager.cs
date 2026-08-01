@@ -24,7 +24,7 @@ public class TerrainChunkManager : MonoBehaviour
         // プレイヤーから一定以上離れたら再生成
         foreach (var chunk in chunks)
         {
-            if (player.transform.position.z - chunk.transform.position.z >= chunk.Length)
+            if (player.transform.position.z - chunk.transform.position.z >= chunk.Length * 2)
             {
                 chunk.Regenerate(chunks.Count);
             }

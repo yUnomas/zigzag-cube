@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpawnAtStart: 1
-  groundTransform: {fileID: 0}
-  maxSpawnCount: 7
+  startSpawnCount: 2
+  spawnArea: {x: 11, y: 1, z: 10}
+  maxSpawnCount: 8
   spawnIncreaseAmount: 1
-  spawnIncreasePerScore: 200
+  spawnIncreasePerScore: 300
   obstaclePrefab: {fileID: 8266243944732050932, guid: cde96aeb1248f9a49a71c8ab46030e17, type: 3}

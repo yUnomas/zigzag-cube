@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2462535137188485961}
   - component: {fileID: -5717804110048415517}
   m_Layer: 0
-  m_Name: TerrainChunks
+  m_Name: Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5401698316173708372}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -105,7 +105,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_01
+      value: Chunk_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715796036133123531, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
+      propertyPath: isSpawnAtStart
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -154,7 +158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_07
+      value: Chunk_07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -203,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_02
+      value: Chunk_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -252,7 +256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_06
+      value: Chunk_06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -301,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_14
+      value: Chunk_14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -350,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_11
+      value: Chunk_11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -399,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_04
+      value: Chunk_04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -452,7 +456,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_00
+      value: Chunk_00
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715796036133123531, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
+      propertyPath: isSpawnAtStart
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -501,7 +509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_08
+      value: Chunk_08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -550,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_05
+      value: Chunk_05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -599,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_03
+      value: Chunk_03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -648,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_13
+      value: Chunk_13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -697,7 +705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_12
+      value: Chunk_12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -746,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_09
+      value: Chunk_09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -795,7 +803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
-      value: TerrainChunk_10
+      value: Chunk_10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

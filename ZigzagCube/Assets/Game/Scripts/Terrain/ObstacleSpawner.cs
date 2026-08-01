@@ -5,8 +5,10 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField, Tooltip("初回生成の切り替え")]
     private bool isSpawnAtStart;
-    [SerializeField,Tooltip("地面のTransform情報(生成範囲として使用)")]
-    private Transform groundTransform;
+    [SerializeField, Tooltip("初回の生成数")]
+    private int startSpawnCount;
+    [SerializeField,Tooltip("生成範囲")]
+    private Vector3Int spawnArea;
     [SerializeField, Tooltip("生成ごとの最大生成数")]
     private int maxSpawnCount = 7;
     [SerializeField, Tooltip("生成数の増加量")]
@@ -24,7 +26,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float lastSpawnIncreaseScore;
     /// <summary>
     /// 生成回数    </summary>
-    private int spawnCount = 1;
+    private int spawnCount;
     /// <summary>
     /// 生成済み障害物    </summary>
     private List<GameObject> spawnedObstacles = new List<GameObject>();
@@ -32,6 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Awake()
     {
         isSpawn = isSpawnAtStart;
+        spawnCount = startSpawnCount;
     }
     private void Update()
     {
@@ -59,7 +62,6 @@ public class ObstacleSpawner : MonoBehaviour
 
         // 初期値の取得
         HashSet<Vector3Int> usedSpawnPos = new HashSet<Vector3Int>();   // 使用済みの配置位置
-        Vector3 spawnArea = groundTransform.localScale;                 // 生成範囲
         // 生成回数に応じたループ
         for(int spawnIndex = 0; spawnIndex < spawnCount; spawnIndex++)
         {
@@ -68,8 +70,8 @@ public class ObstacleSpawner : MonoBehaviour
             while (!Input.GetKeyDown(KeyCode.Escape))
             {
                 spawnPos = new Vector3Int(
-                        (int)Random.Range((spawnArea.x - 2) / -2, (spawnArea.x - 2) / 2),
-                        1,
+                        (int)Random.Range(spawnArea.x / -2, spawnArea.x / 2),
+                        (int)spawnArea.y,
                         (int)Random.Range(spawnArea.z / -2, spawnArea.z / 2)
                     );
                 if (!usedSpawnPos.Contains(spawnPos)) break;

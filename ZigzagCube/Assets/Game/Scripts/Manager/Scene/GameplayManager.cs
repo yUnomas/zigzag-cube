@@ -57,7 +57,8 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         gameplayUI.Hide();
         //セーブデータの更新
         GameProgressData gameProgressData = saveDataManager.GameProgressData;
-        gameProgressData.highScore = Mathf.Max(gameProgressData.highScore, score);
+        int currentHighScore = gameProgressData.highScore;
+        gameProgressData.highScore = Mathf.Max(currentHighScore, score);
         gameProgressData.AddScoreRecord(
             this.score,
             saveDataManager.PlayerData.name,
@@ -68,7 +69,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         {
             score = this.score,
             highScore = gameProgressData.highScore,
-            isUpdatedHighScore = this.score > gameProgressData.highScore,
+            isUpdatedHighScore = this.score > currentHighScore,
             playTime = this.playTime,
         };
         resultManager.SetResult(resultData);

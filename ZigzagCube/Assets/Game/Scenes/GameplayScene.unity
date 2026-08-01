@@ -119,6 +119,35 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &193911202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2462535137188485961, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2462535137188485961, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2462535137188485961, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401698316173708372, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
+      propertyPath: m_Name
+      value: Field
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
 --- !u!1001 &738925357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -523,39 +552,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec3e9bd93985ad41be27486ae803e94, type: 3}
---- !u!1001 &2749561620075947264
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2462535137188485961, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2462535137188485961, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2462535137188485961, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2462535137188485961, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401698316173708372, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
-      propertyPath: m_Name
-      value: TerrainChunks
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7260818a4c5629c4c91ea1f665fa10ab, type: 3}
 --- !u!1001 &3648771002268496672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -707,7 +703,7 @@ SceneRoots:
   - {fileID: 3648771002268496672}
   - {fileID: 7972161044224249887}
   - {fileID: 1404225223}
+  - {fileID: 193911202}
   - {fileID: 5882629960425085285}
-  - {fileID: 2749561620075947264}
   - {fileID: 1466742620}
   - {fileID: 1434507551}

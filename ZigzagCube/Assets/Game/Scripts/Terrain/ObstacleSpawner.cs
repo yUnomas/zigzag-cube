@@ -15,8 +15,6 @@ public class ObstacleSpawner : MonoBehaviour
     private int spawnIncreaseAmount = 1;
     [SerializeField, Tooltip("生成数が増加するスコア間隔")]
     private float spawnIncreasePerScore = 500;
-    [Header("=====")]
-    [SerializeField] private GameObject obstaclePrefab;
 
     /// <summary>
     /// 生成の有効化    </summary>
@@ -27,9 +25,6 @@ public class ObstacleSpawner : MonoBehaviour
     /// <summary>
     /// 生成回数    </summary>
     private int spawnCount;
-    /// <summary>
-    /// 生成済み障害物    </summary>
-    private List<GameObject> spawnedObstacles = new List<GameObject>();
 
     private void Awake()
     {
@@ -46,18 +41,23 @@ public class ObstacleSpawner : MonoBehaviour
             spawnCount = Mathf.Min(spawnCount, maxSpawnCount);  // 最大数に抑える
 
             lastSpawnIncreaseScore = currentScore;
+            spawnIncreasePerScore += spawnIncreasePerScore;
+
+            Debug.Log("チャンク毎の障害物数が増加");
         }
     }
 
     /// <summary>
     /// 障害物の生成    </summary>
-    public void Spawn()
+    public Vector3[] Generate()
     {
+        Vector3[] generateData = new Vector3[spawnCount];
+
         // 生成が無効化されている場合の早期リターン
         if(!isSpawn)
         {
             isSpawn = true;
-            return;
+            return null;
         }
 
         // 初期値の取得
@@ -72,19 +72,14 @@ public class ObstacleSpawner : MonoBehaviour
                 spawnPos = new Vector3Int(
                         (int)Random.Range(spawnArea.x / -2, spawnArea.x / 2),
                         (int)spawnArea.y,
-                        (int)Random.Range(spawnArea.z / -2, spawnArea.z / 2)
+                        (int)Random.Range(0, spawnArea.z)
                     );
                 if (!usedSpawnPos.Contains(spawnPos)) break;
             }
-            // 初回生成時はインスタンス生成と親設定
-            if (spawnedObstacles.Count < spawnIndex + 1)
-            {
-                GameObject obj = Instantiate(obstaclePrefab, Vector3.zero, Quaternion.identity);
-                spawnedObstacles.Add(obj);
-                obj.transform.parent = transform;
-            }
-            // 生成位置に配置
-            spawnedObstacles[spawnIndex].transform.localPosition = spawnPos;
+            // 生成位置を保存
+            generateData[spawnIndex] = spawnPos;
+            usedSpawnPos.Add(spawnPos);
         }
+        return generateData;
     }
 }

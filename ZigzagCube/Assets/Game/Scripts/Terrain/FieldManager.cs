@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class TerrainChunkManager : MonoBehaviour
+public class FieldManager : MonoBehaviour
 {
-    [SerializeField, Tooltip("各チャンクのTerrainChunk情報")]
-    private List<TerrainChunk> chunks = new List<TerrainChunk>();
-
+    [SerializeField]
+    private List<ChunkController> chunks = new List<ChunkController>();
+    
     private PlayerController player;
 
     private void Awake()

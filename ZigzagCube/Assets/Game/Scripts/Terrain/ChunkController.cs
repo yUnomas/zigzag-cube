@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using VoxelBusters.CoreLibrary;
 
 public class ChunkController : MonoBehaviour
 {
@@ -11,20 +12,12 @@ public class ChunkController : MonoBehaviour
     public int Length => length;
     [Header("=====")]
     [SerializeField] private List<CellView> cells;
-    [SerializeField] ObstacleSpawner obstacleSpawner;
+    [SerializeField] ObstacleGenerator obstacleGenerator;
 
     private void Start()
     {
-        GenerateCell();
-    }
-    /// <summary>
-    /// チャンクの再生成    </summary>
-    public void Regenerate(int chunkCount)
-    {
-        LoopPosition(chunkCount);
-        GenerateCell();
-
-        Debug.Log("再生成が完了しました");
+        CellData[] datas = Generate();
+        Apply(datas);
     }
     /// <summary>
     /// チャンクを最後尾へ移動    </summary>
@@ -32,25 +25,47 @@ public class ChunkController : MonoBehaviour
     {
         transform.position += Vector3.forward * length * chunkCount;
     }
-    private void GenerateCell()
+    /// <summary>
+    /// チャンクの生成    </summary>
+    private CellData[] Generate()
     {
-        // 障害物の生成位置を取得
-        Vector3[] obstaclePositions = obstacleSpawner.Generate();
+        CellData[] cellDatas = new CellData[cells.Count];
+        ObstacleData[] obstacleDatas = obstacleGenerator.Generate(width, length);
 
-        //** 各セルのオブジェクト設定
-        for(int index = 0; index < cells.Count; index++)
+        // 障害物データをセルに追加
+        if(obstacleDatas != null)
         {
-            cells[index].Clear();
-            cells[index].SetGround(width);
-            // 障害物の生成位置と合致するセルに障害物を生成
-            if(obstaclePositions != null)
+            foreach (ObstacleData data in obstacleDatas)
             {
-                foreach (var obstaclePos in obstaclePositions)
-                {
-                    if (obstaclePos.z != index) continue;
-                    cells[index].SetObstacle(obstaclePos);
-                }
+                cellDatas[data.cellIndex].obstacles ??= new List<ObstacleData>();
+                cellDatas[data.cellIndex].obstacles.Add(data);
             }
         }
+
+        return cellDatas;
+    }
+    /// <summary>
+    /// チャンクの適用    </summary>
+    private void Apply(CellData[] data)
+    {
+        //** 各セルのオブジェクト設定
+        for (int i = 0; i < cells.Count; i++)
+        {
+            cells[i].Clear();
+            
+            cells[i].SetGround(width);
+            cells[i].SetObstacle(data[i].obstacles);
+        }
+    }
+
+    /// <summary>
+    /// チャンクの再生成    </summary>
+    public void Regenerate(int chunkCount)
+    {
+        LoopPosition(chunkCount);
+        CellData[] datas = Generate();
+        Apply(datas);
+
+        Debug.Log("再生成が完了しました");
     }
 }

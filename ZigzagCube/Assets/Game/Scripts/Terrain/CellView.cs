@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public class CellView : MonoBehaviour
@@ -8,7 +9,6 @@ public class CellView : MonoBehaviour
     [SerializeField] private GameObject obstaclePrefab;
 
     private List<GameObject> obstacleInstances = new List<GameObject>();
-    private int obstacleGeneratedCount; // 障害物の生成回数
 
     public void Clear()
     {
@@ -16,7 +16,6 @@ public class CellView : MonoBehaviour
         ground.SetActive(false);
         // 障害物
         foreach(var obstacle in obstacleInstances) { obstacle.SetActive(false); }
-        obstacleGeneratedCount = 0;
     }
     public void SetGround(int width)
     {
@@ -26,18 +25,21 @@ public class CellView : MonoBehaviour
         scale.x = width;
         ground.transform.localScale = scale;
     }
-    public void SetObstacle(Vector3 setPosition)
+    public void SetObstacle(List<ObstacleData> obstacles)
     {
-        // 障害物のインスタンスの不足分を生成
-        if (obstacleInstances.Count <= obstacleGeneratedCount)
+        if(obstacles == null) return;
+        for(int i = 0; i < obstacles.Count; i++)
         {
-            GameObject obj = Instantiate(obstaclePrefab);
-            obj.transform.parent = obstacleRoot.transform;
-            obstacleInstances.Add(obj);
+            // 障害物のインスタンスの不足分を生成
+            if (obstacleInstances.Count <= i)
+            {
+                GameObject obj = Instantiate(obstaclePrefab);
+                obj.transform.parent = obstacleRoot.transform;
+                obstacleInstances.Add(obj);
+            }
+            // 障害物の表示と位置設定
+            obstacleInstances[i].SetActive(true);
+            obstacleInstances[i].transform.localPosition = new Vector3(obstacles[i].laneIndex, 1, 0);
         }
-        // 障害物の表示と位置設定
-        obstacleInstances[obstacleGeneratedCount].SetActive(true);
-        obstacleInstances[obstacleGeneratedCount].transform.localPosition = new Vector3(setPosition.x, setPosition.y, 0);
-        obstacleGeneratedCount++;   // 生成回数を保存
     }
 }

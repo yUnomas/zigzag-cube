@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 7003965253724881482}
   - {fileID: 5387365157966710345}
   - {fileID: 7247735869514373503}
-  obstacleSpawner: {fileID: 5715796036133123531}
+  obstacleGenerator: {fileID: 5715796036133123531}
 --- !u!114 &5715796036133123531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,12 +83,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57303530b13f504da40299704b0a613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnAtStart: 1
-  startSpawnCount: 2
-  spawnArea: {x: 11, y: 1, z: 10}
-  maxSpawnCount: 8
-  spawnIncreaseAmount: 1
-  spawnIncreasePerScore: 100
+  isGenerateAtStart: 1
+  startGenerateCount: 2
+  maxGenerateCount: 8
+  generateIncreaseAmount: 1
+  generateIncreasePerScore: 200
 --- !u!1001 &278522344873572505
 PrefabInstance:
   m_ObjectHideFlags: 0

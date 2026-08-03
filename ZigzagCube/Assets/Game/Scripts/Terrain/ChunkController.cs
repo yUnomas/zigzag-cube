@@ -11,7 +11,7 @@ public class ChunkController : MonoBehaviour
     private int length;
     public int Length => length;
     [Header("=====")]
-    [SerializeField] private List<CellView> cells;
+    [SerializeField] private CellController[] cells;
     [SerializeField] ObstacleGenerator obstacleGenerator;
 
     private void Start()
@@ -29,7 +29,7 @@ public class ChunkController : MonoBehaviour
     /// チャンクの生成    </summary>
     private CellData[] Generate()
     {
-        CellData[] cellDatas = new CellData[cells.Count];
+        CellData[] cellDatas = new CellData[cells.Length];
         ObstacleData[] obstacleDatas = obstacleGenerator.Generate(width, length);
 
         // 障害物データをセルに追加
@@ -49,7 +49,7 @@ public class ChunkController : MonoBehaviour
     private void Apply(CellData[] data)
     {
         //** 各セルのオブジェクト設定
-        for (int i = 0; i < cells.Count; i++)
+        for (int i = 0; i < cells.Length; i++)
         {
             cells[i].Clear();
             

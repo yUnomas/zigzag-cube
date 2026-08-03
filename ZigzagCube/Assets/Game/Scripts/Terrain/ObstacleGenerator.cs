@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -58,19 +59,25 @@ public class ObstacleGenerator : MonoBehaviour
 
         // 生成する数分の配列作成
         ObstacleData[] generatedData = new ObstacleData[generateCount];
+        HashSet<Vector3Int> usedGeneratePosition = new HashSet<Vector3Int>();
         for (int i = 0; i < generateCount; i++)
         {
             // 他の障害物と被らないように生成情報を作成
-            ObstacleData data = new ObstacleData();
+            Vector3Int pos = Vector3Int.zero;
             while (!Input.GetKeyDown(KeyCode.Escape))
             {
-                data.cellIndex = UnityEngine.Random.Range(0, length);
-                data.laneIndex = UnityEngine.Random.Range(width / -2, width / 2);
+                pos.x = UnityEngine.Random.Range(width / -2, width / 2);
+                pos.z = UnityEngine.Random.Range(0, length);
 
-                if (!generatedData.Contains(data)) break;
+                if (!usedGeneratePosition.Contains(pos)) break;
             }
             // 生成情報を保存
-            generatedData[i] = data;
+            generatedData[i] = new ObstacleData()
+            {
+                type = ObstacleType.Rock,
+                cellIndex = pos.z,
+                laneIndex = pos.x,
+            };
         }
         return generatedData;
     }

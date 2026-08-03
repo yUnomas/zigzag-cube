@@ -99,16 +99,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2763972097204938246, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
-      propertyPath: isSpawnAtStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
       value: Chunk_01
       objectReference: {fileID: 0}
     - target: {fileID: 5715796036133123531, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
-      propertyPath: isSpawnAtStart
+      propertyPath: isGenerateAtStart
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -450,16 +446,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2763972097204938246, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
-      propertyPath: isSpawnAtStart
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4117766520386228274, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
       propertyPath: m_Name
       value: Chunk_00
       objectReference: {fileID: 0}
     - target: {fileID: 5715796036133123531, guid: 4aee77e69cc3aa54bb52206bcdf95318, type: 3}
-      propertyPath: isSpawnAtStart
+      propertyPath: isGenerateAtStart
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

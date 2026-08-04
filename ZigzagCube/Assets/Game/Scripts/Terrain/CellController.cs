@@ -11,23 +11,22 @@ public class CellController : MonoBehaviour
         // 地面
         ground.SetActive(false);
     }
-    public void SetGround(int width)
+    public void SetGround(GroundData data)
     {
         // 地面の表示とサイズ設定
         ground.SetActive(true);
-        Vector3 scale = ground.transform.localScale;
-        scale.x = width;
-        ground.transform.localScale = scale;
+        ground.transform.localPosition = new Vector3(data.laneIndex / 2, 0, 0);
+        ground.transform.localScale = new Vector3(data.width, 1, 1);
     }
-    public void SetObstacle(List<ObstacleData> obstacles)
+    public void SetObstacle(List<ObstacleData> datas)
     {
-        if(obstacles == null) return;
-        for(int i = 0; i < obstacles.Count; i++)
+        if(datas == null) return;
+        for(int i = 0; i < datas.Count; i++)
         {
-            switch (obstacles[i].type)
+            switch (datas[i].type)
             {
                 case ObstacleType.Rock:
-                    rockView.Set(obstacles[i].laneIndex);
+                    rockView.Set(datas[i].laneIndex);
                     break;
             }
         }

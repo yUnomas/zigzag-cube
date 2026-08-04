@@ -58,7 +58,7 @@ public class ObstacleGenerator : MonoBehaviour
         }
 
         // 生成する数分の配列作成
-        ObstacleData[] generatedData = new ObstacleData[generateCount];
+        ObstacleData[] obstacleDatas = new ObstacleData[generateCount];
         HashSet<Vector3Int> usedGeneratePosition = new HashSet<Vector3Int>();
         for (int i = 0; i < generateCount; i++)
         {
@@ -72,13 +72,13 @@ public class ObstacleGenerator : MonoBehaviour
                 if (!usedGeneratePosition.Contains(pos)) break;
             }
             // 生成情報を保存
-            generatedData[i] = new ObstacleData()
+            obstacleDatas[i] = new ObstacleData()
             {
                 type = ObstacleType.Rock,
                 cellIndex = pos.z,
                 laneIndex = pos.x,
             };
         }
-        return generatedData;
+        return obstacleDatas;
     }
 }

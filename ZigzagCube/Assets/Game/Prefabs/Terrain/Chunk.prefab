@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2561814882343346795}
   - component: {fileID: 5856082512573916429}
+  - component: {fileID: 5979166706442191988}
   - component: {fileID: 5715796036133123531}
   m_Layer: 0
   m_Name: Chunk
@@ -71,6 +72,19 @@ MonoBehaviour:
   - {fileID: 5387365157966710345}
   - {fileID: 7247735869514373503}
   obstacleGenerator: {fileID: 5715796036133123531}
+  groundGenerator: {fileID: 5979166706442191988}
+--- !u!114 &5979166706442191988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117766520386228274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710225dc716f8be4b85467cd303f816f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5715796036133123531
 MonoBehaviour:
   m_ObjectHideFlags: 0

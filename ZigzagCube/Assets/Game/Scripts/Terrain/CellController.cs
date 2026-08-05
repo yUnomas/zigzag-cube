@@ -13,9 +13,11 @@ public class CellController : MonoBehaviour
     }
     public void SetGround(GroundData data)
     {
+        float laneOffset = data.width % 2 == 0 ? 0.5f : 0f;
+        float x = data.laneIndex + laneOffset;
         // 地面の表示とサイズ設定
         ground.SetActive(true);
-        ground.transform.localPosition = new Vector3(data.laneIndex / 2, 0, 0);
+        ground.transform.localPosition = new Vector3(x, 0, 0);
         ground.transform.localScale = new Vector3(data.width, 1, 1);
     }
     public void SetObstacle(List<ObstacleData> datas)

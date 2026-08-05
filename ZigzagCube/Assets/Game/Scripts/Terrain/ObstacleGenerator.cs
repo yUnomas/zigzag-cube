@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ObstacleGenerator : MonoBehaviour
 {
@@ -49,7 +51,7 @@ public class ObstacleGenerator : MonoBehaviour
 
     /// <summary>
     /// 障害物の生成    </summary>
-    public ObstacleData[] Generate(int width, int length)
+    public ObstacleData[] Generate(GroundData[] groundDatas)
     {
         if(!isGenerate)
         {
@@ -63,11 +65,15 @@ public class ObstacleGenerator : MonoBehaviour
         for (int i = 0; i < generateCount; i++)
         {
             // 他の障害物と被らないように生成情報を作成
-            Vector3Int pos = Vector3Int.zero;
-            while (!Input.GetKeyDown(KeyCode.Escape))
+            Vector3Int pos;
+            while(true)
             {
-                pos.x = UnityEngine.Random.Range(0, width);
-                pos.z = UnityEngine.Random.Range(0, length);
+                int cellIndex = UnityEngine.Random.Range(0, groundDatas.Length);
+                int laneIndex = UnityEngine.Random.Range(
+                    groundDatas[cellIndex].LeftLaneIndex,
+                    groundDatas[cellIndex].RightLaneIndex + 1);
+
+                pos = new Vector3Int(laneIndex, 1, cellIndex);
 
                 if (!usedGeneratePosition.Contains(pos)) break;
             }

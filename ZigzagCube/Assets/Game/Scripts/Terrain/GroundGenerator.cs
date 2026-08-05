@@ -14,7 +14,7 @@ public class GroundGenerator : MonoBehaviour
         isGenerate = isGenerateAtStart;
     }
 
-    public GroundData[] Generate(int width, int cellCount)
+    public GroundData[] Generate(int chunkWidth, int cellCount)
     {
         GroundData[] groundDatas = new GroundData[cellCount];
         if (!isGenerate)
@@ -24,8 +24,8 @@ public class GroundGenerator : MonoBehaviour
                 groundDatas[i] = new GroundData()
                 {
                     type = GroundType.Default,
-                    laneIndex = width / 2,
-                    width = width
+                    startLaneIndex = 0,
+                    width = chunkWidth
                 };
             }
             return groundDatas;
@@ -34,26 +34,24 @@ public class GroundGenerator : MonoBehaviour
         for (int i = 0; i < groundDatas.Length; i++)
         {
             int rand = Random.Range(0, 10);
-            if (rand < 9)
+            if (rand < 8)
             {
                 groundDatas[i] = new GroundData()
                 {
                     type = GroundType.Default,
-                    laneIndex = width / 2,
-                    width = width
+                    startLaneIndex = 0,
+                    width = chunkWidth
                 };
             }
             else
             {
-                int minWidth = (int)(width / 1.5);
-                int randWidth = Random.Range(minWidth, width - minWidth);
-                int minCenterIndex = (randWidth - 1) / 2;
-                int maxCenterIndex = minCenterIndex + (width - randWidth);
+                int minWidth = (int)(chunkWidth / 1.5);
+                int randWidth = Random.Range(minWidth, chunkWidth);
 
                 groundDatas[i] = new GroundData()
                 {
                     type = GroundType.Narrow,
-                    laneIndex = Random.Range(minCenterIndex, maxCenterIndex + 1),
+                    startLaneIndex = Random.Range(0, chunkWidth - randWidth + 1),
                     width = randWidth
                 };
             }

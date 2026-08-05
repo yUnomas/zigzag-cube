@@ -70,8 +70,8 @@ public class ObstacleGenerator : MonoBehaviour
             {
                 int cellIndex = UnityEngine.Random.Range(0, groundDatas.Length);
                 int laneIndex = UnityEngine.Random.Range(
-                    groundDatas[cellIndex].LeftLaneIndex,
-                    groundDatas[cellIndex].RightLaneIndex + 1);
+                    groundDatas[cellIndex].startLaneIndex,
+                    groundDatas[cellIndex].startLaneIndex + groundDatas[cellIndex].width);
 
                 pos = new Vector3Int(laneIndex, 1, cellIndex);
 

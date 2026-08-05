@@ -13,8 +13,7 @@ public class CellController : MonoBehaviour
     }
     public void SetGround(GroundData data)
     {
-        float laneOffset = data.width % 2 == 0 ? 0.5f : 0f;
-        float x = data.laneIndex + laneOffset;
+        float x = data.startLaneIndex + (float)(data.width - 1) / 2;
         // 地面の表示とサイズ設定
         ground.SetActive(true);
         ground.transform.localPosition = new Vector3(x, 0, 0);

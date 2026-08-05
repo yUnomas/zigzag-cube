@@ -34,7 +34,7 @@ public class GroundGenerator : MonoBehaviour
         for (int i = 0; i < groundDatas.Length; i++)
         {
             int rand = Random.Range(0, 10);
-            if (rand > 9)
+            if (rand < 9)
             {
                 groundDatas[i] = new GroundData()
                 {

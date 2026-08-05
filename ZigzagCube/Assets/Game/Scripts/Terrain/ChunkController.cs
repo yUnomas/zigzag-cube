@@ -32,7 +32,7 @@ public class ChunkController : MonoBehaviour
     {
         CellData[] cellDatas = new CellData[cells.Length];
         GroundData[] groundDatas = groundGenerator.Generate(width, cells.Length);
-        ObstacleData[] obstacleDatas = obstacleGenerator.Generate(width, length);
+        ObstacleData[] obstacleDatas = obstacleGenerator.Generate(groundDatas);
 
         // 地面データを各セルに追加
         for(int i = 0; i < cellDatas.Length; i++)

@@ -66,7 +66,7 @@ public class ObstacleGenerator : MonoBehaviour
             Vector3Int pos = Vector3Int.zero;
             while (!Input.GetKeyDown(KeyCode.Escape))
             {
-                pos.x = UnityEngine.Random.Range(width / -2, width / 2);
+                pos.x = UnityEngine.Random.Range(0, width);
                 pos.z = UnityEngine.Random.Range(0, length);
 
                 if (!usedGeneratePosition.Contains(pos)) break;

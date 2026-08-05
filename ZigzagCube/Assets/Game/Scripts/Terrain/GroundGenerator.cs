@@ -24,7 +24,7 @@ public class GroundGenerator : MonoBehaviour
                 groundDatas[i] = new GroundData()
                 {
                     type = GroundType.Default,
-                    laneIndex = 0,
+                    laneIndex = width / 2,
                     width = width
                 };
             }
@@ -34,12 +34,12 @@ public class GroundGenerator : MonoBehaviour
         for (int i = 0; i < groundDatas.Length; i++)
         {
             int rand = Random.Range(0, 10);
-            if (rand < 9)
+            if (rand > 9)
             {
                 groundDatas[i] = new GroundData()
                 {
                     type = GroundType.Default,
-                    laneIndex = 0,
+                    laneIndex = width / 2,
                     width = width
                 };
             }
@@ -47,11 +47,13 @@ public class GroundGenerator : MonoBehaviour
             {
                 int minWidth = (int)(width / 1.5);
                 int randWidth = Random.Range(minWidth, width - minWidth);
+                int minCenterIndex = (randWidth - 1) / 2;
+                int maxCenterIndex = minCenterIndex + (width - randWidth);
 
                 groundDatas[i] = new GroundData()
                 {
                     type = GroundType.Narrow,
-                    laneIndex = Random.Range(randWidth - width, width - randWidth + 1),
+                    laneIndex = Random.Range(minCenterIndex, maxCenterIndex + 1),
                     width = randWidth
                 };
             }

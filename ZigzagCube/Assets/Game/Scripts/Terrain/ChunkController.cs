@@ -4,6 +4,8 @@ using VoxelBusters.CoreLibrary;
 
 public class ChunkController : MonoBehaviour
 {
+    [SerializeField, Tooltip("初回生成の切り替え")]
+    private bool isGenerateAtStart = true;
     [SerializeField, Tooltip("横方向の長さ")]
     private int width;
     public int Width => width;
@@ -14,12 +16,33 @@ public class ChunkController : MonoBehaviour
     [SerializeField] private CellController[] cells;
     [SerializeField] GroundGenerator groundGenerator;
     [SerializeField] ObstacleGenerator obstacleGenerator;
+    [SerializeField] private ChunkType type;
 
+    private bool isGenerate;
+
+    private void Awake()
+    {
+        isGenerate = isGenerateAtStart;
+    }
     private void Start()
     {
         CellData[] datas = Generate();
         Apply(datas);
     }
+
+    private ChunkType GetChunkType()
+    {
+        if(isGenerate)
+        {
+            return (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Bridge);
+        }
+        else
+        {
+            isGenerate = true;
+            return ChunkType.Normal;
+        }
+    }
+
     /// <summary>
     /// チャンクを最後尾へ移動    </summary>
     private void LoopPosition(int chunkCount)
@@ -30,9 +53,12 @@ public class ChunkController : MonoBehaviour
     /// チャンクの生成    </summary>
     private CellData[] Generate()
     {
+        // 今回のチャンク種類を取得
+        type = GetChunkType();
+        // 各データの生成
         CellData[] cellDatas = new CellData[cells.Length];
-        GroundData[] groundDatas = groundGenerator.Generate(width, cells.Length);
-        ObstacleData[] obstacleDatas = obstacleGenerator.Generate(groundDatas);
+        GroundData[] groundDatas = groundGenerator.Generate(type, width, cells.Length);
+        ObstacleData[] obstacleDatas = obstacleGenerator.Generate(type, groundDatas);
 
         // 地面データを各セルに追加
         for(int i = 0; i < cellDatas.Length; i++)

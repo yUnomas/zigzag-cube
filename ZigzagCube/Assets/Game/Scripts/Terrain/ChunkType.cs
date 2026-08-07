@@ -1,7 +1,7 @@
-﻿public enum GroundType
+﻿public enum ChunkType
 {
     Normal,
-    Bridge,
     Platform,
+    Bridge,
     Conveyor
 }

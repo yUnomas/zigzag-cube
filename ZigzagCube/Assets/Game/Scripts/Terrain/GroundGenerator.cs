@@ -2,43 +2,22 @@
 
 public class GroundGenerator : MonoBehaviour
 {
-    [SerializeField, Tooltip("初回生成の切り替え")]
-    private bool isGenerateAtStart = true;
-
-    /// <summary>
-    /// 生成の有無    </summary>
-    private bool isGenerate;
-
-    private void Awake()
+    public GroundData[] Generate(ChunkType chunkType, int chunkWidth, int cellCount)
     {
-        isGenerate = isGenerateAtStart;
-    }
-
-    public GroundData[] Generate(int chunkWidth, int cellCount)
-    {
+        // セル数の地面データ作成
         GroundData[] groundDatas = new GroundData[cellCount];
-        if (!isGenerate)
-        {
-            for (int i = 0; i < groundDatas.Length; i++)
-            {
-                groundDatas[i] = new GroundData()
-                {
-                    type = GroundType.Default,
-                    startLaneIndex = 0,
-                    width = chunkWidth
-                };
-            }
-            return groundDatas;
-        }
-
+        
+        //** 地面データの生成処理
         for (int i = 0; i < groundDatas.Length; i++)
         {
-            int rand = Random.Range(0, 10);
+            int rand = 0;
+            if (chunkType != ChunkType.Normal) rand = Random.Range(0, 10);
+
             if (rand < 8)
             {
                 groundDatas[i] = new GroundData()
                 {
-                    type = GroundType.Default,
+                    type = GroundType.Normal,
                     startLaneIndex = 0,
                     width = chunkWidth
                 };
@@ -50,7 +29,7 @@ public class GroundGenerator : MonoBehaviour
 
                 groundDatas[i] = new GroundData()
                 {
-                    type = GroundType.Narrow,
+                    type = GroundType.Bridge,
                     startLaneIndex = Random.Range(0, chunkWidth - randWidth + 1),
                     width = randWidth
                 };

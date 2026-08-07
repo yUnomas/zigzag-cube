@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class ObstacleGenerator : MonoBehaviour
 {
-    [SerializeField, Tooltip("初回生成の切り替え")]
-    private bool isGenerateAtStart = true;
     [SerializeField, Tooltip("初回の生成数")]
     private int startGenerateCount;
     [SerializeField, Tooltip("生成ごとの最大生成数")]
@@ -30,7 +28,6 @@ public class ObstacleGenerator : MonoBehaviour
 
     private void Awake()
     {
-        isGenerate = isGenerateAtStart;
         generateCount = startGenerateCount;
     }
     private void Update()
@@ -51,7 +48,7 @@ public class ObstacleGenerator : MonoBehaviour
 
     /// <summary>
     /// 障害物の生成    </summary>
-    public ObstacleData[] Generate(GroundData[] groundDatas)
+    public ObstacleData[] Generate(ChunkType chunkType, GroundData[] groundDatas)
     {
         if(!isGenerate)
         {

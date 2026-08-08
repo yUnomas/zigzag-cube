@@ -1,41 +1,89 @@
-﻿using UnityEngine;
+﻿using UnityEditor.ShaderGraph;
+using UnityEngine;
 
 public class GroundGenerator : MonoBehaviour
 {
+    [SerializeField] 
+
     public GroundData[] Generate(ChunkType chunkType, int chunkWidth, int cellCount)
     {
         // セル数の地面データ作成
         GroundData[] groundDatas = new GroundData[cellCount];
-        
+
         //** 地面データの生成処理
-        for (int i = 0; i < groundDatas.Length; i++)
+        switch (chunkType)
         {
-            int rand = 0;
-            if (chunkType != ChunkType.Normal) rand = Random.Range(0, 10);
-
-            if (rand < 8)
-            {
-                groundDatas[i] = new GroundData()
+            case ChunkType.Start:
+            case ChunkType.Normal:
+                for(int i = 0; i < cellCount; i++)
                 {
-                    type = GroundType.Normal,
-                    startLaneIndex = 0,
-                    width = chunkWidth
-                };
-            }
-            else
-            {
-                int minWidth = (int)(chunkWidth / 1.5);
-                int randWidth = Random.Range(minWidth, chunkWidth);
-
-                groundDatas[i] = new GroundData()
+                    groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
+                }
+                break;
+            case ChunkType.Platform:
+                for (int i = 0; i < cellCount; i++)
                 {
-                    type = GroundType.Bridge,
-                    startLaneIndex = Random.Range(0, chunkWidth - randWidth + 1),
-                    width = randWidth
-                };
-            }
+                    int rand = Random.Range(0, 10);
+                    if (rand < 7)
+                    {
+                        groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
+                    }
+                    else
+                    {
+                        int minWidth = (int)(chunkWidth / 1.5);
+                        int randWidth = Random.Range(minWidth, chunkWidth);
+                        int startLaneIndex = Random.Range(0, chunkWidth - randWidth + 1);
+
+                        groundDatas[i] = CreateData(GroundType.Platform, startLaneIndex, randWidth);
+                    }
+                }
+                break;
+            case ChunkType.Bridge:
+                {
+                    int minWidth = (int)(chunkWidth / 2);
+                    int maxWidth = (int)(chunkWidth / 1.5);
+                    int randWidth = Random.Range(minWidth, maxWidth + 1);
+                    int startLaneIndex = Random.Range(1, chunkWidth - randWidth + 1);
+
+                    int startCellIndex = Random.Range(0, chunkWidth / 2);
+                    int endCellIndex = Random.Range(startCellIndex + 1, chunkWidth - 1);
+
+                    for (int i = 0; i < cellCount; i++)
+                    {
+                        if(i >= startCellIndex && i <= endCellIndex)
+                        {
+                            groundDatas[i] = CreateData(GroundType.Bridge, startLaneIndex, randWidth);
+                        }
+                        else
+                        {
+                            groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
+                        }
+                    }
+                }
+                break;
+            case ChunkType.Conveyor:
+                for (int i = 0; i < cellCount; i++)
+                {
+                    groundDatas[i] = CreateConveyor(chunkWidth);
+                }
+                break;
         }
 
         return groundDatas;
+    }
+
+    private GroundData CreateData(GroundType type, int startLaneIndex, int width)
+    {
+        return new GroundData()
+        {
+            type = type,
+            startLaneIndex = startLaneIndex,
+            width = width
+        };
+    }
+    private GroundData CreateConveyor(int chunkWidth)
+    {
+        GroundData groundData = new GroundData();
+        return groundData;
     }
 }

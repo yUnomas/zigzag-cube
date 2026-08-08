@@ -17,9 +17,6 @@ public class ObstacleGenerator : MonoBehaviour
     private float generateIncreasePerScore = 500;
 
     /// <summary>
-    /// 生成の有効化    </summary>
-    private bool isGenerate;
-    /// <summary>
     /// 最後に生成数が増加した際のスコア値   </summary>
     private float lastGenerateIncreaseScore;
     /// <summary>
@@ -50,11 +47,7 @@ public class ObstacleGenerator : MonoBehaviour
     /// 障害物の生成    </summary>
     public ObstacleData[] Generate(ChunkType chunkType, GroundData[] groundDatas)
     {
-        if(!isGenerate)
-        {
-            isGenerate = true;
-            return Array.Empty<ObstacleData>();
-        }
+        if(chunkType == ChunkType.Start) return Array.Empty<ObstacleData>();
 
         // 生成する数分の配列作成
         ObstacleData[] obstacleDatas = new ObstacleData[generateCount];

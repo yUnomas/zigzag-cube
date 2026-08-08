@@ -10,6 +10,7 @@ public class CellController : MonoBehaviour
     {
         // 地面
         ground.SetActive(false);
+        rockView.Clear();
     }
     public void SetGround(GroundData data)
     {

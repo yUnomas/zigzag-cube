@@ -34,12 +34,12 @@ public class ChunkController : MonoBehaviour
     {
         if(isGenerate)
         {
-            return (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Bridge);
+            return (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Bridge + 1);
         }
         else
         {
             isGenerate = true;
-            return ChunkType.Normal;
+            return ChunkType.Start;
         }
     }
 

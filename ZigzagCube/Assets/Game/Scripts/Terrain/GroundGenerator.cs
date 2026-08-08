@@ -20,24 +20,6 @@ public class GroundGenerator : MonoBehaviour
                     groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
                 }
                 break;
-            case ChunkType.Platform:
-                for (int i = 0; i < cellCount; i++)
-                {
-                    int rand = Random.Range(0, 10);
-                    if (rand < 7)
-                    {
-                        groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
-                    }
-                    else
-                    {
-                        int minWidth = (int)(chunkWidth / 1.5);
-                        int randWidth = Random.Range(minWidth, chunkWidth);
-                        int startLaneIndex = Random.Range(0, chunkWidth - randWidth + 1);
-
-                        groundDatas[i] = CreateData(GroundType.Platform, startLaneIndex, randWidth);
-                    }
-                }
-                break;
             case ChunkType.Bridge:
                 {
                     int minWidth = (int)(chunkWidth / 2);

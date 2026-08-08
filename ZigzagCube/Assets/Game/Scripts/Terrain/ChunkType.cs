@@ -2,7 +2,6 @@
 {
     Start,
     Normal,
-    Platform,
     Bridge,
     Conveyor
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5856082512573916429}
   - component: {fileID: 5979166706442191988}
   - component: {fileID: 5715796036133123531}
+  - component: {fileID: 622091115013283521}
   m_Layer: 0
   m_Name: Chunk
   m_TagString: Untagged
@@ -58,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2f54c6fed78ac4986c16fa93cb6008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGenerateAtStart: 1
   width: 11
   length: 10
   cells:
@@ -71,8 +73,10 @@ MonoBehaviour:
   - {fileID: 7003965253724881482}
   - {fileID: 5387365157966710345}
   - {fileID: 7247735869514373503}
-  obstacleGenerator: {fileID: 5715796036133123531}
   groundGenerator: {fileID: 5979166706442191988}
+  obstacleGenerator: {fileID: 5715796036133123531}
+  gimmickGenerator: {fileID: 622091115013283521}
+  type: 0
 --- !u!114 &5979166706442191988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,11 +101,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57303530b13f504da40299704b0a613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGenerateAtStart: 1
   startGenerateCount: 2
   maxGenerateCount: 8
   generateIncreaseAmount: 1
   generateIncreasePerScore: 200
+--- !u!114 &622091115013283521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117766520386228274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6a9a8f3c0a65440821030c9acfe121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &278522344873572505
 PrefabInstance:
   m_ObjectHideFlags: 0

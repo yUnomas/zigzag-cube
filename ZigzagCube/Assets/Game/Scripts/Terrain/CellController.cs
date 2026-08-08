@@ -5,12 +5,14 @@ public class CellController : MonoBehaviour
 {
     [SerializeField] private GameObject ground;
     [SerializeField] private RockView rockView;
+    [SerializeField] private GameObject conveyor;
 
     public void Clear()
     {
         // 地面
         ground.SetActive(false);
         rockView.Clear();
+        conveyor.SetActive(false);
     }
     public void SetGround(GroundData data)
     {
@@ -31,6 +33,19 @@ public class CellController : MonoBehaviour
                     rockView.Set(datas[i].laneIndex);
                     break;
             }
+        }
+    }
+    public void SetGimmick(GimmickData data)
+    {
+        if (data.type == GimmickType.None) return;
+
+        switch (data.type)
+        {
+            case GimmickType.Conveyor:
+                {
+                    conveyor.SetActive(true);
+                }
+                break;
         }
     }
 }

@@ -1,9 +1,16 @@
-﻿using UnityEditor.ShaderGraph;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GroundGenerator : MonoBehaviour
 {
-    [SerializeField] 
+    private GroundData CreateData(GroundType type, int startLaneIndex, int width)
+    {
+        return new GroundData()
+        {
+            type = type,
+            startLaneIndex = startLaneIndex,
+            width = width
+        };
+    }
 
     public GroundData[] Generate(ChunkType chunkType, int chunkWidth, int cellCount)
     {
@@ -15,7 +22,8 @@ public class GroundGenerator : MonoBehaviour
         {
             case ChunkType.Start:
             case ChunkType.Normal:
-                for(int i = 0; i < cellCount; i++)
+            case ChunkType.Conveyor:
+                for (int i = 0; i < cellCount; i++)
                 {
                     groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
                 }
@@ -32,7 +40,7 @@ public class GroundGenerator : MonoBehaviour
 
                     for (int i = 0; i < cellCount; i++)
                     {
-                        if(i >= startCellIndex && i <= endCellIndex)
+                        if (i >= startCellIndex && i <= endCellIndex)
                         {
                             groundDatas[i] = CreateData(GroundType.Bridge, startLaneIndex, randWidth);
                         }
@@ -43,29 +51,8 @@ public class GroundGenerator : MonoBehaviour
                     }
                 }
                 break;
-            case ChunkType.Conveyor:
-                for (int i = 0; i < cellCount; i++)
-                {
-                    groundDatas[i] = CreateConveyor(chunkWidth);
-                }
-                break;
         }
 
         return groundDatas;
-    }
-
-    private GroundData CreateData(GroundType type, int startLaneIndex, int width)
-    {
-        return new GroundData()
-        {
-            type = type,
-            startLaneIndex = startLaneIndex,
-            width = width
-        };
-    }
-    private GroundData CreateConveyor(int chunkWidth)
-    {
-        GroundData groundData = new GroundData();
-        return groundData;
     }
 }

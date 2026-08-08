@@ -16,6 +16,7 @@ public class ChunkController : MonoBehaviour
     [SerializeField] private CellController[] cells;
     [SerializeField] GroundGenerator groundGenerator;
     [SerializeField] ObstacleGenerator obstacleGenerator;
+    [SerializeField] GimmickGenerator gimmickGenerator;
     [SerializeField] private ChunkType type;
 
     private bool isGenerate;
@@ -34,7 +35,7 @@ public class ChunkController : MonoBehaviour
     {
         if(isGenerate)
         {
-            return (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Bridge + 1);
+            return (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Conveyor + 1);
         }
         else
         {
@@ -59,6 +60,7 @@ public class ChunkController : MonoBehaviour
         CellData[] cellDatas = new CellData[cells.Length];
         GroundData[] groundDatas = groundGenerator.Generate(type, width, cells.Length);
         ObstacleData[] obstacleDatas = obstacleGenerator.Generate(type, groundDatas);
+        GimmickData[] gimmickDatas = gimmickGenerator.Generate(type, width, groundDatas);
 
         // 地面データを各セルに追加
         for(int i = 0; i < cellDatas.Length; i++)
@@ -70,6 +72,11 @@ public class ChunkController : MonoBehaviour
         {
             cellDatas[data.cellIndex].obstacles ??= new List<ObstacleData>();
             cellDatas[data.cellIndex].obstacles.Add(data);
+        }
+        // ギミックデータを配置セルに追加
+        foreach(GimmickData data in gimmickDatas)
+        {
+            cellDatas[data.cellIndex].gimmick = data;
         }
 
         return cellDatas;
@@ -85,6 +92,7 @@ public class ChunkController : MonoBehaviour
 
             cells[i].SetGround(data[i].ground);
             cells[i].SetObstacle(data[i].obstacles);
+            cells[i].SetGimmick(data[i].gimmick);
         }
     }
 

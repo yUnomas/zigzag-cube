@@ -4,4 +4,5 @@ public struct CellData
 {
     public GroundData ground;
     public List<ObstacleData> obstacles;
+    public GimmickData gimmick;
 }

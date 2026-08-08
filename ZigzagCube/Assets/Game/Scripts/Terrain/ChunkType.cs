@@ -3,5 +3,7 @@
     Start,
     Normal,
     Bridge,
+
+    /// ギミック
     Conveyor
 }

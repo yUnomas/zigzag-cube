@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 8640006421538458386}
   rockView: {fileID: 8510748394895857441}
-  conveyor: {fileID: 1301359543843294373}
+  conveyor: {fileID: 4673043866568429937}
 --- !u!1001 &848752052044028660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,13 +167,19 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831a012858e373e43986d1db92213c8e, type: 3}
---- !u!1 &1301359543843294373 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8944192216991207910, guid: 831a012858e373e43986d1db92213c8e, type: 3}
-  m_PrefabInstance: {fileID: 7939702050916080963}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3309672646690131835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4882233286014915128, guid: 831a012858e373e43986d1db92213c8e, type: 3}
   m_PrefabInstance: {fileID: 7939702050916080963}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4673043866568429937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3384033258246900786, guid: 831a012858e373e43986d1db92213c8e, type: 3}
+  m_PrefabInstance: {fileID: 7939702050916080963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba80ce6736abe240b37be23ed5755df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

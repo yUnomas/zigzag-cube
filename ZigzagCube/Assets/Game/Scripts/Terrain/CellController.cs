@@ -5,17 +5,19 @@ public class CellController : MonoBehaviour
 {
     [SerializeField] private GameObject ground;
     [SerializeField] private RockView rockView;
-    [SerializeField] private GameObject conveyor;
+    [SerializeField] private Conveyor conveyor;
 
     public void Clear()
     {
         // 地面
         ground.SetActive(false);
         rockView.Clear();
-        conveyor.SetActive(false);
+        conveyor.Clear();
     }
     public void SetGround(GroundData data)
     {
+        if (data.type == GroundType.None) return;
+
         float x = data.startLaneIndex + (float)(data.width - 1) / 2;
         // 地面の表示とサイズ設定
         ground.SetActive(true);
@@ -43,7 +45,7 @@ public class CellController : MonoBehaviour
         {
             case GimmickType.Conveyor:
                 {
-                    conveyor.SetActive(true);
+                    conveyor.Set(data.width, data.direction.x);
                 }
                 break;
         }

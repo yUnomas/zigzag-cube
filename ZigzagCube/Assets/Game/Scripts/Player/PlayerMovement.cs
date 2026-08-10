@@ -2,8 +2,10 @@
 
 public class PlayerMovement : ModuleBase<PlayerController>
 {
-    [SerializeField, Tooltip("移動速度")]
-    private float baseSpeed = 1f;
+    [SerializeField, Tooltip("前方への速度")]
+    private float forwardSpeed = 1f;
+    [SerializeField, Tooltip("左右への移動速度")]
+    private float horizontalSpeed = 1f;
     [SerializeField, Tooltip("速度の上昇量")]
     private float speedIncreaseAmount = 1f;
     [SerializeField, Tooltip("速度が上昇する距離間隔")]
@@ -12,9 +14,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameObject changeDirectionEffect;
 
-    /// <summary>
-    /// 速度    </summary>
-    private float speed;
+    private float externalHorizontalSpeed;
     /// <summary>
     /// 移動方向    </summary>
     private float direction = 1f;
@@ -37,17 +37,15 @@ public class PlayerMovement : ModuleBase<PlayerController>
         rb.linearVelocity = Vector3.zero;
         rb.useGravity = true;
     }
-    public override void Initialize()
-    {
-        speed = baseSpeed;
-    }
+
     public override void Execute(InputData inputData)
     {
         // 一定距離の移動で速度上昇
         if (transform.position.z - lastSpeedIncreaseDirection >= speedIncreasePerDistance)
         {
-            speed += speedIncreaseAmount;
-            Debug.Log($"現在の移動速度:{speed}");
+            forwardSpeed += speedIncreaseAmount;
+            horizontalSpeed += speedIncreaseAmount;
+            Debug.Log($"現在の移動速度:{forwardSpeed}");
             lastSpeedIncreaseDirection = transform.position.z;
         }
         // タップで左右切り替え
@@ -69,7 +67,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
     }
     public override void FixedExecute()
     {
-        rb.linearVelocity = new Vector3(speed * direction, rb.linearVelocity.y, speed);
+        rb.linearVelocity = new Vector3(horizontalSpeed * direction + externalHorizontalSpeed, rb.linearVelocity.y, forwardSpeed);
         isChangeDirection = false;
 
         // 現在の値保存
@@ -83,7 +81,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
         if (isChangeDirection) return;
 
         direction *= -1;
-        transform.position += Vector3.right * speed * direction * Time.deltaTime;
+        transform.position += Vector3.right * horizontalSpeed * direction * Time.deltaTime;
         isChangeDirection = true;
 
         // エフェクト・SEの再生
@@ -91,4 +89,6 @@ public class PlayerMovement : ModuleBase<PlayerController>
         Instantiate(changeDirectionEffect, position, Quaternion.identity);
         AudioManager.Instance.PlaySE("PlayerChangeDirection");
     }
+    public void AddSpeed(float value) { externalHorizontalSpeed += value; }
+    public void RemoveSpeed(float value) { externalHorizontalSpeed -= value; }
 }

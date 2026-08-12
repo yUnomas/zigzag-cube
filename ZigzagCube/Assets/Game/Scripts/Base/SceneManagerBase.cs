@@ -65,29 +65,18 @@ public abstract class SceneManagerBase : MonoBehaviour
         public string sceneName;
         public bool isUseTransition;
         public bool isLoadScene;
-
-        public SceneChangeRequest(SceneType sceneType, string sceneName, bool isUseTransition, bool isLoadScene)
-        {
-            this.sceneType = sceneType;
-            this.sceneName = sceneName;
-            this.isUseTransition = isUseTransition;
-            this.isLoadScene = isLoadScene;
-        }
     }
 
-    /// <summary>
-    /// 現在アクティブなシーンマネージャー    </summary>
     public static SceneManagerBase activeManager { get; private set; }
-    /// <summary>
-    /// 現在のシーン状態    </summary>
     public static  SceneState currentState = SceneState.Init;
-    /// <summary>
-    /// 現在のシーン名    </summary>
     public static string sceneName;
 
     private static AsyncOperation asyncOperation;
-    private bool isWaitingSceneChange; // シーン遷移の待機状態かどうか
     private SceneChangeRequest sceneChangeRequest;
+
+    /// <summary>
+    /// シーン遷移の待機状態   </summary>
+    private bool isWaitingSceneChange;
 
     private void OnEnable() { activeManager = this; }
     private void Update()
@@ -98,6 +87,7 @@ public abstract class SceneManagerBase : MonoBehaviour
             case SceneState.Idle:
                 OnIdle();
                 if (asyncOperation != null && !asyncOperation.isDone) return;
+                FadeManager.Instance.TryFadeIn();
                 currentState = SceneState.Init;
                 break;
             case SceneState.Init:
@@ -201,7 +191,7 @@ public abstract class SceneManagerBase : MonoBehaviour
                 // 遷移アニメーションの有無で処理分岐
                 if (request.isUseTransition)
                 {
-                    FadeManager.Instance.FadeOut(-1, () => LoadScene(request.sceneType, sceneName), true);
+                    FadeManager.Instance.FadeOut(-1, () => LoadScene(request.sceneType, sceneName));
                 }
                 else LoadScene(request.sceneType, sceneName);
             }
@@ -210,7 +200,7 @@ public abstract class SceneManagerBase : MonoBehaviour
                 // 遷移アニメーションの有無で処理分岐
                 if (request.isUseTransition)
                 {
-                    FadeManager.Instance.FadeOut(-1, () => ChangeSceneManager(request.sceneType), true);
+                    FadeManager.Instance.FadeOut(-1, () => ChangeSceneManager(request.sceneType));
                 }
                 else ChangeSceneManager(request.sceneType);
             }
@@ -228,13 +218,13 @@ public abstract class SceneManagerBase : MonoBehaviour
     public void ChangeScene(SceneType sceneType, bool isUseTransition = true, string sceneName = "")
     {
         // シーン遷移のリクエスト作成
-        sceneChangeRequest = new SceneChangeRequest
-            (
-                sceneType,
-                sceneName,
-                isUseTransition,
-                isLoadScene: true
-            );
+        sceneChangeRequest = new SceneChangeRequest()
+        {
+            sceneType = sceneType,
+            sceneName = sceneName,
+            isUseTransition = isUseTransition,
+            isLoadScene = true
+        };
         // 後処理状態まで待機
         isWaitingSceneChange = true;
     }
@@ -247,13 +237,13 @@ public abstract class SceneManagerBase : MonoBehaviour
     public void ChangeSceneWithoutLoad(SceneType sceneType, bool isUseTransition = false)
     {
         // シーン遷移のリクエスト作成
-        sceneChangeRequest = new SceneChangeRequest
-            (
-                sceneType,
-                "",
-                isUseTransition,
-                isLoadScene: false
-            );
+        sceneChangeRequest = new SceneChangeRequest()
+        {
+                sceneType = sceneType,
+                sceneName = "",
+                isUseTransition = isUseTransition,
+                isLoadScene = false
+        };
         // 後処理状態まで待機
         isWaitingSceneChange = true;
     }

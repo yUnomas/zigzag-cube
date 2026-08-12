@@ -13,11 +13,16 @@ public class FadeManager : MonoBehaviour
     [SerializeField]
     private Image fadeOverlay;
 
-    [Tooltip("インスタンス")]
+
     private static FadeManager instance;
     public static FadeManager Instance => instance;
-    [Tooltip("フェード実行中かどうか")]
+    
+    /// <summary>
+    /// フェード処理の実行状態    </summary>
     private bool isFadeRunning;
+    /// <summary>
+    /// フェードアウト状態    </summary>
+    public bool isFadedOut;
 
     private void Awake()
     {
@@ -31,7 +36,7 @@ public class FadeManager : MonoBehaviour
     /// 最終α値    </param>
     /// <param name="onComplete">
     /// 完了時に発火する内容    </param>
-    private IEnumerator FadeRunning(float endAlpha, float fadeDuration, Action onComplete = null, bool isFadeOutAfter = false)
+    private IEnumerator FadeRunning(float endAlpha, float fadeDuration, Action onComplete = null, bool isFadeOut = true)
     {
         isFadeRunning = true;
 
@@ -54,26 +59,33 @@ public class FadeManager : MonoBehaviour
         // 設定されているアクション実行
         onComplete?.Invoke();
         yield return new WaitForSecondsRealtime(0.01f);
-        if (isFadeOutAfter) StartCoroutine(FadeRunning(0f, fadeDuration));
 
         isFadeRunning = false;
+        isFadedOut = endAlpha == 1f ? true : false;
     }
+
     /// <summary>
     /// フェードイン(画面が現れる)    </summary>
     /// <param name="onComplete">
     /// 完了時に発火する内容  </param>
-    public void FadeIn(float fadeDuration = -1f, Action onComplete = null, bool isFadeOutAfter = false)
+    public void FadeIn(float fadeDuration = -1f, Action onComplete = null)
     {
         if (fadeDuration < 0f) fadeDuration = defaultFadeDuration;
-        if (!isFadeRunning) StartCoroutine(FadeRunning(0f, fadeDuration, onComplete, isFadeOutAfter));
+        if (!isFadeRunning) StartCoroutine(FadeRunning(0f, fadeDuration, onComplete));
     }
     /// <summary>
     /// フェードアウト(画面が消える)    </summary>
     /// <param name="onComplete">
     /// 完了時に発火する内容  </param>
-    public void FadeOut(float fadeDuration = -1f, Action onComplete = null, bool isFadeInAfter = false)
+    public void FadeOut(float fadeDuration = -1f, Action onComplete = null)
     {
         if (fadeDuration < 0f) fadeDuration = defaultFadeDuration;
-        StartCoroutine(FadeRunning(1f, fadeDuration, onComplete, isFadeInAfter));
+        if (!isFadeRunning) StartCoroutine(FadeRunning(1f, fadeDuration, onComplete));
+    }
+    /// <summary>
+    /// フェードアウトされている場合にフェードインを実行    </summary>
+    public void TryFadeIn(float fadeDuration = -1f, Action onComplete = null)
+    {
+        if (isFadedOut) FadeIn(fadeDuration, onComplete);
     }
 }

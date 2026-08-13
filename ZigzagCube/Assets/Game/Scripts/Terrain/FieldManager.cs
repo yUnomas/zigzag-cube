@@ -26,8 +26,32 @@ public class FieldManager : MonoBehaviour
         {
             if (player.transform.position.z - chunk.transform.position.z >= chunk.Length * 2)
             {
-                chunk.Regenerate(chunks.Count);
+                chunk.Regenerate(true, chunks.Count);
             }
         }
+    }
+
+    /// <summary>
+    /// プレイヤーが復活するチャンクの準備    </summary>
+    /// <returns>
+    /// 復活地点   </returns>
+    public Vector3Int PrepareRevivePoint()
+    {
+        // プレイヤー座標よりも手前にある最も近いチャンクを取得
+        ChunkController reviveChunk = null;
+        Vector3Int revivePoint = Vector3Int.one;
+        foreach(var chunk in chunks)
+        {
+            if(chunk.transform.position.z < player.transform.position.z &&
+                player.transform.position.z - revivePoint.z > player.transform.position.z - chunk.transform.position.z)
+            {
+                reviveChunk = chunk;
+                revivePoint = chunk.GetRevivePoint();
+            }
+        }
+
+        // 安全なチャンクに再生成
+        reviveChunk?.Regenerate(false, chunks.Count, ChunkType.Start);
+        return revivePoint;
     }
 }

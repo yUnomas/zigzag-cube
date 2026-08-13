@@ -27,20 +27,28 @@ public class ChunkController : MonoBehaviour
     }
     private void Start()
     {
-        CellData[] datas = Generate();
-        Apply(datas);
+        Regenerate(false);
     }
 
-    private ChunkType GetChunkType()
+    /// <summary>
+    /// 生成するチャンクタイプを設定    </summary>
+    private void SetChunkType(ChunkType chunkType = ChunkType.None)
     {
+        // チャンクタイプが渡されている場合は渡された値を設定
+        if(chunkType != ChunkType.None)
+        {
+            type = chunkType;
+            return;
+        }
+
         if(isGenerate)
         {
-            return (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Conveyor + 1);
+            type = (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Conveyor + 1);
         }
         else
         {
             isGenerate = true;
-            return ChunkType.Start;
+            type = ChunkType.Start;
         }
     }
 
@@ -54,8 +62,6 @@ public class ChunkController : MonoBehaviour
     /// チャンクの生成    </summary>
     private CellData[] Generate()
     {
-        // 今回のチャンク種類を取得
-        type = GetChunkType();
         // 各データの生成
         CellData[] cellDatas = new CellData[cells.Length];
         GroundData[] groundDatas = groundGenerator.Generate(type, width, cells.Length);
@@ -98,12 +104,25 @@ public class ChunkController : MonoBehaviour
 
     /// <summary>
     /// チャンクの再生成    </summary>
-    public void Regenerate(int chunkCount)
+    public void Regenerate(bool isLoop, int chunkCount = 0, ChunkType chunkType = ChunkType.None)
     {
-        LoopPosition(chunkCount);
+        if(isLoop)  LoopPosition(chunkCount);
+
+        SetChunkType(chunkType);
         CellData[] datas = Generate();
         Apply(datas);
 
         Debug.Log("再生成が完了しました");
+    }
+    /// <summary>
+    /// 復活地点の取得    </summary>
+    public Vector3Int GetRevivePoint()
+    {
+        return new Vector3Int
+            (
+                (int)transform.position.x + width / 2,
+                (int)transform.position.y + 1,
+                (int)transform.position.z + 1
+            );
     }
 }

@@ -36,6 +36,7 @@ public class PlayerController : ControllerBase
                 {
                     Debug.Log("復活");
                     model.SetActive(true);  // モデルを表示
+                    GetComponent<PlayerRevive>().Revive();
                     ChangeState(PlayerState.Alive);
                 }
                 break;

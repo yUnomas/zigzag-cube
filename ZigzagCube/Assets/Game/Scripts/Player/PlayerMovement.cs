@@ -31,6 +31,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
     public override void Activate()
     {
         rb.useGravity = true;
+        lastPosition = transform.position;
     }
     public override void Deactivate()
     {

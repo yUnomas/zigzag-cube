@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4043005843487397534}
   - component: {fileID: 6065147192797643880}
   - component: {fileID: 3158086786328215193}
+  - component: {fileID: 353806932037899227}
   - component: {fileID: 1320726653804494592}
   m_Layer: 0
   m_Name: PlayerCube
@@ -212,6 +213,7 @@ MonoBehaviour:
   - {fileID: 6065147192797643880}
   - {fileID: 3158086786328215193}
   - {fileID: 1320726653804494592}
+  - {fileID: 353806932037899227}
   model: {fileID: 1793818030614699570}
 --- !u!114 &6065147192797643880
 MonoBehaviour:
@@ -245,6 +247,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleHitEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
   waterHitEffect: {fileID: 2443725396418623342, guid: 13de9a8ce2b1bc74bb22d9255c68b858, type: 3}
+--- !u!114 &353806932037899227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021562434382082499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e11e57d5f349861478d9c3af0413d945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1320726653804494592
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class GameplayManager : SceneManagerBase<GameplayManager>
 {
@@ -117,7 +118,7 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
     {
         isPlaying = true;
         hasContinued = true;
-        player.ChangeState(PlayerState.Reviving);
+        player.ChangeState(PlayerState.Revive);
     }
 
     public void GameOver()

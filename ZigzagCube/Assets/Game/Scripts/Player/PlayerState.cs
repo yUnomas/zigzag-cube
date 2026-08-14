@@ -5,5 +5,5 @@ public enum PlayerState
     Idle,
     Alive,
     Death,
-    Reviving,
+    Revive,
 }

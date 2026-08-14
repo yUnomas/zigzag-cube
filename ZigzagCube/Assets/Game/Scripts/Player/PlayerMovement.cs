@@ -19,7 +19,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
     /// 移動方向    </summary>
     private float direction = 1f;
     /// <summary>
-    /// 方向切り替え中かどうか    </summary>
+    /// 方向切り替え可能状態    </summary>
     private bool isChangeDirection;
     /// <summary>
     /// 最後に速度が上昇した距離    </summary>
@@ -32,6 +32,8 @@ public class PlayerMovement : ModuleBase<PlayerController>
     {
         rb.useGravity = true;
         lastPosition = transform.position;
+
+        isChangeDirection = true;
     }
     public override void Deactivate()
     {
@@ -49,19 +51,14 @@ public class PlayerMovement : ModuleBase<PlayerController>
             Debug.Log($"現在の移動速度:{forwardSpeed}");
             lastSpeedIncreaseDirection = transform.position.z;
         }
-        // タップで左右切り替え
+        // タップで方向切り替え
         if (inputData.isTouch) TriggerDirection();
 
-        // Z座標が戻った場合に元の位置へ戻す
-        if(lastPosition.z > transform.position.z)
+        // 地面から落下した場合に方向切り替えを無効化
+        if (transform.position.y <= 0.9f)
         {
-            Debug.Log("プレイヤーのZ座標が戻りました");
-            transform.position = new Vector3
-                (
-                    transform.position.x,
-                    transform.position.y,
-                    lastPosition.z
-                );
+            Debug.Log("プレイヤーが地面から落下しました");
+            isChangeDirection = false;
         }
         // 現在のプレイヤー座標を保存
         lastPosition = transform.position;
@@ -69,21 +66,23 @@ public class PlayerMovement : ModuleBase<PlayerController>
     public override void FixedExecute()
     {
         rb.linearVelocity = new Vector3(horizontalSpeed * direction + externalHorizontalSpeed, rb.linearVelocity.y, forwardSpeed);
-        isChangeDirection = false;
 
         // 現在の値保存
         lastPosition = transform.position;
     }
 
+    private bool IsChangeDirection()
+    {
+        return isChangeDirection && transform.position.y > 0.9f;
+    }
     /// <summary>
     /// 方向切り替え    </summary>
     public void TriggerDirection()
     {
-        if (isChangeDirection) return;
+        if (!IsChangeDirection()) return;
 
         direction *= -1;
         transform.position += Vector3.right * horizontalSpeed * direction * Time.deltaTime;
-        isChangeDirection = true;
 
         // エフェクト・SEの再生
         Vector3 position = transform.position + -transform.forward;

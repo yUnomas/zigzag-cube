@@ -28,16 +28,15 @@ public class PlayerController : ControllerBase
                 {
                     Debug.Log("死亡");
                     model.SetActive(false); // モデルを非表示
-                    SetActive(false);
                     GameplayManager.Instance.GameOver();
+                    ChangeState(PlayerState.Idle);
                 }
                 break;
-            case PlayerState.Reviving:
+            case PlayerState.Revive:
                 {
                     Debug.Log("復活");
                     model.SetActive(true);  // モデルを表示
                     GetComponent<PlayerRevive>().Revive();
-                    ChangeState(PlayerState.Alive);
                 }
                 break;
         }

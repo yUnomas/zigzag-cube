@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class GameplayUIController : UIControllerBase
@@ -6,6 +7,7 @@ public class GameplayUIController : UIControllerBase
     [SerializeField] private TextMeshProUGUI scoreTMP;
     [SerializeField] private PauseUIController pauseUI;
     [SerializeField] private ContinueUIController continueUI;
+    [SerializeField] private CountdownUIController countdownUI;
 
     /// <summary>
     /// スコアの表示更新    </summary>
@@ -20,6 +22,10 @@ public class GameplayUIController : UIControllerBase
     public void ShowContinueUI()
     {
         continueUI.Show();
+    }
+    public void StartCountDown(int seconds, Action onCompleted)
+    {
+        countdownUI.Countdown(seconds, onCompleted);
     }
 
     /// <summary>

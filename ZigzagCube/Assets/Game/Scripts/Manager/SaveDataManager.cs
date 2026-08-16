@@ -79,6 +79,8 @@ public class SaveDataManager : MonoBehaviour
     /// データの保存    </summary>
     public void Save<T>(T data)
     {
+        if (data == null) return;
+
         string key = GetKey<T>();
         string filePath = GetFilePath<T>();
 

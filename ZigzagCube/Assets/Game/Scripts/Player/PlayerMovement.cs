@@ -12,6 +12,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
     private float speedIncreasePerDistance = 100f;
     [Header("=====")]
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private GameObject changeDirectionEffect;
 
     private float externalHorizontalSpeed;
@@ -19,21 +20,13 @@ public class PlayerMovement : ModuleBase<PlayerController>
     /// 移動方向    </summary>
     private float direction = 1f;
     /// <summary>
-    /// 方向切り替え可能状態    </summary>
-    private bool isChangeDirection;
-    /// <summary>
     /// 最後に速度が上昇した距離    </summary>
     private float lastSpeedIncreaseDirection;
-    /// <summary>
-    /// 前フレームのプレイヤー座標    </summary>
-    private Vector3 lastPosition;
 
     public override void Activate()
     {
         rb.useGravity = true;
-        lastPosition = transform.position;
-
-        isChangeDirection = true;
+        boxCollider.enabled = false;
     }
     public override void Deactivate()
     {
@@ -55,34 +48,31 @@ public class PlayerMovement : ModuleBase<PlayerController>
         if (inputData.isTouch) TriggerDirection();
 
         // 地面から落下した場合に方向切り替えを無効化
-        if (transform.position.y <= 0.9f)
+        if (transform.position.y < 1.0f && !boxCollider.enabled)
         {
-            Debug.Log("プレイヤーが地面から落下しました");
-            isChangeDirection = false;
+            Debug.Log($"プレイヤーが地面から落下しました \n Y:{transform.position.y}");
+            boxCollider.enabled = true;
         }
-        // 現在のプレイヤー座標を保存
-        lastPosition = transform.position;
+        else if (boxCollider.enabled && transform.position.y >= 1.0f)
+        {
+            Debug.Log($"プレイヤーが落下から復帰しました \n Y:{transform.position.y}");
+            boxCollider.enabled = false;
+        }
+
     }
     public override void FixedExecute()
     {
-        rb.linearVelocity = new Vector3(horizontalSpeed * direction + externalHorizontalSpeed, rb.linearVelocity.y, forwardSpeed);
-
-        // 現在の値保存
-        lastPosition = transform.position;
+        rb.linearVelocity = new Vector3(
+            horizontalSpeed * direction + externalHorizontalSpeed,
+            rb.linearVelocity.y,
+            forwardSpeed);
     }
 
-    private bool IsChangeDirection()
-    {
-        return isChangeDirection && transform.position.y > 0.9f;
-    }
     /// <summary>
     /// 方向切り替え    </summary>
     public void TriggerDirection()
     {
-        if (!IsChangeDirection()) return;
-
         direction *= -1;
-        transform.position += Vector3.right * horizontalSpeed * direction * Time.deltaTime;
 
         // エフェクト・SEの再生
         Vector3 position = transform.position + -transform.forward;

@@ -95,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3287896844556189218}
+  - component: {fileID: 3102215522655582037}
   - component: {fileID: 3569772475814969468}
   - component: {fileID: 7363053069113109345}
   - component: {fileID: 4043005843487397534}
@@ -126,6 +127,27 @@ Transform:
   - {fileID: 7269312455520076156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3102215522655582037
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021562434382082499}
+  m_Material: {fileID: 13400000, guid: 3d3c7bafb08932d4ea74ae7365d0d76c, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &3569772475814969468
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -212,6 +234,7 @@ MonoBehaviour:
   speedIncreaseAmount: 1
   speedIncreasePerDistance: 100
   rb: {fileID: 7363053069113109345}
+  boxCollider: {fileID: 3102215522655582037}
   changeDirectionEffect: {fileID: 4599042771555557612, guid: 24f7e670121f71246bd7aa5a96da6860, type: 3}
 --- !u!114 &3158086786328215193
 MonoBehaviour:
@@ -225,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f692ecfca339fca4cba19a9c42465360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathAnimationDuration: 1
   obstacleHitEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
   waterHitEffect: {fileID: 2443725396418623342, guid: 13de9a8ce2b1bc74bb22d9255c68b858, type: 3}
 --- !u!114 &353806932037899227

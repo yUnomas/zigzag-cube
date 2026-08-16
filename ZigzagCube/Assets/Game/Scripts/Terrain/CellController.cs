@@ -4,14 +4,14 @@ using UnityEngine;
 public class CellController : MonoBehaviour
 {
     [SerializeField] private GameObject ground;
-    [SerializeField] private RockView rockView;
+    [SerializeField] private SpikeCubeView spikeCubeView;
     [SerializeField] private Conveyor conveyor;
 
     public void Clear()
     {
         // 地面
         ground.SetActive(false);
-        rockView.Clear();
+        spikeCubeView.Clear();
         conveyor.Clear();
     }
     public void SetGround(GroundData data)
@@ -31,8 +31,8 @@ public class CellController : MonoBehaviour
         {
             switch (datas[i].type)
             {
-                case ObstacleType.Rock:
-                    rockView.Set(datas[i].laneIndex);
+                case ObstacleType.SpikeCube:
+                    spikeCubeView.Set(datas[i].laneIndex);
                     break;
             }
         }

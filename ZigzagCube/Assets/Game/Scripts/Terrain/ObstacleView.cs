@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class ObstacleView : MonoBehaviour
 {
-    [SerializeField] private GameObject root;
     [SerializeField] private GameObject prefab;
 
     private List<GameObject> instances = new List<GameObject>();
+    /// <summary>
+    /// インスタンスの使用回数    </summary>
     private int usedCount;
 
     private void TryAddInstance()
@@ -14,8 +15,7 @@ public class ObstacleView : MonoBehaviour
         // インスタンスの不足分を生成
         if (instances.Count <= usedCount)
         {
-            GameObject obj = Instantiate(prefab);
-            obj.transform.parent = root.transform;
+            GameObject obj = Instantiate(prefab, transform);
             instances.Add(obj);
         }
     }
@@ -24,8 +24,9 @@ public class ObstacleView : MonoBehaviour
     {
         // 障害物の表示と位置設定
         instances[usedCount].SetActive(true);
-        instances[usedCount].transform.localPosition = new Vector3(x, 1, 0);
-        usedCount++;
+        Vector3 localPos = instances[usedCount].transform.localPosition;
+        localPos.x = x;
+        instances[usedCount].transform.localPosition = localPos;
     }
 
     public void Clear()
@@ -37,5 +38,6 @@ public class ObstacleView : MonoBehaviour
     {
         TryAddInstance();
         View(x);
+        usedCount++;
     }
 }

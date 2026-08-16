@@ -1,4 +1,4 @@
 ﻿public enum ObstacleType
 {
-    Rock,   
+    SpikeCube,
 }

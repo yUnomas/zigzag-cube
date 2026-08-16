@@ -84,11 +84,6 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         AudioManager.Instance.StopBGM();
     }
 
-    private async Awaitable WaitForDeathAnimationAsync(Action onCompleted)
-    {
-        await Awaitable.WaitForSecondsAsync(1f);
-        onCompleted?.Invoke();
-    }
     /// <summary>
     /// スコア設定    </summary>
     private void SetScore(int value)
@@ -126,16 +121,9 @@ public class GameplayManager : SceneManagerBase<GameplayManager>
         if (!isPlaying) return;
 
         isPlaying = false;
-        if (hasContinued)
-        {
-            _ = WaitForDeathAnimationAsync(() => FinishGame());
-        }
-        else
-        {
-            _ = WaitForDeathAnimationAsync(() => gameplayUI.ShowContinueUI());
-        }
+        if (hasContinued) FinishGame();
+        else gameplayUI.ShowContinueUI();
     }
-
     /// <summary>
     /// ポーズ状態の切り替え    </summary>
     public void TogglePause()

@@ -70,7 +70,7 @@ public class ObstacleGenerator : MonoBehaviour
             // 生成情報を保存
             obstacleDatas[i] = new ObstacleData()
             {
-                type = ObstacleType.Rock,
+                type = ObstacleType.SpikeCube,
                 cellIndex = pos.z,
                 laneIndex = pos.x,
             };

@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class CellController : MonoBehaviour
 {
-    [SerializeField] private GameObject ground;
-    [SerializeField] private SpikeCubeView spikeCubeView;
+    [SerializeField] private Ground ground;
+    [SerializeField] private Bridge bridge;
+    [SerializeField] private ObstacleView spikeCubeView;
     [SerializeField] private Conveyor conveyor;
 
     public void Clear()
     {
         // 地面
-        ground.SetActive(false);
+        ground.Clear();
+        bridge.Clear();
         spikeCubeView.Clear();
         conveyor.Clear();
     }
@@ -18,11 +20,11 @@ public class CellController : MonoBehaviour
     {
         if (data.type == GroundType.None) return;
 
-        float x = data.startLaneIndex + (float)(data.width - 1) / 2;
-        // 地面の表示とサイズ設定
-        ground.SetActive(true);
-        ground.transform.localPosition = new Vector3(x, 0, 0);
-        ground.transform.localScale = new Vector3(data.width, 1, 1);
+        switch (data.type)
+        {
+            case GroundType.Normal: ground.View(data.startLaneIndex, data.width); break;
+            case GroundType.Bridge: bridge.View(data.startLaneIndex, data.width); break;
+        }
     }
     public void SetObstacle(List<ObstacleData> datas)
     {

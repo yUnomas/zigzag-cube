@@ -15,7 +15,7 @@ public class GimmickGenerator : MonoBehaviour
             case ChunkType.Conveyor:
                 {
                     // 一定範囲のセルにコンベヤーを生成
-                    int startCellIndex = UnityEngine.Random.Range(0, chunkWidth / 2);
+                    int startCellIndex = UnityEngine.Random.Range(1, chunkWidth / 2);
                     int endCellIndex = UnityEngine.Random.Range(startCellIndex + 1, chunkWidth - 2);
                     gimmickDatas = new GimmickData[endCellIndex - startCellIndex + 1];
 

@@ -35,7 +35,7 @@ public class GroundGenerator : MonoBehaviour
                     int randWidth = Random.Range(minWidth, maxWidth + 1);
                     int startLaneIndex = Random.Range(1, chunkWidth - randWidth + 1);
 
-                    int startCellIndex = Random.Range(0, chunkWidth / 2);
+                    int startCellIndex = Random.Range(1, chunkWidth / 2);
                     int endCellIndex = Random.Range(startCellIndex + 1, chunkWidth - 1);
 
                     for (int i = 0; i < cellCount; i++)

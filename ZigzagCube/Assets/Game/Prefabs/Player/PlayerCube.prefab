@@ -122,8 +122,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3590506079019918606}
   - {fileID: 7269312455520076156}
+  - {fileID: 3590506079019918606}
+  - {fileID: 1945044342518409853}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3102215522655582037
@@ -234,6 +235,7 @@ MonoBehaviour:
   rb: {fileID: 7363053069113109345}
   boxCollider: {fileID: 3102215522655582037}
   changeDirectionEffect: {fileID: 4599042771555557612, guid: 24f7e670121f71246bd7aa5a96da6860, type: 3}
+  moveIndicateAnimation: {fileID: 3817933881841217375}
 --- !u!114 &3158086786328215193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3867066667332075807, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
       propertyPath: m_Name
-      value: PlayerMovementTrajectoryEffect
+      value: MovementTrajectoryEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -294,4 +296,43 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2471272614871373166, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
   m_PrefabInstance: {fileID: 1414045727894794336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6212888899776226950
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3287896844556189218}
+    m_Modifications:
+    - target: {fileID: 5532304970974514427, guid: cefcc0b24cf9d33419dd91c4640c10e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532304970974514427, guid: cefcc0b24cf9d33419dd91c4640c10e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532304970974514427, guid: cefcc0b24cf9d33419dd91c4640c10e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116983917440387545, guid: cefcc0b24cf9d33419dd91c4640c10e7, type: 3}
+      propertyPath: m_Name
+      value: MoveIndicateAnimation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cefcc0b24cf9d33419dd91c4640c10e7, type: 3}
+--- !u!4 &1945044342518409853 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5532304970974514427, guid: cefcc0b24cf9d33419dd91c4640c10e7, type: 3}
+  m_PrefabInstance: {fileID: 6212888899776226950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3817933881841217375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7116983917440387545, guid: cefcc0b24cf9d33419dd91c4640c10e7, type: 3}
+  m_PrefabInstance: {fileID: 6212888899776226950}
   m_PrefabAsset: {fileID: 0}

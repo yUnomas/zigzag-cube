@@ -3,4 +3,5 @@
     None,
     Normal,
     Bridge,
+    Conveyor,
 }

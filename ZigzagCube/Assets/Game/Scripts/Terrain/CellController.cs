@@ -5,8 +5,8 @@ public class CellController : MonoBehaviour
 {
     [SerializeField] private Ground ground;
     [SerializeField] private Bridge bridge;
-    [SerializeField] private ObstacleView spikeCubeView;
     [SerializeField] private Conveyor conveyor;
+    [SerializeField] private ObstacleView spikeCubeView;
 
     public void Clear()
     {
@@ -24,6 +24,7 @@ public class CellController : MonoBehaviour
         {
             case GroundType.Normal: ground.View(data.startLaneIndex, data.width); break;
             case GroundType.Bridge: bridge.View(data.startLaneIndex, data.width); break;
+            case GroundType.Conveyor: conveyor.View(data.startLaneIndex, data.width, data.direction); break;
         }
     }
     public void SetObstacle(List<ObstacleData> datas)
@@ -37,19 +38,6 @@ public class CellController : MonoBehaviour
                     spikeCubeView.Set(datas[i].laneIndex);
                     break;
             }
-        }
-    }
-    public void SetGimmick(GimmickData data)
-    {
-        if (data.type == GimmickType.None) return;
-
-        switch (data.type)
-        {
-            case GimmickType.Conveyor:
-                {
-                    conveyor.Set(data.width, data.direction.x);
-                }
-                break;
         }
     }
 }

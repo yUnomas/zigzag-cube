@@ -14,6 +14,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
     [SerializeField] private Rigidbody rb;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private GameObject changeDirectionEffect;
+    [SerializeField] private GameObject moveIndicateAnimation;
 
     private float externalHorizontalSpeed;
     /// <summary>
@@ -27,6 +28,8 @@ public class PlayerMovement : ModuleBase<PlayerController>
     {
         rb.useGravity = true;
         boxCollider.enabled = false;
+
+        if(moveIndicateAnimation.activeSelf) moveIndicateAnimation.SetActive(false);
     }
     public override void Deactivate()
     {
@@ -45,7 +48,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
             lastSpeedIncreaseDirection = transform.position.z;
         }
         // タップで方向切り替え
-        if (inputData.isTouch) TriggerDirection();
+        if (inputData.isTouch) ChangeDirection();
 
         // 地面から落下した場合に方向切り替えを無効化
         if (transform.position.y < 1.0f && !boxCollider.enabled)
@@ -70,13 +73,29 @@ public class PlayerMovement : ModuleBase<PlayerController>
 
     /// <summary>
     /// 方向切り替え    </summary>
-    public void TriggerDirection()
+    public void ChangeDirection()
     {
         direction *= -1;
 
-        // エフェクト・SEの再生
-        Vector3 position = transform.position + -transform.forward;
-        Instantiate(changeDirectionEffect, position, Quaternion.identity);
+        // プレイヤーの状態による分岐
+        switch(controller.State)
+        {
+            case PlayerState.Idle:
+                {
+                    // 進行方向を示すアニメーションの方向切り替え
+                    Vector3 scale = moveIndicateAnimation.transform.localScale;
+                    scale.x = direction;
+                    moveIndicateAnimation.transform.localScale = scale;
+                }
+                break;
+            case PlayerState.Alive:
+                {
+                    // エフェクト再生
+                    Vector3 position = transform.position + -transform.forward;
+                    Instantiate(changeDirectionEffect, position, Quaternion.identity);
+                }
+                break;
+        }
         AudioManager.Instance.PlaySE("PlayerChangeDirection");
     }
     public void AddSpeed(float value) { externalHorizontalSpeed += value; }

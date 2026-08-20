@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2471272614871373166}
   - component: {fileID: 8170009553180647084}
   m_Layer: 0
-  m_Name: PlayerMovementTrajectoryEffect
+  m_Name: MovementTrajectoryEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

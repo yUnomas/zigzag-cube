@@ -3,7 +3,7 @@
 public struct GimmickData
 {
     public GimmickType type;
-    public int cellIndex;
+    public int laneIndex;
     public int width;
     public Vector2Int direction;
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Conveyor : GroundView
+public class Conveyor : StageObjectBase
 {
     [SerializeField, Tooltip("コンベヤーの流れる速度")]
     private float flowSpeed;
@@ -26,9 +26,9 @@ public class Conveyor : GroundView
         sideMaterial.mainTextureOffset = topMaterial.mainTextureOffset;
     }
 
-    public void View(int startLaneIndex, int width, int direction)
+    public void Set(int startLaneIndex, int width, int direction)
     {
-        base.View(startLaneIndex, width);
+        base.Set(startLaneIndex, width);
 
         flowDirection = direction;
         topMaterial.mainTextureScale = new Vector3(width / 2f * direction, 1);

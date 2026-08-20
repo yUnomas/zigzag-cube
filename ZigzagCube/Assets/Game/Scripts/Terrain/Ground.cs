@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
 
-public class Ground : GroundView
+public class Ground : StageObjectBase
 {
 }

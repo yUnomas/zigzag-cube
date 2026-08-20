@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2561814882343346795}
   - component: {fileID: 5856082512573916429}
   - component: {fileID: 5979166706442191988}
-  - component: {fileID: 5715796036133123531}
   - component: {fileID: 622091115013283521}
   m_Layer: 0
   m_Name: Chunk
@@ -73,7 +72,6 @@ MonoBehaviour:
   - {fileID: 5387365157966710345}
   - {fileID: 7247735869514373503}
   groundGenerator: {fileID: 5979166706442191988}
-  obstacleGenerator: {fileID: 5715796036133123531}
   gimmickGenerator: {fileID: 622091115013283521}
   type: 0
 --- !u!114 &5979166706442191988
@@ -88,22 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710225dc716f8be4b85467cd303f816f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5715796036133123531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4117766520386228274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b57303530b13f504da40299704b0a613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startGenerateCount: 2
-  maxGenerateCount: 8
-  generateIncreaseAmount: 1
-  generateIncreasePerScore: 200
 --- !u!114 &622091115013283521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6a9a8f3c0a65440821030c9acfe121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generateCount: 2
 --- !u!1001 &278522344873572505
 PrefabInstance:
   m_ObjectHideFlags: 0

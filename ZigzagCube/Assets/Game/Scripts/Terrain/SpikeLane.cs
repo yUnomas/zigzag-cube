@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SpikeLane : MonoBehaviour
+public class SpikeLane : StageObjectBase
 {
     [SerializeField] private float speed = 1f;
     [SerializeField] private Transform spike;
@@ -12,30 +12,49 @@ public class SpikeLane : MonoBehaviour
     private void Update()
     {
         spike.position += speed * direction * Time.deltaTime;
-        TryReturn();
+        TryTurn();
     }
 
-    private void TryReturn()
+    private void SetLane(int width)
     {
-        if(leftEndPoint.position.x > spike.position.x)
+        float x = (width - 1) / 2;
+        // 表示
+        gameObject.SetActive(true);
+/*        // Transform設定
+        Vector3 pos = transform.localPosition;
+        pos.x = x;
+        transform.localPosition = pos;*/
+    }
+    private void SetSpike(int laneIndex)
+    {
+        // Transform設定
+        Vector3 pos = spike.transform.localPosition;
+        pos.x = laneIndex;
+        spike.transform.localPosition = pos;
+    }
+    /// <summary>
+    /// 折り返せるなら折り返す    </summary>
+    private void TryTurn()
+    {
+        // レーンの左端にスパイクが到達したら右方向へ折り返し
+        if(leftEndPoint.position.x >= spike.position.x)
         {
             spike.position = leftEndPoint.position;
             direction = Vector3.right;
         }
-        else if(rightEndPoint.position.x < spike.position.x)
+        // レーンの右端にスパイクが到達したら左方向へ折り返し
+        else if (rightEndPoint.position.x <= spike.position.x)
         {
             spike.position = rightEndPoint.position;
             direction = Vector3.left;
         }
     }
 
-    public void Clear()
+
+    public void Set(int laneIndex, int width, int direction)
     {
-        gameObject.SetActive(false);
-    }
-    public void Set(int direction)
-    {
+        SetLane(width);     // レーンの配置
+        SetSpike(laneIndex);// スパイクの配置
         this.direction = direction == 1 ? Vector3.right : Vector3.left;
-        gameObject.SetActive(true);
     }
 }

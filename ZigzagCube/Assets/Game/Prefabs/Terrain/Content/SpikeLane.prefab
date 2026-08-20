@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 3944441503575097977}
   - component: {fileID: 7949724122141515977}
   m_Layer: 0
-  m_Name: RightReturnPoint
+  m_Name: RightEndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 8558050829060888760}
   - component: {fileID: 8358927071725183043}
   m_Layer: 0
-  m_Name: LeftReturnPoint
+  m_Name: LeftEndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,8 +895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   spike: {fileID: 9085824682347230744}
-  leftReturnPoint: {fileID: 346908907406580522}
-  rightReturnPoint: {fileID: 8873951187087268895}
+  leftEndPoint: {fileID: 346908907406580522}
+  rightEndPoint: {fileID: 8873951187087268895}
 --- !u!1 &8102142295254974349
 GameObject:
   m_ObjectHideFlags: 0

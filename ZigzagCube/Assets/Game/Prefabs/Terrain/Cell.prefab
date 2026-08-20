@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 2915042824197829575}
   bridge: {fileID: 3324685507940197635}
+  conveyor: {fileID: 6146981686562976908}
   spikeCubeView: {fileID: 1168770573567426626}
-  conveyor: {fileID: 9203888213059785650}
 --- !u!1001 &1714486149831566671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173,6 +173,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1414862722835027977, guid: 5235992563c534644a93cf7425f7fff7, type: 3}
   m_PrefabInstance: {fileID: 2750349362286044617}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6146981686562976908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8315126413164466501, guid: 5235992563c534644a93cf7425f7fff7, type: 3}
+  m_PrefabInstance: {fileID: 2750349362286044617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba80ce6736abe240b37be23ed5755df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4539800150440265581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,14 +271,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5304824616244294538, guid: 7a2e0aaff8e0db941a243bd2ffb2b144, type: 3}
   m_PrefabInstance: {fileID: 8699233730504387831}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9203888213059785650 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 505288729101483845, guid: 7a2e0aaff8e0db941a243bd2ffb2b144, type: 3}
-  m_PrefabInstance: {fileID: 8699233730504387831}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba80ce6736abe240b37be23ed5755df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

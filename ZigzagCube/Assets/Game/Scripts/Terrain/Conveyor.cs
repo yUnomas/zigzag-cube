@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Conveyor : MonoBehaviour
+public class Conveyor : GroundView
 {
     [SerializeField, Tooltip("コンベヤーの流れる速度")]
     private float flowSpeed;
@@ -26,17 +26,13 @@ public class Conveyor : MonoBehaviour
         sideMaterial.mainTextureOffset = topMaterial.mainTextureOffset;
     }
 
-    public void Clear()
+    public void View(int startLaneIndex, int width, int direction)
     {
-        gameObject.SetActive(false);
-    }
-    public void Set(int width, int direction)
-    {
-        gameObject.SetActive(true);
-        transform.localScale = new Vector3(width, transform.localScale.y, transform.localScale.z);
+        base.View(startLaneIndex, width);
+
+        flowDirection = direction;
         topMaterial.mainTextureScale = new Vector3(width / 2f * direction, 1);
         sideMaterial.mainTextureScale = new Vector3(0.5f * direction, 1);
-        flowDirection = direction;
     }
 
     private void OnCollisionEnter(Collision collision)

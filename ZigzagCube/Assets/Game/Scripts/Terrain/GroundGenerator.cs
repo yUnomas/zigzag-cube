@@ -2,13 +2,14 @@
 
 public class GroundGenerator : MonoBehaviour
 {
-    private GroundData CreateData(GroundType type, int startLaneIndex, int width)
+    private GroundData CreateData(GroundType type, int startLaneIndex, int width, int direction = 1)
     {
         return new GroundData()
         {
             type = type,
             startLaneIndex = startLaneIndex,
-            width = width
+            width = width,
+            direction = direction
         };
     }
 
@@ -22,7 +23,6 @@ public class GroundGenerator : MonoBehaviour
         {
             case ChunkType.Start:
             case ChunkType.Normal:
-            case ChunkType.Conveyor:
                 for (int i = 0; i < cellCount; i++)
                 {
                     groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
@@ -43,6 +43,26 @@ public class GroundGenerator : MonoBehaviour
                         if (i >= startCellIndex && i <= endCellIndex)
                         {
                             groundDatas[i] = CreateData(GroundType.Bridge, startLaneIndex, randWidth);
+                        }
+                        else
+                        {
+                            groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
+                        }
+                    }
+                }
+                break;
+            case ChunkType.Conveyor:
+                {
+                    // 一定範囲のセルにコンベヤーを生成
+                    int startCellIndex = Random.Range(1, chunkWidth / 2);
+                    int endCellIndex = Random.Range(startCellIndex + 1, chunkWidth - 2);
+                    int direction = Random.Range(0, 2) == 0 ? 1 : -1;
+
+                    for (int i = 0; i < cellCount; i++)
+                    {
+                        if (i >= startCellIndex && i <= endCellIndex)
+                        {
+                            groundDatas[i] = CreateData(GroundType.Conveyor, 0, chunkWidth, direction);
                         }
                         else
                         {

@@ -9,8 +9,9 @@ public class StageObjectBase : MonoBehaviour
     public virtual void Set(int startLaneIndex, float width)
     {
         float x = startLaneIndex + (width - 1) / 2;
-        // 地面の表示とサイズ設定
+        // 表示
         gameObject.SetActive(true);
+        // Transform設定
         Vector3 pos = transform.localPosition;
         pos.x = x;
         transform.localPosition = pos;

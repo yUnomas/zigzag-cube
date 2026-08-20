@@ -5,6 +5,26 @@ public class GimmickGenerator : MonoBehaviour
 {
     [SerializeField] private int generateCount = 2;
 
+    private GimmickType GetType(GroundType groundType)
+    {
+        switch(groundType)
+        {
+            case GroundType.None: return GimmickType.None;
+            case GroundType.Bridge: return GimmickType.Spike;
+            default:    return (GimmickType)UnityEngine.Random.Range((int)GimmickType.Spike, (int)GimmickType.Max);
+        }
+    }
+    private GimmickData CreateData(GimmickType type, int startLaneIndex, int width, int direction = 1)
+    {
+        return new GimmickData()
+        {
+            type = type,
+            laneIndex = startLaneIndex,
+            width = width,
+            direction = direction
+        };
+    }
+
     public GimmickData[] Generate(ChunkType chunkType, GroundData[] groundDatas)
     {
         if (chunkType <= ChunkType.Start) return Array.Empty<GimmickData>();
@@ -22,8 +42,8 @@ public class GimmickGenerator : MonoBehaviour
                 if (gimmickDatas[cellIndex].type == GimmickType.None) break;
             }
             // 配置ギミックデータの作成
-            GimmickType type = (GimmickType)UnityEngine.Random.Range((int)GimmickType.Spike, (int)GimmickType.Max);
             GroundData ground = groundDatas[cellIndex];
+            GimmickType type = GetType(ground.type);
             switch (type)
             {
                 case GimmickType.Spike:
@@ -31,12 +51,16 @@ public class GimmickGenerator : MonoBehaviour
                         int laneIndex = UnityEngine.
                             Random.Range(ground.startLaneIndex, ground.startLaneIndex + ground.width);
 
-                        gimmickDatas[cellIndex] = new GimmickData()
-                        {
-                            type = type,
-                            laneIndex = laneIndex,
-                            width = 1,
-                        };
+                        gimmickDatas[cellIndex] = CreateData(type, laneIndex, 1);
+                    }
+                    break;
+                case GimmickType.SpikeLane:
+                    {
+                        int laneIndex = UnityEngine.
+                            Random.Range(ground.startLaneIndex, ground.startLaneIndex + ground.width);
+                        int direction = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
+
+                        gimmickDatas[cellIndex] = CreateData(type, laneIndex, ground.width, direction);
                     }
                     break;
             }

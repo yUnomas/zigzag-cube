@@ -6,14 +6,14 @@ public class CellController : MonoBehaviour
     [SerializeField] private Ground ground;
     [SerializeField] private Bridge bridge;
     [SerializeField] private Conveyor conveyor;
-    [SerializeField] private ObstacleView spikeCubeView;
+    [SerializeField] private Spike spike;
 
     public void Clear()
     {
         // 地面
         ground.Clear();
         bridge.Clear();
-        spikeCubeView.Clear();
+        spike.Clear();
         conveyor.Clear();
     }
     public void SetGround(GroundData data)
@@ -22,22 +22,21 @@ public class CellController : MonoBehaviour
 
         switch (data.type)
         {
-            case GroundType.Normal: ground.View(data.startLaneIndex, data.width); break;
-            case GroundType.Bridge: bridge.View(data.startLaneIndex, data.width); break;
-            case GroundType.Conveyor: conveyor.View(data.startLaneIndex, data.width, data.direction); break;
+            case GroundType.Normal: ground.Set(data.startLaneIndex, data.width); break;
+            case GroundType.Bridge: bridge.Set(data.startLaneIndex, data.width); break;
+            case GroundType.Conveyor: conveyor.Set(data.startLaneIndex, data.width, data.direction); break;
         }
     }
-    public void SetObstacle(List<ObstacleData> datas)
+    public void SetGimmick(GimmickData data)
     {
-        if(datas == null) return;
-        for(int i = 0; i < datas.Count; i++)
+        if(data.type == GimmickType.None) return;
+        
+        switch (data.type)
         {
-            switch (datas[i].type)
-            {
-                case ObstacleType.SpikeCube:
-                    spikeCubeView.Set(datas[i].laneIndex);
-                    break;
-            }
+            case GimmickType.Spike: spike.Set(data.laneIndex, data.width); break;
+            case GimmickType.SpikeLane:
+                // スパイクレーン用の配置処理
+                break;
         }
     }
 }

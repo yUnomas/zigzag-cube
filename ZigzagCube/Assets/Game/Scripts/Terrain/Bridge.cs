@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Bridge : GroundView
+public class Bridge : StageObjectBase
 {
     [SerializeField] private MeshRenderer meshRenderer;
     private Material material;
@@ -10,9 +10,9 @@ public class Bridge : GroundView
         material = meshRenderer.material;
     }
 
-    public override void View(int startLaneIndex, float width)
+    public override void Set(int startLaneIndex, float width)
     {
-        base.View(startLaneIndex, width);
+        base.Set(startLaneIndex, width);
         material.mainTextureScale = new Vector3(width / 2f, 1);
     }
 }

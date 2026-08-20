@@ -1,6 +1,8 @@
 ﻿public enum GimmickType
 {
     None,
-    Conveyor,
+    Spike,
     SpikeLane,
+
+    Max,
 }

@@ -25,11 +25,12 @@ public class SpikeLane : StageObjectBase
         pos.x = x;
         transform.localPosition = pos;*/
     }
-    private void SetSpike(int laneIndex)
+    private void SetSpike(int laneIndex, int width)
     {
+        int x = laneIndex - (width - 1) / 2;
         // Transform設定
         Vector3 pos = spike.transform.localPosition;
-        pos.x = laneIndex;
+        pos.x = x;
         spike.transform.localPosition = pos;
     }
     /// <summary>
@@ -53,8 +54,8 @@ public class SpikeLane : StageObjectBase
 
     public void Set(int laneIndex, int width, int direction)
     {
-        SetLane(width);     // レーンの配置
-        SetSpike(laneIndex);// スパイクの配置
+        SetLane(width);             // レーンの配置
+        SetSpike(laneIndex, width); // スパイクの配置
         this.direction = direction == 1 ? Vector3.right : Vector3.left;
     }
 }

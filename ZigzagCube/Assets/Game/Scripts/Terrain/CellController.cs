@@ -24,7 +24,9 @@ public class CellController : MonoBehaviour
         switch (data.type)
         {
             case GroundType.Normal: ground.Set(data.startLaneIndex, data.width); break;
-            case GroundType.Bridge: bridge.Set(data.startLaneIndex, data.width); break;
+            case GroundType.Bridge: bridge.Set(data.startLaneIndex, data.width, data.direction, false); break;
+            case GroundType.MovingBridge: bridge.Set(data.startLaneIndex, data.width, data.direction, true); break;
+            case GroundType.BridgeLane: bridge.SetWithLane(data.startLaneIndex, data.width, data.direction); break;
             case GroundType.Conveyor: conveyor.Set(data.startLaneIndex, data.width, data.direction); break;
         }
     }

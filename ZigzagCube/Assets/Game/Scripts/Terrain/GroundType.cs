@@ -3,5 +3,7 @@
     None,
     Normal,
     Bridge,
+    MovingBridge,
+    BridgeLane,
     Conveyor,
 }

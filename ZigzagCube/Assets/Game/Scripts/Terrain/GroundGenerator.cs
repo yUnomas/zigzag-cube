@@ -38,15 +38,41 @@ public class GroundGenerator : MonoBehaviour
                     int startCellIndex = Random.Range(1, chunkWidth / 2);
                     int endCellIndex = Random.Range(startCellIndex + 1, chunkWidth - 1);
 
-                    for (int i = 0; i < cellCount; i++)
+                    int rand = Random.Range(0, 10);
+                    if(rand < 3)
                     {
-                        if (i >= startCellIndex && i <= endCellIndex)
+                        int direction = Random.Range(0, 2) == 0 ? 1 : -1;
+                        int bridgeLength = endCellIndex - startCellIndex + 1;
+                        int laneCellIndex = startCellIndex + bridgeLength / 2;
+
+                        for (int i = 0; i < cellCount; i++)
                         {
-                            groundDatas[i] = CreateData(GroundType.Bridge, startLaneIndex, randWidth);
+                            if (i == laneCellIndex)
+                            {
+                                groundDatas[i] = CreateData(GroundType.BridgeLane, startLaneIndex, randWidth, direction);
+                            }
+                            else if (i >= startCellIndex && i <= endCellIndex)
+                            {
+                                groundDatas[i] = CreateData(GroundType.MovingBridge, startLaneIndex, randWidth, direction);
+                            }
+                            else
+                            {
+                                groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
+                            }
                         }
-                        else
+                    }
+                    else
+                    {
+                        for (int i = 0; i < cellCount; i++)
                         {
-                            groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
+                            if (i >= startCellIndex && i <= endCellIndex)
+                            {
+                                groundDatas[i] = CreateData(GroundType.Bridge, startLaneIndex, randWidth);
+                            }
+                            else
+                            {
+                                groundDatas[i] = CreateData(GroundType.Normal, 0, chunkWidth);
+                            }
                         }
                     }
                 }

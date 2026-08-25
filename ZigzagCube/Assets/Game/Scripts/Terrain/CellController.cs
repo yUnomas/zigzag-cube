@@ -7,7 +7,6 @@ public class CellController : MonoBehaviour
     [SerializeField] private Bridge bridge;
     [SerializeField] private Conveyor conveyor;
     [SerializeField] private Spike spike;
-    [SerializeField] private SpikeLane spikeLane;
     [SerializeField] private Cannon cannon;
 
     public void Clear()
@@ -37,8 +36,8 @@ public class CellController : MonoBehaviour
         
         switch (data.type)
         {
-            case GimmickType.Spike: spike.Set(data.laneIndex, data.width); break;
-            case GimmickType.SpikeLane: spikeLane.Set(data.laneIndex, data.width, data.direction);  break;
+            case GimmickType.Spike: spike.Set(data.laneIndex, data.width, data.direction); break;
+            case GimmickType.SpikeLane: spike.SetWithLane(data.laneIndex, data.width, data.direction);  break;
             case GimmickType.Cannon: cannon.Set(data.laneIndex, data.width); break;
         }
     }

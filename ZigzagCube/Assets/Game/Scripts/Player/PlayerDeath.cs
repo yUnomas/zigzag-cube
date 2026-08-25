@@ -15,6 +15,19 @@ public class PlayerDeath : ModuleBase<PlayerController>
 
     private bool isDying;
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 障害物との衝突時
+        if (collision.gameObject.CompareTag(obstacleTag))
+        {
+            _ = DeathAsync(collision.contacts[0].point, obstacleHitEffect, "PlayerBreak");
+        }
+        // 水との衝突時
+        else if (collision.gameObject.CompareTag(waterTag))
+        {
+            _ = DeathAsync(collision.contacts[0].point, waterHitEffect, "WaterSplash");
+        }
+    }
     public override void Activate()
     {
         isDying = false;
@@ -34,17 +47,8 @@ public class PlayerDeath : ModuleBase<PlayerController>
         controller.ChangeState(PlayerState.Death);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Die(Vector3 deathPoint)
     {
-        // 障害物との衝突時
-        if (collision.gameObject.CompareTag(obstacleTag))
-        {
-            _ = DeathAsync(collision.contacts[0].point, obstacleHitEffect, "PlayerBreak");
-        }
-        // 水との衝突時
-        else if (collision.gameObject.CompareTag(waterTag))
-        {
-            _ = DeathAsync(collision.contacts[0].point, waterHitEffect, "WaterSplash");
-        }
+        _ = DeathAsync(deathPoint, obstacleHitEffect, "PlayerBreak");
     }
 }

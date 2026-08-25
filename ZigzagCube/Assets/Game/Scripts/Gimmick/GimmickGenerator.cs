@@ -10,7 +10,9 @@ public class GimmickGenerator : MonoBehaviour
         switch(groundType)
         {
             case GroundType.None: return GimmickType.None;
-            case GroundType.Bridge: return GimmickType.Spike;
+            case GroundType.Bridge:
+            case GroundType.MovingBridge:
+            case GroundType.BridgeLane: return (GimmickType)UnityEngine.Random.Range((int)GimmickType.Spike, (int)GimmickType.Cannon);
             default:    return (GimmickType)UnityEngine.Random.Range((int)GimmickType.Spike, (int)GimmickType.Max);
         }
     }
@@ -44,22 +46,18 @@ public class GimmickGenerator : MonoBehaviour
             // 配置ギミックデータの作成
             GroundData ground = groundDatas[cellIndex];
             GimmickType type = GetType(ground.type);
+            int laneIndex = UnityEngine.Random.Range(ground.startLaneIndex, ground.startLaneIndex + ground.width);
             switch (type)
             {
                 case GimmickType.Spike:
+                case GimmickType.Cannon:
                     {
-                        int laneIndex = UnityEngine.
-                            Random.Range(ground.startLaneIndex, ground.startLaneIndex + ground.width);
-
                         gimmickDatas[cellIndex] = CreateData(type, laneIndex, 1);
                     }
                     break;
                 case GimmickType.SpikeLane:
                     {
-                        int laneIndex = UnityEngine.
-                            Random.Range(ground.startLaneIndex, ground.startLaneIndex + ground.width);
                         int direction = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
-
                         gimmickDatas[cellIndex] = CreateData(type, laneIndex, ground.width, direction);
                     }
                     break;

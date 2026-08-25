@@ -12,7 +12,11 @@ public class Bridge : StageObjectBase
     [SerializeField] private GameObject lane;
     private Material material;
 
+    /// <summary>
+    /// 移動方向    </summary>
     Vector3 direction = Vector3.right;
+    /// <summary>
+    /// 移動の有無    </summary>
     private bool isMoving;
 
     private void Awake()

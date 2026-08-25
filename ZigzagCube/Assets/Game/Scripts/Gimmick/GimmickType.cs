@@ -3,6 +3,7 @@
     None,
     Spike,
     SpikeLane,
+    Cannon,
 
     Max,
 }

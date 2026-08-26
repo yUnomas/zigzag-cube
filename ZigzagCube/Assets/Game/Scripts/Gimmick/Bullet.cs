@@ -7,12 +7,12 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float speed = 5f;
 
-    private Vector3 startPos;
+    private Cannon cannon;
 
     private void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
-        if (startPos.z - transform.position.z >= distance) Clear();
+        if (cannon.transform.position.z - transform.position.z >= distance) Clear();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -20,17 +20,19 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerDeath>().Die(collision.GetContact(0).point);
         }
+        else if (collision.gameObject == cannon.gameObject) return;
+
         Clear();
     }
 
     private void Clear()
     {
         gameObject.SetActive(false);
-        transform.position = startPos;
+        transform.position = cannon.transform.position;
     }
-    public void Set(Vector3 startPos)
+    public void Set(Cannon cannon)
     {
         gameObject.SetActive(true);
-        this.startPos = startPos;
+        this.cannon = cannon;
     }
 }

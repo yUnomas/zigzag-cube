@@ -8,6 +8,8 @@ public class CellController : MonoBehaviour
     [SerializeField] private Conveyor conveyor;
     [SerializeField] private Spike spike;
     [SerializeField] private Cannon cannon;
+    [SerializeField] private Lane groundLane;
+    [SerializeField] private Lane gimmickLane;
 
     public void Clear()
     {
@@ -24,9 +26,19 @@ public class CellController : MonoBehaviour
         switch (data.type)
         {
             case GroundType.Normal: ground.Set(data.startLaneIndex, data.width); break;
-            case GroundType.Bridge: bridge.Set(data.startLaneIndex, data.width, data.direction, false); break;
-            case GroundType.MovingBridge: bridge.Set(data.startLaneIndex, data.width, data.direction, true); break;
-            case GroundType.BridgeLane: bridge.SetWithLane(data.startLaneIndex, data.width, data.direction); break;
+            case GroundType.Bridge: bridge.Set(data.startLaneIndex, data.width); break;
+            case GroundType.MovingBridge:
+                {
+                    bridge.Set(data.startLaneIndex, data.width);
+                    groundLane.Set(bridge.gameObject, data.direction, false);
+                }
+                break;
+            case GroundType.BridgeLane:
+                {
+                    bridge.Set(data.startLaneIndex, data.width);
+                    groundLane.Set(bridge.gameObject, data.direction, true);
+                }
+                break;
             case GroundType.Conveyor: conveyor.Set(data.startLaneIndex, data.width, data.direction); break;
         }
     }
@@ -36,8 +48,13 @@ public class CellController : MonoBehaviour
         
         switch (data.type)
         {
-            case GimmickType.Spike: spike.Set(data.laneIndex, data.width, data.direction); break;
-            case GimmickType.SpikeLane: spike.SetWithLane(data.laneIndex, data.width, data.direction);  break;
+            case GimmickType.Spike: spike.Set(data.laneIndex, data.width); break;
+            case GimmickType.SpikeLane:
+                {
+                    spike.Set(data.laneIndex, data.width);
+                    gimmickLane.Set(spike.gameObject, data.direction, true);
+                }
+                break;
             case GimmickType.Cannon: cannon.Set(data.laneIndex, data.width); break;
         }
     }

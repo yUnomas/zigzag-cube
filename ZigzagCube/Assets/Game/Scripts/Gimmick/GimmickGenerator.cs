@@ -58,7 +58,7 @@ public class GimmickGenerator : MonoBehaviour
                 case GimmickType.SpikeLane:
                     {
                         int direction = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
-                        gimmickDatas[cellIndex] = CreateData(type, laneIndex, ground.width, direction);
+                        gimmickDatas[cellIndex] = CreateData(type, laneIndex, 1, direction);
                     }
                     break;
             }

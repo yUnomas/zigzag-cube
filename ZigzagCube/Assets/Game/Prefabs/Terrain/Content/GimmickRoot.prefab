@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 3147835869441878281}
   - {fileID: 621975469877590601}
+  - {fileID: 551183373444325800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553365220052462951
@@ -70,6 +71,48 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4477129415813006446, guid: e0add6544eda8b04d8878dd30cd3dfe5, type: 3}
   m_PrefabInstance: {fileID: 1553365220052462951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1862158913883005118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5304824616244294538}
+    m_Modifications:
+    - target: {fileID: 638321243110831520, guid: 354097be6a45e454093228a84afb645d, type: 3}
+      propertyPath: m_Name
+      value: GimmickLane
+      objectReference: {fileID: 0}
+    - target: {fileID: 638321243110831520, guid: 354097be6a45e454093228a84afb645d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193681764127523094, guid: 354097be6a45e454093228a84afb645d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193681764127523094, guid: 354097be6a45e454093228a84afb645d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193681764127523094, guid: 354097be6a45e454093228a84afb645d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607395271314917625, guid: 354097be6a45e454093228a84afb645d, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 354097be6a45e454093228a84afb645d, type: 3}
+--- !u!4 &551183373444325800 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2193681764127523094, guid: 354097be6a45e454093228a84afb645d, type: 3}
+  m_PrefabInstance: {fileID: 1862158913883005118}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5052104034311276556
 PrefabInstance:

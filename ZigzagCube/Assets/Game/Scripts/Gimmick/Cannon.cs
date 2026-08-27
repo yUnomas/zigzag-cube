@@ -45,6 +45,7 @@ public class Cannon : StageObjectBase
                 break;
             }
         }
+        Debug.LogWarning("砲弾が足りません");
     }
     public override void Clear()
     {

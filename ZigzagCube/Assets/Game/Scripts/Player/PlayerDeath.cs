@@ -5,50 +5,33 @@ public class PlayerDeath : ModuleBase<PlayerController>
     [SerializeField, Tooltip("死亡アニメーション用の待機時間")]
     private float deathAnimationDuration = 1f;
     [Header("=====")]
-    [SerializeField, Tooltip("障害物衝突時のエフェクト")]
-    private GameObject obstacleHitEffect;
-    [SerializeField, Tooltip("水衝突時のエフェクト")]
-    private GameObject waterHitEffect;
+    [SerializeField, Tooltip("死亡時のキューブ崩壊エフェクト")]
+    private GameObject playerBreakEffect;
 
-    private const string waterTag = "Water";
-    private const string obstacleTag = "Obstacle";
-
-    private bool isDying;
-
-    private void OnCollisionEnter(Collision collision)
+    private async Awaitable DeathAsync()
     {
-        // 障害物との衝突時
-        if (collision.gameObject.CompareTag(obstacleTag))
-        {
-            _ = DeathAsync(collision.contacts[0].point, obstacleHitEffect, "PlayerBreak");
-        }
-        // 水との衝突時
-        else if (collision.gameObject.CompareTag(waterTag))
-        {
-            _ = DeathAsync(collision.contacts[0].point, waterHitEffect, "WaterSplash");
-        }
-    }
-    public override void Activate()
-    {
-        isDying = false;
-    }
-    private async Awaitable DeathAsync(Vector3 deathPoint, GameObject effect, string audioID)
-    {
-        if (isDying) return;
-
-        isDying = true;
+        // 死亡中状態へ遷移
         controller.ChangeState(PlayerState.Dying);
-        // エフェクト・SEの再生
-        Instantiate(effect, deathPoint, Quaternion.identity);
-        AudioManager.Instance.PlaySE(audioID, false);
-        // 一定秒数待機
+        // 一定秒数待機後に死亡状態へ遷移
         await Awaitable.WaitForSecondsAsync(deathAnimationDuration);
-        // プレイヤーを死亡状態に遷移
         controller.ChangeState(PlayerState.Death);
     }
 
-    public void Die(Vector3 deathPoint)
+    public void Die(DeathType deathType, Vector3 contactPoint)
     {
-        _ = DeathAsync(deathPoint, obstacleHitEffect, "PlayerBreak");
+        if (controller.State != PlayerState.Alive) return;
+
+        switch(deathType)
+        {
+            case DeathType.Default:
+                {
+                    // エフェクト・SEの再生
+                    Instantiate(playerBreakEffect, contactPoint, Quaternion.identity);
+                    AudioManager.Instance.PlaySE("PlayerBreak", false);
+                }
+                break;
+        }
+
+        _ = DeathAsync();
     }
 }

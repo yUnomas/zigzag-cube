@@ -21,7 +21,20 @@ public class Spike : StageObjectBase
         if(isMoving)
         {
             spike.position += speed * direction * Time.deltaTime;
+            GetComponent<BoxCollider>().center = spike.localPosition;
             TryTurn();
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<PlayerDeath>(out var playerDeath))
+        {
+            // 衝突位置が存在しない場合は衝突対象の座標を設定
+            Vector3 contactPoint = collision.contactCount > 0
+            ? collision.GetContact(0).point
+            : collision.transform.position;
+
+            playerDeath.Die(DeathType.Default, contactPoint);
         }
     }
 
@@ -48,9 +61,10 @@ public class Spike : StageObjectBase
         // 表示
         gameObject.SetActive(true);
         // Transform設定
-        Vector3 pos = spike.transform.localPosition;
+        Vector3 pos = spike.localPosition;
         pos.x = x;
-        spike.transform.localPosition = pos;
+        spike.localPosition = pos;
+        GetComponent<BoxCollider>().center = spike.localPosition;
     }
     private void SetLane()
     {

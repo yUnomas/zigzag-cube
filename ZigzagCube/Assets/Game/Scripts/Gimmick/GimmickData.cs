@@ -6,4 +6,5 @@ public struct GimmickData
     public int laneIndex;
     public int width;
     public int direction;
+    public float speed;
 }

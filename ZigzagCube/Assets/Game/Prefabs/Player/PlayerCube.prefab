@@ -216,6 +216,9 @@ MonoBehaviour:
   - {fileID: 3158086786328215193}
   - {fileID: 353806932037899227}
   model: {fileID: 1793818030614699570}
+  colliders:
+  - {fileID: 3102215522655582037}
+  - {fileID: 3569772475814969468}
 --- !u!114 &6065147192797643880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathAnimationDuration: 1
-  obstacleHitEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
-  waterHitEffect: {fileID: 2443725396418623342, guid: 13de9a8ce2b1bc74bb22d9255c68b858, type: 3}
+  playerBreakEffect: {fileID: 4204545956348189046, guid: e265c0ec64770604783f50d2e53d8856, type: 3}
 --- !u!114 &353806932037899227
 MonoBehaviour:
   m_ObjectHideFlags: 0

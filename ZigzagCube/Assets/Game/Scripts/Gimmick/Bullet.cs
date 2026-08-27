@@ -23,7 +23,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerDeath>().Die(collision.GetContact(0).point);
+            // 衝突位置が存在しない場合は衝突対象の座標を設定
+            Vector3 contactPoint = collision.contactCount > 0
+            ? collision.GetContact(0).point
+            : collision.transform.position;
+
+            collision.gameObject.GetComponent<PlayerDeath>().Die(DeathType.Default, collision.GetContact(0).point);
         }
         else if (collision.gameObject == cannon.gameObject) return;
 

@@ -27,14 +27,13 @@ public class PlayerMovement : ModuleBase<PlayerController>
     public override void Activate()
     {
         rb.useGravity = true;
-        boxCollider.enabled = false;
 
         if(moveIndicateAnimation.activeSelf) moveIndicateAnimation.SetActive(false);
     }
     public override void Deactivate()
     {
         rb.linearVelocity = Vector3.zero;
-        rb.useGravity = true;
+        rb.useGravity = false;
     }
 
     public override void Execute(InputData inputData)

@@ -9,6 +9,7 @@ public class Cannon : StageObjectBase
     [Header("=====")]
     [SerializeField] private Bullet[] bullets;
     [SerializeField] private Animation fireAnimation;
+    [SerializeField] private EffectController cannonFireFX;
 
     /// <summary>
     /// 経過時間    </summary>
@@ -37,15 +38,19 @@ public class Cannon : StageObjectBase
 
     private void Fire()
     {
-        foreach(Bullet bullet in bullets)
+        // エフェクト・SE再生
+        cannonFireFX.Play();
+        AudioManager.Instance.PlaySE("CannonFire", false);
+        // 砲弾のセット
+        foreach (Bullet bullet in bullets)
         {
             if(!bullet.gameObject.activeSelf)
             {
                 bullet.Set(this);
-                break;
+                return;
             }
         }
-        Debug.LogWarning("砲弾が足りません");
+        Debug.LogWarning("砲弾が足りません");   // 砲弾が足りない場合の確認用ログ
     }
     public override void Clear()
     {

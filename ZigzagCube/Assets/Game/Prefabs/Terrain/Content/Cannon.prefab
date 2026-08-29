@@ -117,6 +117,7 @@ Transform:
   m_Children:
   - {fileID: 6048805740631188578}
   - {fileID: 2679375629374753396}
+  - {fileID: 6069137182431132454}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &2968656055175577241
@@ -159,6 +160,52 @@ MonoBehaviour:
   - {fileID: 1574740704724410108}
   - {fileID: 5552702679993281537}
   fireAnimation: {fileID: 2968734168105559136}
+  cannonFireFX: {fileID: 8749259410666932046}
+--- !u!1001 &3613818738630535811
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5673724910715695685}
+    m_Modifications:
+    - target: {fileID: 2443725396418623342, guid: ab9dabf1db205bf40984278760737c31, type: 3}
+      propertyPath: m_Name
+      value: CannonFireFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358658463248224677, guid: ab9dabf1db205bf40984278760737c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358658463248224677, guid: ab9dabf1db205bf40984278760737c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358658463248224677, guid: ab9dabf1db205bf40984278760737c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab9dabf1db205bf40984278760737c31, type: 3}
+--- !u!4 &6069137182431132454 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7358658463248224677, guid: ab9dabf1db205bf40984278760737c31, type: 3}
+  m_PrefabInstance: {fileID: 3613818738630535811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8749259410666932046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5426065603124456909, guid: ab9dabf1db205bf40984278760737c31, type: 3}
+  m_PrefabInstance: {fileID: 3613818738630535811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad015bc81238924e85979bec58ff50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4039592787174450964
 PrefabInstance:
   m_ObjectHideFlags: 0

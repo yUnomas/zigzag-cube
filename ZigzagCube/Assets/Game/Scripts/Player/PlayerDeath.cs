@@ -16,7 +16,6 @@ public class PlayerDeath : ModuleBase<PlayerController>
         await Awaitable.WaitForSecondsAsync(deathAnimationDuration);
         controller.ChangeState(PlayerState.Death);
     }
-
     public void Die(DeathType deathType, Vector3 contactPoint)
     {
         if (controller.State != PlayerState.Alive) return;

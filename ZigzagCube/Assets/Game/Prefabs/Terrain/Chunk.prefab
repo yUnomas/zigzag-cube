@@ -32,7 +32,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5445547987326671745}
   - {fileID: 4830015154394432545}
   - {fileID: 1794725703018001983}
   - {fileID: 2612451422985965860}
@@ -171,40 +170,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2513516751473177671, guid: db1c56c9c1b3b644bbb1bc44d966f6b5, type: 3}
   m_PrefabInstance: {fileID: 278522344873572505}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &279687913553022328
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2561814882343346795}
-    m_Modifications:
-    - target: {fileID: 5220762297122641657, guid: 76cc7fdc21eb0e14d96b3b32d8e48ff0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5220762297122641657, guid: 76cc7fdc21eb0e14d96b3b32d8e48ff0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5220762297122641657, guid: 76cc7fdc21eb0e14d96b3b32d8e48ff0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5858194191429662558, guid: 76cc7fdc21eb0e14d96b3b32d8e48ff0, type: 3}
-      propertyPath: m_Name
-      value: Water
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76cc7fdc21eb0e14d96b3b32d8e48ff0, type: 3}
---- !u!4 &5445547987326671745 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5220762297122641657, guid: 76cc7fdc21eb0e14d96b3b32d8e48ff0, type: 3}
-  m_PrefabInstance: {fileID: 279687913553022328}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &477527319889028451
 PrefabInstance:

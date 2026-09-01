@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private EffectController bulletExplosionFX;
 
     private Cannon cannon;
+    private BulletPool pool;
     private PlayerController player;
     /// <summary>
     /// 衝突状態    </summary>
@@ -49,14 +50,13 @@ public class Bullet : MonoBehaviour
     /// プレイヤーとの距離に応じて削除    </summary>
     private void TryClearByDistance()
     {
-        if (player.transform.position.z - transform.position.z >= clearDistance) ReturnToCannon();
+        if (player.transform.position.z - transform.position.z >= clearDistance) ReturnToPool();
     }
     /// <summary>
-    /// 大砲に戻る    </summary>
-    private void ReturnToCannon()
+    /// プールに戻る    </summary>
+    private void ReturnToPool()
     {
-        gameObject.SetActive(false);
-        transform.position = cannon.transform.position;
+        pool.Release(this);
     }
     /// <summary>
     /// 衝突時のイベント    </summary>
@@ -70,20 +70,22 @@ public class Bullet : MonoBehaviour
         _ = WaitAndReturnAsync();
     }
     /// <summary>
-    /// 一定秒数待機後に大砲に戻る     </summary>
+    /// 一定秒数待機後にプールに戻る     </summary>
     private async Awaitable WaitAndReturnAsync()
     {
         await Awaitable.WaitForSecondsAsync(waitDuration);
-        ReturnToCannon();
+        ReturnToPool();
     }
 
 
-    public void Set(Cannon cannon)
+    public void Set(Cannon cannon, BulletPool pool)
     {
         isHit = false;
         model.SetActive(true);
         bulletCollider.enabled = true;
         gameObject.SetActive(true);
-        this.cannon = cannon;   // 自身を発射した大砲を保存
+        // 値の保存
+        this.cannon = cannon;
+        this.pool = pool;
     }
 }

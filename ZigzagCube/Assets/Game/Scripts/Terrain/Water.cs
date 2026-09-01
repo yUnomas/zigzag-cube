@@ -14,7 +14,7 @@ public class Water : MonoBehaviour
             ? collision.GetContact(0).point
             : collision.transform.position;
 
-            playerDeath.Die(DeathType.Fall, contactPoint);
+            playerDeath.Die(DeathType.Fall);
             waterSplashFX.Play(contactPoint, Quaternion.identity);
             AudioManager.Instance.PlaySE("WaterSplash", false);
         }

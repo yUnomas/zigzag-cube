@@ -37,12 +37,7 @@ public class Bullet : MonoBehaviour
         // プレイヤーと衝突した際はプレイヤーを死亡
         if (collision.gameObject.TryGetComponent<PlayerDeath>(out var playerDeath))
         {
-            // 衝突位置が存在しない場合は衝突対象の座標を設定
-            Vector3 contactPoint = collision.contactCount > 0
-            ? collision.GetContact(0).point
-            : collision.transform.position;
-
-            playerDeath.Die(DeathType.Default, contactPoint);
+            playerDeath.Die(DeathType.Default);
         }
         // 自身を発射した大砲との衝突は無視
         else if (collision.gameObject == cannon.gameObject) return;

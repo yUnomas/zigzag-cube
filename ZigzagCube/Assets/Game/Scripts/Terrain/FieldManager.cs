@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class FieldManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<ChunkController> chunks = new List<ChunkController>();
+    [SerializeField] private List<ChunkController> chunks = new List<ChunkController>();
+    [SerializeField] private Water water;
     
     private PlayerController player;
 
@@ -27,6 +27,7 @@ public class FieldManager : MonoBehaviour
             if (player.transform.position.z - chunk.transform.position.z >= chunk.Length * 2)
             {
                 chunk.Regenerate(true, chunks.Count);
+                water.transform.position += Vector3.forward * chunk.Length;
             }
         }
     }

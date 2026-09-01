@@ -32,4 +32,9 @@ public class EffectController : MonoBehaviour
             DestroyEffect(totalLifetime);
         }
     }
+    public virtual void Play(Vector3 pos)
+    {
+        gameObject.transform.position = pos;
+        Play();
+    }
 }

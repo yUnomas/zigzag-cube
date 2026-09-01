@@ -3,7 +3,7 @@
 public class Water : MonoBehaviour
 {
     [SerializeField, Tooltip("衝突時の水しぶきエフェクト")]
-    private GameObject waterSplashEffect;
+    private EffectController waterSplashFX;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -15,7 +15,7 @@ public class Water : MonoBehaviour
             : collision.transform.position;
 
             playerDeath.Die(DeathType.Fall, contactPoint);
-            Instantiate(waterSplashEffect, contactPoint, Quaternion.identity);
+            waterSplashFX.Play(contactPoint);
             AudioManager.Instance.PlaySE("WaterSplash", false);
         }
     }

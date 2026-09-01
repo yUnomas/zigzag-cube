@@ -32,9 +32,10 @@ public class EffectController : MonoBehaviour
             DestroyEffect(totalLifetime);
         }
     }
-    public virtual void Play(Vector3 pos)
+    public virtual void Play(Vector3 pos, Quaternion rotation)
     {
-        gameObject.transform.position = pos;
+        transform.position = pos;
+        transform.rotation = rotation;
         Play();
     }
 }

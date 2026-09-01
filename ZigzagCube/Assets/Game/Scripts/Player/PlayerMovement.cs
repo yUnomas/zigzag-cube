@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : ModuleBase<PlayerController>
 {
@@ -13,9 +14,11 @@ public class PlayerMovement : ModuleBase<PlayerController>
     [Header("=====")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private BoxCollider boxCollider;
-    [SerializeField] private GameObject changeDirectionEffect;
+    [SerializeField] private EffectController directionChangeFX;
     [SerializeField] private GameObject moveIndicateAnimation;
 
+    /// <summary>
+    /// 左右への加速度    </summary>
     private float externalHorizontalSpeed;
     /// <summary>
     /// 移動方向    </summary>
@@ -90,8 +93,9 @@ public class PlayerMovement : ModuleBase<PlayerController>
             case PlayerState.Alive:
                 {
                     // エフェクト再生
-                    Vector3 position = transform.position + -transform.forward;
-                    Instantiate(changeDirectionEffect, position, Quaternion.identity);
+                    Vector3 position = transform.position + -Vector3.forward / 2 + transform.right / 2 * -direction;
+                    Quaternion rotation = direction == 1 ? Quaternion.Euler(0f, 45f, 0f) : Quaternion.Euler(0f, -45f, 0f);
+                    directionChangeFX.Play(position, rotation);
                 }
                 break;
         }

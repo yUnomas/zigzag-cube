@@ -5,8 +5,8 @@ public class PlayerDeath : ModuleBase<PlayerController>
     [SerializeField, Tooltip("死亡アニメーション用の待機時間")]
     private float deathAnimationDuration = 1f;
     [Header("=====")]
-    [SerializeField, Tooltip("死亡時のキューブ崩壊エフェクト")]
-    private GameObject playerBreakEffect;
+    [SerializeField, Tooltip("衝突時の砕け散るエフェクト")]
+    private EffectController shatterFX;
 
     private async Awaitable DeathAsync()
     {
@@ -16,7 +16,7 @@ public class PlayerDeath : ModuleBase<PlayerController>
         await Awaitable.WaitForSecondsAsync(deathAnimationDuration);
         controller.ChangeState(PlayerState.Death);
     }
-    public void Die(DeathType deathType, Vector3 contactPoint)
+    public void Die(DeathType deathType)
     {
         if (controller.State != PlayerState.Alive) return;
 
@@ -25,7 +25,7 @@ public class PlayerDeath : ModuleBase<PlayerController>
             case DeathType.Default:
                 {
                     // エフェクト・SEの再生
-                    Instantiate(playerBreakEffect, contactPoint, Quaternion.identity);
+                    shatterFX.Play();
                     AudioManager.Instance.PlaySE("PlayerBreak", false);
                 }
                 break;

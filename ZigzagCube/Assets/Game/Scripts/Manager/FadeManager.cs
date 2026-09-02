@@ -13,16 +13,14 @@ public class FadeManager : MonoBehaviour
     [SerializeField]
     private Image fadeOverlay;
 
-
     private static FadeManager instance;
     public static FadeManager Instance => instance;
-    
     /// <summary>
     /// フェード処理の実行状態    </summary>
-    private bool isFadeRunning;
+    public bool isFading { get; private set; }
     /// <summary>
     /// フェードアウト状態    </summary>
-    public bool isFadedOut;
+    public bool isFadeOut { get; private set; }
 
     private void Awake()
     {
@@ -38,7 +36,7 @@ public class FadeManager : MonoBehaviour
     /// 完了時に発火する内容    </param>
     private IEnumerator FadeRunning(float endAlpha, float fadeDuration, Action onComplete = null, bool isFadeOut = true)
     {
-        isFadeRunning = true;
+        isFading = true;
 
         Color color = fadeOverlay.color;
         float timer = 0f;
@@ -60,8 +58,7 @@ public class FadeManager : MonoBehaviour
         onComplete?.Invoke();
         yield return new WaitForSecondsRealtime(0.01f);
 
-        isFadeRunning = false;
-        isFadedOut = endAlpha == 1f ? true : false;
+        isFading = false;
     }
 
     /// <summary>
@@ -71,7 +68,11 @@ public class FadeManager : MonoBehaviour
     public void FadeIn(float fadeDuration = -1f, Action onComplete = null)
     {
         if (fadeDuration < 0f) fadeDuration = defaultFadeDuration;
-        if (!isFadeRunning) StartCoroutine(FadeRunning(0f, fadeDuration, onComplete));
+        if (!isFading)
+        {
+            isFadeOut = false;
+            StartCoroutine(FadeRunning(0f, fadeDuration, onComplete));
+        }
     }
     /// <summary>
     /// フェードアウト(画面が消える)    </summary>
@@ -80,12 +81,16 @@ public class FadeManager : MonoBehaviour
     public void FadeOut(float fadeDuration = -1f, Action onComplete = null)
     {
         if (fadeDuration < 0f) fadeDuration = defaultFadeDuration;
-        if (!isFadeRunning) StartCoroutine(FadeRunning(1f, fadeDuration, onComplete));
+        if (!isFading)
+        {
+            isFadeOut = true;
+            StartCoroutine(FadeRunning(1f, fadeDuration, onComplete));
+        }
     }
     /// <summary>
     /// フェードアウトされている場合にフェードインを実行    </summary>
     public void TryFadeIn(float fadeDuration = -1f, Action onComplete = null)
     {
-        if (isFadedOut) FadeIn(fadeDuration, onComplete);
+        if (isFadeOut) FadeIn(fadeDuration, onComplete);
     }
 }

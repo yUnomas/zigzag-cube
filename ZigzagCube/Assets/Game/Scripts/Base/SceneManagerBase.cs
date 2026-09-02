@@ -38,9 +38,6 @@ public enum SceneState
     /// 特になし    </summary>
     None,
     /// <summary>
-    /// シーンのロード待ち    </summary>
-    Idle,
-    /// <summary>
     /// 初期化    </summary>
     Init,
     /// <summary>
@@ -55,6 +52,9 @@ public enum SceneState
     /// <summary>
     /// 後処理    </summary>
     Uninit,
+    /// <summary>
+    /// 待機    </summary>
+    Wait = 100,
 }
 
 public abstract class SceneManagerBase : MonoBehaviour
@@ -70,8 +70,6 @@ public abstract class SceneManagerBase : MonoBehaviour
     public static SceneManagerBase activeManager { get; private set; }
     public static  SceneState currentState = SceneState.Init;
     public static string sceneName;
-
-    private static AsyncOperation asyncOperation;
     private SceneChangeRequest sceneChangeRequest;
 
     /// <summary>
@@ -84,14 +82,9 @@ public abstract class SceneManagerBase : MonoBehaviour
         // シーン状態ごとの専用処理
         switch (currentState)
         {
-            case SceneState.Idle:
-                OnIdle();
-                if (asyncOperation != null && !asyncOperation.isDone) return;
-                FadeManager.Instance.TryFadeIn();
-                currentState = SceneState.Init;
-                break;
             case SceneState.Init:
                 OnInit();
+                FadeManager.Instance.TryFadeIn();
                 currentState = SceneState.Start;
                 break;
             case SceneState.Start:
@@ -113,7 +106,7 @@ public abstract class SceneManagerBase : MonoBehaviour
                 {
                     HandleSceneChange(sceneChangeRequest);
                 }
-                else currentState = SceneState.Idle;
+                else currentState = SceneState.Init;
                 break;
         }
     }
@@ -133,15 +126,25 @@ public abstract class SceneManagerBase : MonoBehaviour
             case SceneType.Result: GetComponent<SceneManagerBase<ResultManager>>().enabled = true; break;
             default: Debug.LogError($"対応していないSceneTypeです: {nextSceneType}"); return;
         }
-        currentState = SceneState.Idle; // 切り替え成功時に状態遷移
+        currentState = SceneState.Init; // 切り替え成功時に状態遷移
     }
     /// <summary>
-    /// シーンをロード    </summary>
-    private void LoadScene(SceneType loadSceneType, string loadSceneName)
+    /// シーン遷移の非同期処理    </summary>
+    private async Awaitable ChangeSceneAsync(SceneChangeRequest request)
     {
-        sceneName = loadSceneName;
-        asyncOperation = SceneManager.LoadSceneAsync(loadSceneName);
-        ChangeSceneManager(loadSceneType);
+        if(request.isLoadScene)
+        {
+            // ロード開始
+            sceneName = GetSceneName(request.sceneType, request.sceneName);
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+            // ロード完了まで待機
+            while (!operation.isDone)
+            {
+                await Awaitable.NextFrameAsync();
+            }
+        }
+        // シーンマネージャー切り替え
+        ChangeSceneManager(request.sceneType);
     }
     /// <summary>
     /// シーン名を取得    </summary>
@@ -172,7 +175,6 @@ public abstract class SceneManagerBase : MonoBehaviour
 #endif
     }
 
-    protected virtual void OnIdle(){}
     protected virtual void OnInit(){}
     protected virtual void OnStart(){}
     protected virtual void OnUpdate(){}
@@ -181,29 +183,16 @@ public abstract class SceneManagerBase : MonoBehaviour
     private void HandleSceneChange(SceneChangeRequest request)
     {
         isWaitingSceneChange = false;
+        currentState = SceneState.Wait;
         if (request.sceneType == SceneType.Quit) QuitApplication();  //ゲーム終了
         else
         {
-            // シーンのロード有無で処理分岐
-            if (request.isLoadScene)
+            // 遷移アニメーションの有無で処理分岐
+            if (request.isUseTransition)
             {
-                string sceneName = GetSceneName(request.sceneType, request.sceneName);
-                // 遷移アニメーションの有無で処理分岐
-                if (request.isUseTransition)
-                {
-                    FadeManager.Instance.FadeOut(-1, () => LoadScene(request.sceneType, sceneName));
-                }
-                else LoadScene(request.sceneType, sceneName);
+                FadeManager.Instance.FadeOut(-1, () => _ = ChangeSceneAsync(request));
             }
-            else
-            {
-                // 遷移アニメーションの有無で処理分岐
-                if (request.isUseTransition)
-                {
-                    FadeManager.Instance.FadeOut(-1, () => ChangeSceneManager(request.sceneType));
-                }
-                else ChangeSceneManager(request.sceneType);
-            }
+            else _ = ChangeSceneAsync(request);
         }
     }
 

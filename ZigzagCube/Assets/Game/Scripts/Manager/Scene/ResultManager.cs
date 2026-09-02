@@ -24,10 +24,6 @@ public class ResultManager : SceneManagerBase<ResultManager>
     public void BackToTile()
     {
         // 広告の表示有無でシーン遷移のアニメーション切り替え
-        if (AdsManager.Instance.IsInterstitialTiming())
-        {
-            ChangeScene(SceneType.Title, false, "GameplayScene");
-        }
-        else ChangeScene(SceneType.Title, true, "GameplayScene");
+        ChangeScene(SceneType.Title, true, "GameplayScene");
     }
 }

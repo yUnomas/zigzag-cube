@@ -10,9 +10,9 @@ public class Bridge : StageObjectBase
         material = meshRenderer.material;
     }
     
-    public override void Set(int startLaneIndex, float width)
+    public override void Set(Transform cell, int laneIndex, int y, float width)
     {
-        base.Set(startLaneIndex, width);
+        base.Set(cell, laneIndex, y, width);
         material.mainTextureScale = new Vector3(width / 2f, 1);
     }
 }

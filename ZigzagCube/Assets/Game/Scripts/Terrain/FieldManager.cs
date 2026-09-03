@@ -5,12 +5,14 @@ public class FieldManager : MonoBehaviour
 {
     [SerializeField] private List<ChunkController> chunks = new List<ChunkController>();
     [SerializeField] private Water water;
+    [SerializeField] private GameObject editorGuideObjects;
     
     private PlayerController player;
 
     private void Awake()
     {
         player = FindAnyObjectByType<PlayerController>();
+        if(editorGuideObjects) Destroy(editorGuideObjects);
     }
     private void LateUpdate()
     {

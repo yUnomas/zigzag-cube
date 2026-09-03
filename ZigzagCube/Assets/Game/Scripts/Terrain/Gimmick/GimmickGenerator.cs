@@ -22,6 +22,7 @@ public class GimmickGenerator : MonoBehaviour
         {
             type = type,
             laneIndex = startLaneIndex,
+            y = 1,
             width = width,
             direction = direction
         };

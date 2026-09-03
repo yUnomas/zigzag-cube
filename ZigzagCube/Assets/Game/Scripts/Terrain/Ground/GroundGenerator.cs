@@ -8,6 +8,7 @@ public class GroundGenerator : MonoBehaviour
         {
             type = type,
             startLaneIndex = startLaneIndex,
+            y = 0,
             width = width,
             direction = direction
         };

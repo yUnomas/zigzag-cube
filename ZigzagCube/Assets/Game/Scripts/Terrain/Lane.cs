@@ -48,9 +48,10 @@ public class Lane : StageObjectBase
             target.transform.position = pos;
         }
     }
-    public void Set(GameObject target, int direction, bool isVisible)
+    public void Set(Transform cell, int laneIndex, int y, int width, GameObject target, int direction, bool isVisible)
     {
-        gameObject.SetActive(true);
+        base.Set(cell, laneIndex, y, width);
+
         model.SetActive(isVisible);
         this.target = target;
         this.direction = direction == 1 ? Vector3.right : Vector3.left;

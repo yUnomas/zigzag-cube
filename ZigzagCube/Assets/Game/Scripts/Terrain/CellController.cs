@@ -1,61 +1,125 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CellController : MonoBehaviour
 {
-    [SerializeField] private Ground ground;
-    [SerializeField] private Bridge bridge;
-    [SerializeField] private Conveyor conveyor;
-    [SerializeField] private Spike spike;
-    [SerializeField] private Cannon cannon;
-    [SerializeField] private Lane groundLane;
-    [SerializeField] private Lane gimmickLane;
+    private GroundPoolController groundPool;
+    private GimmickPoolController gimmickPool;
+    private LanePool lanePool;
 
+    private GroundType activeGroundType;
+    private StageObjectBase activeGround;
+    private GimmickType activeGimmickType;
+    private StageObjectBase activeGimmick;
+    private Lane activeGroundLane;
+    private Lane activeGimmickLane;
+
+    private void Awake()
+    {
+        groundPool = FindAnyObjectByType<GroundPoolController>();
+        gimmickPool = FindAnyObjectByType<GimmickPoolController>();
+        lanePool = FindAnyObjectByType<LanePool>();
+    }
     public void Clear()
     {
-        // 地面
-        ground.Clear();
-        bridge.Clear();
-        spike.Clear();
-        conveyor.Clear();
-    }
+        groundPool.Release(activeGroundType, activeGround);
+        gimmickPool.Release(activeGimmickType, activeGimmick);
+        lanePool.Release(activeGroundLane);
+        lanePool.Release(activeGimmickLane);
+
+        activeGroundType = GroundType.None;
+        activeGround = null;
+        activeGimmickType = GimmickType.None;
+        activeGimmick = null;
+        activeGroundLane = null;
+        activeGimmickLane = null;
+}
     public void SetGround(GroundData data)
     {
+        activeGroundType = data.type;
         if (data.type == GroundType.None) return;
 
         switch (data.type)
         {
-            case GroundType.Normal: ground.Set(data.startLaneIndex, data.width); break;
-            case GroundType.Bridge: bridge.Set(data.startLaneIndex, data.width); break;
+            case GroundType.Normal:
+                {
+                    Ground ground = groundPool.Get(data.type) as Ground;
+                    ground.Set(transform, data.startLaneIndex, data.y, data.width);
+                    activeGround = ground;
+                }
+                break;
+            case GroundType.Bridge:
+                {
+                    Bridge bridge = groundPool.Get(data.type) as Bridge;
+                    bridge.Set(transform, data.startLaneIndex, data.y, data.width);
+                    activeGround = bridge;
+                }
+                break;
             case GroundType.MovingBridge:
                 {
-                    bridge.Set(data.startLaneIndex, data.width);
-                    groundLane.Set(bridge.gameObject, data.direction, false);
+                    Bridge bridge = groundPool.Get(data.type) as Bridge;
+                    bridge.Set(transform, data.startLaneIndex, data.y, data.width);
+                    activeGround = bridge;
+
+                    Lane lane = lanePool.Get();
+                    lane.Set(transform, 5, data.y, 1, bridge.gameObject, data.direction, false);
+                    activeGroundLane = lane;
                 }
                 break;
             case GroundType.BridgeLane:
                 {
-                    bridge.Set(data.startLaneIndex, data.width);
-                    groundLane.Set(bridge.gameObject, data.direction, true);
+                    Bridge bridge = groundPool.Get(data.type) as Bridge;
+                    bridge.Set(transform, data.startLaneIndex, data.y, data.width);
+                    activeGround = bridge;
+
+                    Lane lane = lanePool.Get();
+                    lane.Set(transform, 5, data.y, 1, bridge.gameObject, data.direction, true);
+                    activeGroundLane = lane;
                 }
                 break;
-            case GroundType.Conveyor: conveyor.Set(data.startLaneIndex, data.width, data.direction); break;
+            case GroundType.Conveyor:
+                {
+                    Conveyor conveyor = groundPool.Get(data.type) as Conveyor;
+                    conveyor.Set(transform, data.startLaneIndex, data.y, data.width, data.direction);
+                    activeGround = conveyor;
+                }
+                break;
         }
     }
     public void SetGimmick(GimmickData data)
     {
+        activeGimmickType = data.type;
         if(data.type == GimmickType.None) return;
         
         switch (data.type)
         {
-            case GimmickType.Spike: spike.Set(data.laneIndex, data.width); break;
-            case GimmickType.SpikeLane:
+            case GimmickType.Spike:
                 {
-                    spike.Set(data.laneIndex, data.width);
-                    gimmickLane.Set(spike.gameObject, data.direction, true);
+                    Spike spike = gimmickPool.Get(data.type) as Spike;
+                    spike.Set(transform, data.laneIndex, data.y, data.width);
+                    activeGimmick = spike;
                 }
                 break;
-            case GimmickType.Cannon: cannon.Set(data.laneIndex, data.width); break;
+            case GimmickType.SpikeLane:
+                {
+                    Spike spike = gimmickPool.Get(data.type) as Spike;
+                    spike.Set(transform, data.laneIndex, data.y, data.width);
+                    activeGimmick = spike;
+
+                    Lane lane = lanePool.Get();
+                    lane.Set(transform, 5, data.y, 1, spike.gameObject, data.direction, true);
+                    activeGimmickLane = lane;
+                }
+                break;
+            case GimmickType.Cannon:
+                {
+                    Cannon cannon = gimmickPool.Get(data.type) as Cannon;
+                    cannon.Set(transform, data.laneIndex, data.width, data.width);
+                    activeGimmick = cannon;
+                }
+                break;
         }
     }
 }

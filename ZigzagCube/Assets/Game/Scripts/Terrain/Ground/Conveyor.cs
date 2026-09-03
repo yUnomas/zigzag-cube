@@ -26,9 +26,9 @@ public class Conveyor : StageObjectBase
         sideMaterial.mainTextureOffset = topMaterial.mainTextureOffset;
     }
 
-    public void Set(int startLaneIndex, int width, int direction)
+    public void Set(Transform cell, int laneIndex, int y, int width, int direction)
     {
-        base.Set(startLaneIndex, width);
+        base.Set(cell, laneIndex, y, width);
 
         flowDirection = direction;
         topMaterial.mainTextureScale = new Vector3(width / 2f * direction, 1);

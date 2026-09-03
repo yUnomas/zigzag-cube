@@ -59,6 +59,8 @@ public abstract class PoolBase<T> : MonoBehaviour where T : Component
     protected virtual void OnReleaseInstance(T target)
     {
         target.gameObject.SetActive(false);
+        target.transform.parent = transform;
+        target.transform.position = transform.position;
     }
     protected virtual void OnDestroyInstance(T target)
     {
@@ -66,5 +68,5 @@ public abstract class PoolBase<T> : MonoBehaviour where T : Component
     }
 
     public virtual T Get() { return pool.Get(); }
-    public virtual void Release(T target) { pool.Release(target); }
+    public virtual void Release(T target) { if (target != null) pool.Release(target); }
 }

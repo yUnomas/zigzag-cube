@@ -53,9 +53,9 @@ public class Cannon : StageObjectBase
             );
         bullet.Set(this, pool);
     }
-    public override void Clear()
+    public override void Set(Transform cell, GimmickData data)
     {
-        base.Clear();
         elapsedTime = 0f;
+        base.Set(cell, data);
     }
 }

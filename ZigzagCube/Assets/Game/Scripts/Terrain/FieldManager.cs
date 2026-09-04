@@ -49,7 +49,7 @@ public class FieldManager : MonoBehaviour
                 player.transform.position.z - revivePoint.z > player.transform.position.z - chunk.transform.position.z)
             {
                 reviveChunk = chunk;
-                revivePoint = chunk.GetRevivePoint();
+                revivePoint = chunk.RevivePoint;
             }
         }
 

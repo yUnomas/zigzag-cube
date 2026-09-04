@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45d2fc25ce635449a7ee0284e8583c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCapacity: 80
-  maxSize: 130
+  defaultCapacity: 15
+  maxSize: 30
   prewarmOnAwake: 1
   prefab: {fileID: 1449842737841976777, guid: 45508b20de01dd048864bb57c6088bea, type: 3}
 --- !u!114 &3228023113294071297
@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45d2fc25ce635449a7ee0284e8583c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCapacity: 20
-  maxSize: 50
+  defaultCapacity: 5
+  maxSize: 15
   prewarmOnAwake: 1
   prefab: {fileID: 7793968592049875263, guid: 482bd68303fe07547ab3731105506115, type: 3}
 --- !u!114 &848599990631817025
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45d2fc25ce635449a7ee0284e8583c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCapacity: 20
-  maxSize: 50
+  defaultCapacity: 5
+  maxSize: 15
   prewarmOnAwake: 1
   prefab: {fileID: 3384033258246900786, guid: 831a012858e373e43986d1db92213c8e, type: 3}

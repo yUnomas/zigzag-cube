@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-
-public struct GimmickData
+﻿public struct GimmickData
 {
+    // 共通
     public GimmickType type;
-    public int laneIndex;
-    public int y;
-    public int width;
-    public int direction;
-    public float speed;
+    public int lane;        // レーン番号
+    public int height;      // Y座標の高さ
+    // レーン移動トゲ
+    public int direction;   // 移動方向
 }

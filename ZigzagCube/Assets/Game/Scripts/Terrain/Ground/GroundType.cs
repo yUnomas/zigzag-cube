@@ -1,9 +1,12 @@
 ﻿public enum GroundType
 {
     None,
-    Normal,
+    Ground,
     Bridge,
     MovingBridge,
-    BridgeLane,
     Conveyor,
+
+    /// <summary>
+    /// 前セルによって占有されている    </summary>
+    Occupied = 50,
 }

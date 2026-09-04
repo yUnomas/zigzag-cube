@@ -2,25 +2,30 @@
 
 public class StageObjectBase : MonoBehaviour
 {
-    protected virtual void SetTransform(Transform cell, int laneIndex, int y, float width)
+    protected virtual void SetTransform(Transform cell, GroundData data)
     {
-        float x = laneIndex + (width - 1) / 2;
-        // Transform設定
+        // セル配下に配置
         transform.parent = cell.transform;
-        Vector3 pos = cell.position;
-        pos.x = x;
-        pos.y = y;
-        transform.position = pos;
-        transform.localScale = new Vector3(width, 1, 1);
+        // Transform設定
+        transform.localPosition = data.GetCenter();
+        transform.localScale = new Vector3(data.width, 1, data.length);
+    }
+    protected virtual void SetTransform(Transform cell, GimmickData data)
+    {
+        // セル配下に配置
+        transform.parent = cell.transform;
+        // Transform設定
+        transform.localPosition = new Vector3(data.lane, data.height, 0);
     }
 
-    public virtual void Clear()
-    {
-        gameObject.SetActive(false);
-    }
-    public virtual void Set(Transform cell, int laneIndex, int y, float width)
+    public virtual void Set(Transform cell, GroundData data)
     {
         gameObject.SetActive(true);
-        SetTransform(cell, laneIndex, y, width);
+        SetTransform(cell, data);
+    }
+    public virtual void Set(Transform cell, GimmickData data)
+    {
+        gameObject.SetActive(true);
+        SetTransform(cell, data);
     }
 }

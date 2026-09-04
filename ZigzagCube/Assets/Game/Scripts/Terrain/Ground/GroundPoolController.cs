@@ -11,11 +11,10 @@ public class GroundPoolController : MonoBehaviour
         switch (type)
         {
             // 通常の地面
-            case GroundType.Normal: return groundPool.Get();
+            case GroundType.Ground: return groundPool.Get();
             // 橋
             case GroundType.Bridge:
-            case GroundType.MovingBridge:
-            case GroundType.BridgeLane: return bridgePool.Get();
+            case GroundType.MovingBridge: return bridgePool.Get();
             // コンベヤー
             case GroundType.Conveyor: return conveyorPool.Get();
 
@@ -29,11 +28,10 @@ public class GroundPoolController : MonoBehaviour
         switch (type)
         {
             // 通常の地面
-            case GroundType.Normal: groundPool.Release(target); break;
+            case GroundType.Ground: groundPool.Release(target); break;
             // 橋
             case GroundType.Bridge:
-            case GroundType.MovingBridge:
-            case GroundType.BridgeLane: bridgePool.Release(target); break;
+            case GroundType.MovingBridge: bridgePool.Release(target); break;
             // コンベヤー
             case GroundType.Conveyor: conveyorPool.Release(target); break;
         }

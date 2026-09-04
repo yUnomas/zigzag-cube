@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Xml.Schema;
+using UnityEngine;
 
 public class Conveyor : StageObjectBase
 {
@@ -10,7 +11,9 @@ public class Conveyor : StageObjectBase
 
     private Material topMaterial;
     private Material sideMaterial;
-    [SerializeField] private int flowDirection;
+    /// <summary>
+    /// コンベヤーの流れる方向     </summary>
+    private int flowDirection;
 
     private void Awake()
     {
@@ -19,34 +22,33 @@ public class Conveyor : StageObjectBase
     }
     private void Update()
     {
-        // コンベヤーの流れるアニメーション
+        // コンベヤーが流れるアニメーション
         Vector2 offset = topMaterial.mainTextureOffset;
         offset.x -= flowSpeed * Time.deltaTime;
         topMaterial.mainTextureOffset = offset;
         sideMaterial.mainTextureOffset = topMaterial.mainTextureOffset;
     }
 
-    public void Set(Transform cell, int laneIndex, int y, int width, int direction)
+    public override void Set(Transform cell, GroundData data)
     {
-        base.Set(cell, laneIndex, y, width);
-
-        flowDirection = direction;
-        topMaterial.mainTextureScale = new Vector3(width / 2f * direction, 1);
-        sideMaterial.mainTextureScale = new Vector3(0.5f * direction, 1);
+        flowDirection = data.direction;
+        topMaterial.mainTextureScale = new Vector3(data.width / 2f * data.direction, data.length);
+        sideMaterial.mainTextureScale = new Vector3(0.5f * data.direction, data.length);
+        base.Set(cell, data);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.TryGetComponent<PlayerMovement>(out var playerMovement))
         {
-            collision.gameObject.GetComponent<PlayerMovement>().AddSpeed(flowSpeed * flowDirection);
+            playerMovement.AddSpeed(flowSpeed * flowDirection);
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.TryGetComponent<PlayerMovement>(out var playerMovement))
         {
-            collision.gameObject.GetComponent<PlayerMovement>().RemoveSpeed(flowSpeed * flowDirection);
+            playerMovement.RemoveSpeed(flowSpeed * flowDirection);
         }
     }
 }

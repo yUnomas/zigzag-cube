@@ -11,7 +11,7 @@ public class Lane : StageObjectBase
 
     /// <summary>
     /// レーン上を移動させる対象    </summary>
-    private GameObject target;
+    private Transform target;
     /// <summary>
     /// 移動方向    </summary>
     private Vector3 direction = Vector3.right;
@@ -21,7 +21,7 @@ public class Lane : StageObjectBase
 
     private void Update()
     {
-        target.transform.position += speed * direction * Time.deltaTime;
+        target.position += speed * direction * Time.deltaTime;
         TryTurn();
     }
 
@@ -30,34 +30,31 @@ public class Lane : StageObjectBase
     private void TryTurn()
     {
         // レーンの左端に到達したら右方向へ折り返し
-        if (leftEndPoint.position.x >= target.transform.position.x - target.transform.localScale.x / 2 + offset)
+        if (leftEndPoint.position.x >= target.position.x - target.localScale.x / 2 + offset)
         {
             // 左端に配置
             direction = Vector3.right;
-            Vector3 pos = target.transform.position;
-            pos.x = leftEndPoint.position.x + target.transform.localScale.x / 2 - offset;
-            target.transform.position = pos;
+            Vector3 pos = target.position;
+            pos.x = leftEndPoint.position.x + target.localScale.x / 2 - offset;
+            target.position = pos;
         }
         // レーンの右端に到達したら左方向へ折り返し
-        else if (rightEndPoint.position.x <= target.transform.position.x + target.transform.localScale.x / 2 - offset)
+        else if (rightEndPoint.position.x <= target.position.x + target.localScale.x / 2 - offset)
         {
             direction = Vector3.left;
             // 右端に配置
-            Vector3 pos = target.transform.position;
-            pos.x = rightEndPoint.position.x - target.transform.localScale.x / 2 + offset;
-            target.transform.position = pos;
+            Vector3 pos = target.position;
+            pos.x = rightEndPoint.position.x - target.localScale.x / 2 + offset;
+            target.position = pos;
         }
     }
-    public void Set(Transform cell, int laneIndex, int y, int width, GameObject target, int direction, bool isVisible)
+    public void Set(Transform cell, Transform target, int direction)
     {
-        base.Set(cell, laneIndex, y, width);
-
-        model.SetActive(isVisible);
         this.target = target;
         this.direction = direction == 1 ? Vector3.right : Vector3.left;
-        // Y座標を対象に合わせる
-        Vector3 pos = transform.localPosition;
-        pos.y = target.transform.localPosition.y;
-        transform.localPosition = pos;
+        // セル配下に配置
+        transform.parent = cell.transform;
+        // Transform設定
+        transform.position = new Vector3(5, target.position.y, target.position.z);
     }
 }

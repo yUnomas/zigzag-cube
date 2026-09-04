@@ -22,6 +22,7 @@ public class CellController : MonoBehaviour
         gimmickPool = FindAnyObjectByType<GimmickPoolController>();
         lanePool = FindAnyObjectByType<LanePool>();
     }
+
     public void Clear()
     {
         groundPool.Release(activeGroundType, activeGround);
@@ -38,51 +39,40 @@ public class CellController : MonoBehaviour
 }
     public void SetGround(GroundData data)
     {
-        activeGroundType = data.type;
+        activeGroundType = data.type;   // 渡された地面タイプを保持
         if (data.type == GroundType.None) return;
 
         switch (data.type)
         {
-            case GroundType.Normal:
+            case GroundType.Ground:
                 {
                     Ground ground = groundPool.Get(data.type) as Ground;
-                    ground.Set(transform, data.startLaneIndex, data.y, data.width);
+                    ground.Set(transform, data);
                     activeGround = ground;
                 }
                 break;
             case GroundType.Bridge:
                 {
                     Bridge bridge = groundPool.Get(data.type) as Bridge;
-                    bridge.Set(transform, data.startLaneIndex, data.y, data.width);
+                    bridge.Set(transform, data);
                     activeGround = bridge;
                 }
                 break;
             case GroundType.MovingBridge:
                 {
                     Bridge bridge = groundPool.Get(data.type) as Bridge;
-                    bridge.Set(transform, data.startLaneIndex, data.y, data.width);
+                    bridge.Set(transform, data);
                     activeGround = bridge;
 
                     Lane lane = lanePool.Get();
-                    lane.Set(transform, 5, data.y, 1, bridge.gameObject, data.direction, false);
-                    activeGroundLane = lane;
-                }
-                break;
-            case GroundType.BridgeLane:
-                {
-                    Bridge bridge = groundPool.Get(data.type) as Bridge;
-                    bridge.Set(transform, data.startLaneIndex, data.y, data.width);
-                    activeGround = bridge;
-
-                    Lane lane = lanePool.Get();
-                    lane.Set(transform, 5, data.y, 1, bridge.gameObject, data.direction, true);
+                    lane.Set(transform, bridge.transform, data.direction);
                     activeGroundLane = lane;
                 }
                 break;
             case GroundType.Conveyor:
                 {
                     Conveyor conveyor = groundPool.Get(data.type) as Conveyor;
-                    conveyor.Set(transform, data.startLaneIndex, data.y, data.width, data.direction);
+                    conveyor.Set(transform, data);
                     activeGround = conveyor;
                 }
                 break;
@@ -90,7 +80,7 @@ public class CellController : MonoBehaviour
     }
     public void SetGimmick(GimmickData data)
     {
-        activeGimmickType = data.type;
+        activeGimmickType = data.type;  // 渡されたギミックタイプを保持
         if(data.type == GimmickType.None) return;
         
         switch (data.type)
@@ -98,25 +88,25 @@ public class CellController : MonoBehaviour
             case GimmickType.Spike:
                 {
                     Spike spike = gimmickPool.Get(data.type) as Spike;
-                    spike.Set(transform, data.laneIndex, data.y, data.width);
+                    spike.Set(transform, data);
                     activeGimmick = spike;
                 }
                 break;
             case GimmickType.SpikeLane:
                 {
                     Spike spike = gimmickPool.Get(data.type) as Spike;
-                    spike.Set(transform, data.laneIndex, data.y, data.width);
+                    spike.Set(transform, data);
                     activeGimmick = spike;
 
                     Lane lane = lanePool.Get();
-                    lane.Set(transform, 5, data.y, 1, spike.gameObject, data.direction, true);
+                    lane.Set(transform, spike.transform, data.direction);
                     activeGimmickLane = lane;
                 }
                 break;
             case GimmickType.Cannon:
                 {
                     Cannon cannon = gimmickPool.Get(data.type) as Cannon;
-                    cannon.Set(transform, data.laneIndex, data.width, data.width);
+                    cannon.Set(transform, data);
                     activeGimmick = cannon;
                 }
                 break;

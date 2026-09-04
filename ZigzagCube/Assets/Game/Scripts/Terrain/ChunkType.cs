@@ -4,7 +4,7 @@
     Start,
     Normal,
     Bridge,
+    Conveyor,
 
-    /// ギミック
-    Conveyor
+    Max,
 }

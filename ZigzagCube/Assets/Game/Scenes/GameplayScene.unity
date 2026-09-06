@@ -353,35 +353,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92541665
+      value: 0.9396927
       objectReference: {fileID: 0}
     - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.33682406
+      value: 0.3420201
       objectReference: {fileID: 0}
     - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.16317599
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.059391193
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2800073169601632130, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -391,10 +383,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739363183382037713, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7942658719098623795, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1134523440}
+    - target: {fileID: 7942658719098623795, guid: 5fb80282b52607747a4aa1f2449ff551, type: 3}
+      propertyPath: offset.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

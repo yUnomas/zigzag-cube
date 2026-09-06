@@ -44,7 +44,7 @@ public class Cannon : StageObjectBase
     {
         // エフェクト・SE再生
         cannonFireFX.Play();
-        AudioManager.Instance.PlaySE("CannonFire", false);
+        AudioManager.Instance.PlaySE("CannonFire", transform.position);
         // 砲弾のセット
         Bullet bullet = pool.Get();
         bullet.transform.SetPositionAndRotation(

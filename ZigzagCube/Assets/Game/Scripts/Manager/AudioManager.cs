@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
         foreach (AudioSource source in d2Sources)
         {
             // 重複禁止時に音声被りが発生したら処理終了
-            if (!isAllowDuplicate && source.clip == clip && source.isPlaying)
+            if (!isAllowDuplicate && source.isPlaying && source.clip == clip)
             {
                 Debug.LogWarning($"音声: {clip} の重複再生は許可されていません");
                 return null;
@@ -94,7 +94,7 @@ public class AudioManager : MonoBehaviour
         foreach (AudioSource source in d3Sources)
         {
             // 重複禁止時に音声被りが発生したら処理終了
-            if (isAllowDuplicate && source.clip == clip && source.isPlaying)
+            if (!isAllowDuplicate && source.isPlaying && source.clip == clip)
             {
                 Debug.LogWarning($"音声: {clip} の重複再生は許可されていません");
                 return null;
@@ -166,7 +166,7 @@ public class AudioManager : MonoBehaviour
         AudioData data = TryGetData(id);
         if (data == null) return;
         // 再生可能な音声ソースの取得
-        AudioSource source = TryGetAvailable2DSource(data.clip, isAllowDuplicate);
+        AudioSource source = TryGetAvailable3DSource(data.clip, isAllowDuplicate);
         if (source == null) return;
 
         // ソースに各種情報を設定して再生

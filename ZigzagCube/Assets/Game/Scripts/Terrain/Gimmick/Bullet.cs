@@ -65,7 +65,8 @@ public class Bullet : MonoBehaviour
         isHit = true;
         model.SetActive(false);
         bulletCollider.enabled = false;
-        // エフェクトを再生し、エフェクト終了まで待機
+        // SE・エフェクトを再生し、エフェクト終了まで待機
+        AudioManager.Instance.PlaySE("BulletExplosion", transform.position);
         bulletExplosionFX.Play();
         _ = WaitAndReturnAsync();
     }

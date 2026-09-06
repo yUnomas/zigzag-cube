@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 3102215522655582037}
   - component: {fileID: 3569772475814969468}
   - component: {fileID: 7363053069113109345}
+  - component: {fileID: 899860189998817471}
   - component: {fileID: 4043005843487397534}
   - component: {fileID: 6065147192797643880}
   - component: {fileID: 3158086786328215193}
@@ -232,6 +233,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!81 &899860189998817471
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6021562434382082499}
+  m_Enabled: 1
 --- !u!114 &4043005843487397534
 MonoBehaviour:
   m_ObjectHideFlags: 0

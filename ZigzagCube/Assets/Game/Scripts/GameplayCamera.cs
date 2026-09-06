@@ -14,5 +14,6 @@ public class GameplayCamera : MonoBehaviour
         Vector3 current = transform.position;
         Vector3 target = player.transform.position + offset;
         transform.position = Vector3.Lerp(current, target, speed * Time.deltaTime);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, target.z);
     }
 }

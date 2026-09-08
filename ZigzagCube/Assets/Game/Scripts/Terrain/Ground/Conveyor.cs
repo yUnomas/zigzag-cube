@@ -41,14 +41,14 @@ public class Conveyor : StageObjectBase
     {
         if (collision.gameObject.TryGetComponent<PlayerMovement>(out var playerMovement))
         {
-            playerMovement.AddSpeed(flowSpeed * flowDirection);
+            playerMovement.AddExternalSpeed(flowSpeed * flowDirection);
         }
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerMovement>(out var playerMovement))
         {
-            playerMovement.RemoveSpeed(flowSpeed * flowDirection);
+            playerMovement.RemoveExternalSpeed(flowSpeed * flowDirection);
         }
     }
 }

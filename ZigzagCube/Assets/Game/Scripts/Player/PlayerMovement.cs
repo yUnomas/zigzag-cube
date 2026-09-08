@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerMovement : ModuleBase<PlayerController>
 {
@@ -7,10 +6,6 @@ public class PlayerMovement : ModuleBase<PlayerController>
     private float forwardSpeed = 1f;
     [SerializeField, Tooltip("左右への移動速度")]
     private float horizontalSpeed = 1f;
-    [SerializeField, Tooltip("速度の上昇量")]
-    private float speedIncreaseAmount = 1f;
-    [SerializeField, Tooltip("速度が上昇する距離間隔")]
-    private float speedIncreasePerDistance = 100f;
     [Header("=====")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private BoxCollider boxCollider;
@@ -23,14 +18,10 @@ public class PlayerMovement : ModuleBase<PlayerController>
     /// <summary>
     /// 移動方向    </summary>
     private float direction = 1f;
-    /// <summary>
-    /// 最後に速度が上昇した距離    </summary>
-    private float lastSpeedIncreaseDirection;
 
     public override void Activate()
     {
         rb.useGravity = true;
-
         if(moveIndicateAnimation.activeSelf) moveIndicateAnimation.SetActive(false);
     }
     public override void Deactivate()
@@ -41,14 +32,6 @@ public class PlayerMovement : ModuleBase<PlayerController>
 
     public override void Execute(InputData inputData)
     {
-        // 一定距離の移動で速度上昇
-        if (transform.position.z - lastSpeedIncreaseDirection >= speedIncreasePerDistance)
-        {
-            forwardSpeed += speedIncreaseAmount;
-            horizontalSpeed += speedIncreaseAmount;
-            Debug.Log($"現在の移動速度:{forwardSpeed}");
-            lastSpeedIncreaseDirection = transform.position.z;
-        }
         // タップで方向切り替え
         if (inputData.isTouch) ChangeDirection();
 
@@ -101,6 +84,18 @@ public class PlayerMovement : ModuleBase<PlayerController>
         }
         AudioManager.Instance.PlaySE("PlayerChangeDirection");
     }
-    public void AddSpeed(float value) { externalHorizontalSpeed += value; }
-    public void RemoveSpeed(float value) { externalHorizontalSpeed -= value; }
+
+    public void AddSpeed(float value)
+    {
+        forwardSpeed += value;
+        horizontalSpeed += value;
+    }
+    public void RemoveSpeed(float value)
+    {
+        forwardSpeed -= value;
+        horizontalSpeed -= value;
+    }
+    public void AddExternalSpeed(float value) { externalHorizontalSpeed += value; }
+    public void RemoveExternalSpeed(float value) { externalHorizontalSpeed -= value; }
+
 }

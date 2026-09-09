@@ -71,7 +71,7 @@ public class ChunkController : MonoBehaviour
         ChunkType type = GetRandomChunk(chunkType);
         CellData[] cellDatas = new CellData[cells.Length];
         GroundData[] groundDatas = groundGenerator.Generate(type, width, length, cells.Length);
-        GimmickData[] gimmickDatas = gimmickGenerator.Generate(type, groundDatas);
+        GimmickData[] gimmickDatas = gimmickGenerator.Generate(type, cells.Length, groundDatas);
         // 各データをセルに追加
         for(int i = 0; i < cellDatas.Length; i++)
         {

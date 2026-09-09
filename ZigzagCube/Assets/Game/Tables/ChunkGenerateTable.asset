@@ -39,7 +39,7 @@ MonoBehaviour:
       weight: 75
     - type: 3
       weight: 20
-    - type: 3
+    - type: 4
       weight: 5
   - level: 4
     entries:
@@ -47,7 +47,7 @@ MonoBehaviour:
       weight: 75
     - type: 3
       weight: 15
-    - type: 3
+    - type: 4
       weight: 10
   - level: 5
     entries:

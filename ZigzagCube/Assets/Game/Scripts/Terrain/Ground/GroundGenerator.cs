@@ -38,10 +38,10 @@ public class GroundGenerator : MonoBehaviour
         };
     }
 
-    public GroundData[] Generate(ChunkType chunkType, int chunkWidth, int chunkLength, int cellCount)
+    public GroundData[] Generate(ChunkType chunkType, int chunkWidth, int chunkLength, int totalCells)
     {
         // セル数の地面データ作成
-        GroundData[] groundDatas = new GroundData[cellCount];
+        GroundData[] groundDatas = new GroundData[totalCells];
         //** 地面データの生成処理
         switch (chunkType)
         {
@@ -100,13 +100,13 @@ public class GroundGenerator : MonoBehaviour
                 break;
         }
         // 空データを整理
-        for (int i = 0; i < cellCount; i++)
+        for (int i = 0; i < totalCells; i++)
         {
             if(groundDatas[i].type == GroundType.None)
             {
                 // 空データの連続数を取得
                 int length = 0;
-                while(i + length < cellCount && groundDatas[i + length].type == GroundType.None)
+                while(i + length < totalCells && groundDatas[i + length].type == GroundType.None)
                 {
                     length++;
                 }

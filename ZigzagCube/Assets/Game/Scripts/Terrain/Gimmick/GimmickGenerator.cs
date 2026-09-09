@@ -1,21 +1,38 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GimmickGenerator : MonoBehaviour
 {
-    [SerializeField] private int generateCount = 2;
+    [SerializeField] private GimmickGenerateTable normalTable;
+    [SerializeField] private GimmickGenerateTable movingTable;
 
-    private GimmickType GetType(GroundType groundType)
+    private DifficultyManager difficulty => DifficultyManager.Instance;
+
+    private GimmickType GetRandomGimmick(GroundType type)
     {
-        switch(groundType)
+        switch(type)
         {
-            // 何も生成しない
-            case GroundType.None: return GimmickType.None;
-            // トゲ or レーン移動トゲ
-            case GroundType.Bridge:
-            case GroundType.MovingBridge: return (GimmickType)UnityEngine.Random.Range((int)GimmickType.Spike, (int)GimmickType.Cannon);
-            // トゲ or レーン移動トゲ or 大砲
-            default:    return (GimmickType)UnityEngine.Random.Range((int)GimmickType.Spike, (int)GimmickType.Max);
+            // 動かない地面
+            case GroundType.Ground:
+            case GroundType.Bridge: return normalTable.GetRandomGimmick(difficulty.CurrentLevel);
+            // 動く地面
+            case GroundType.MovingBridge:
+            case GroundType.Conveyor: return movingTable.GetRandomGimmick(difficulty.CurrentLevel);
+            // それ以外
+            default: return default;
+        }
+    }
+    private int GetGenerateCount(ChunkType type)
+    {
+        switch (type)
+        {
+            // 動く地面のないチャンク
+            case ChunkType.Normal:
+            case ChunkType.Bridge: return normalTable.GetGenerateCount(difficulty.CurrentLevel);
+            // 動く地面のあるチャンク
+            case ChunkType.MovingBridge:
+            case ChunkType.Conveyor: return movingTable.GetGenerateCount(difficulty.CurrentLevel);
+            // それ以外
+            default: return default;
         }
     }
     private GimmickData CreateData(GimmickType type, int lane, int direction = 1)
@@ -29,38 +46,38 @@ public class GimmickGenerator : MonoBehaviour
         };
     }
 
-    public GimmickData[] Generate(ChunkType chunkType, GroundData[] groundDatas)
+    public GimmickData[] Generate(ChunkType chunkType, int totalCells, GroundData[] groundDatas)
     {
-        if (chunkType <= ChunkType.Start) return Array.Empty<GimmickData>();
+        if (chunkType <= ChunkType.Start) return default;
 
-        // 生成する数の配列作成
-        GimmickData[] gimmickDatas = new GimmickData[groundDatas.Length];
-
+        // 合計セル数の配列作成
+        GimmickData[] gimmickDatas = new GimmickData[totalCells];
+        int generateCount = GetGenerateCount(chunkType);
         for (int i = 0; i < generateCount; i++)
         {
-            // ギミックの配置セルの決定
+            // ギミックを配置するセルの決定
             int cell;
             while (true)
             {
-                cell = UnityEngine.Random.Range(0, groundDatas.Length);
+                cell = Random.Range(0, totalCells);
                 if (gimmickDatas[cell].type == GimmickType.None) break;
             }
-            // 配置ギミックデータの作成
+            // ギミックデータの作成
             GroundData ground = groundDatas[cell];
-            GimmickType type = GetType(ground.type);
-            int lane = UnityEngine.Random.Range(ground.startLane, ground.startLane + ground.width);
-            switch (type)
+            GimmickType gimmickType = GetRandomGimmick(ground.type);
+            int lane = Random.Range(ground.startLane, ground.startLane + ground.width);
+            switch (gimmickType)
             {
                 case GimmickType.Spike:
                 case GimmickType.Cannon:
                     {
-                        gimmickDatas[cell] = CreateData(type, lane);
+                        gimmickDatas[cell] = CreateData(gimmickType, lane);
                     }
                     break;
                 case GimmickType.SpikeLane:
                     {
-                        int direction = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
-                        gimmickDatas[cell] = CreateData(type, lane, direction);
+                        int direction = Random.Range(0, 2) == 0 ? 1 : -1;
+                        gimmickDatas[cell] = CreateData(gimmickType, lane, direction);
                     }
                     break;
             }

@@ -1,7 +1,7 @@
 ﻿using System;
 
 [Serializable]
-public class LevelChunkGroup
+public struct LevelChunkGroup
 {
     public int level;
     public ChunkWeightEntry[] entries;

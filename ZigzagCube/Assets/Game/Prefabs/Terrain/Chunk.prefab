@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6a9a8f3c0a65440821030c9acfe121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateCount: 2
+  normalTable: {fileID: 11400000, guid: 053220118f15d2b49850cca293842def, type: 2}
+  movingTable: {fileID: 11400000, guid: ba566b8791280624e998228d2e84b5fd, type: 2}
 --- !u!1001 &278522344873572505
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,9 +2,9 @@
 using UnityEngine;
 
 [Serializable]
-public struct ChunkWeightEntry : IWeighted
+public class GimmickWeightEntry : IWeighted
 {
-    public ChunkType type;
+    public GimmickType type;
     [SerializeField, Range(1, 100)] public int weight;
     public int Weight => weight;
 }

@@ -4,6 +4,7 @@ public struct GroundData
 {
     // 共通
     public GroundType type;
+    public bool isOccupied; // すでに前セルによって占有されているか
     public int startLane;   // 一番左のレーン番号
     public int width;       // X軸方向のレーン数
     public int length;      // Z軸方向のセル数

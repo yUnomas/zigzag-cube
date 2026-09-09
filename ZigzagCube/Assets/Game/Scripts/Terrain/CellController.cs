@@ -40,7 +40,7 @@ public class CellController : MonoBehaviour
     public void SetGround(GroundData data)
     {
         activeGroundType = data.type;   // 渡された地面タイプを保持
-        if (data.type == GroundType.None) return;
+        if (data.type == GroundType.None || data.isOccupied) return;
 
         switch (data.type)
         {

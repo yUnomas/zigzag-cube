@@ -2,22 +2,24 @@
 
 public class GroundGenerator : MonoBehaviour
 {
-    private GroundData CreateGround(GroundType type, int width, int length)
+    private GroundData CreateGround(GroundType type, bool isOccupied, int width, int length)
     {
         return new GroundData()
         {
             type = type,
+            isOccupied = isOccupied,
             startLane = 0,
             width = width,
             length = length,
             height = 0,
         };
     }
-    private GroundData CreateBridge(GroundType type, int startLane, int width, int length)
+    private GroundData CreateBridge(GroundType type, bool isOccupied, int startLane, int width, int length)
     {
         return new GroundData()
         {
             type = type,
+            isOccupied = isOccupied,
             startLane = startLane,
             width = width,
             length = length,
@@ -25,11 +27,12 @@ public class GroundGenerator : MonoBehaviour
             direction = Random.Range(0, 2) == 0 ? 1 : -1
         };
     }
-    private GroundData CreateConveyor(GroundType type, int width, int length)
+    private GroundData CreateConveyor(GroundType type, bool isOccupied, int width, int length)
     {
         return new GroundData()
         {
             type = type,
+            isOccupied = isOccupied,
             startLane = 0,
             width = width,
             length = length,
@@ -69,11 +72,11 @@ public class GroundGenerator : MonoBehaviour
                     {
                         if (i == startCell)
                         {
-                            groundDatas[i] = CreateBridge(type, startLane, randWidth, length);
+                            groundDatas[i] = CreateBridge(type, false, startLane, randWidth, length);
                         }
                         else
                         {
-                            groundDatas[i] = CreateBridge(GroundType.Occupied, startLane, randWidth, length);
+                            groundDatas[i] = CreateBridge(type, true, startLane, randWidth, length);
                         }
                     }
                 }
@@ -89,11 +92,11 @@ public class GroundGenerator : MonoBehaviour
                     {
                         if (i == startCell)
                         {
-                            groundDatas[i] = CreateConveyor(GroundType.Conveyor, chunkWidth, length);
+                            groundDatas[i] = CreateConveyor(GroundType.Conveyor, false, chunkWidth, length);
                         }
                         else
                         {
-                            groundDatas[i] = CreateConveyor(GroundType.Occupied, chunkWidth, length);
+                            groundDatas[i] = CreateConveyor(GroundType.Conveyor, true, chunkWidth, length);
                         }
                     }
                 }
@@ -111,11 +114,11 @@ public class GroundGenerator : MonoBehaviour
                     length++;
                 }
                 // 空データの先頭セルに地面データを割り当て
-                groundDatas[i] = CreateGround(GroundType.Ground, chunkWidth, length);
+                groundDatas[i] = CreateGround(GroundType.Ground, false, chunkWidth, length);
                 // 以降を占有タイプに変更
                 for (int j = 1; j < length; j++)
                 {
-                    groundDatas[i + j] = CreateGround(GroundType.Occupied, chunkWidth, length);
+                    groundDatas[i + j] = CreateGround(GroundType.Ground, true, chunkWidth, length);
                 }
                 // 処理した分だけインクリメント
                 i += length;

@@ -13,7 +13,7 @@ public class GroundGenerator : MonoBehaviour
             height = 0,
         };
     }
-    private GroundData CreateBridge(GroundType type, int startLane, int width, int length, int direction)
+    private GroundData CreateBridge(GroundType type, int startLane, int width, int length)
     {
         return new GroundData()
         {
@@ -22,10 +22,10 @@ public class GroundGenerator : MonoBehaviour
             width = width,
             length = length,
             height = 0,
-            direction = direction
+            direction = Random.Range(0, 2) == 0 ? 1 : -1
         };
     }
-    private GroundData CreateConveyor(GroundType type, int width, int length, int direction)
+    private GroundData CreateConveyor(GroundType type, int width, int length)
     {
         return new GroundData()
         {
@@ -34,7 +34,7 @@ public class GroundGenerator : MonoBehaviour
             width = width,
             length = length,
             height = 0,
-            direction = direction
+            direction = Random.Range(0, 2) == 0 ? 1 : -1
         };
     }
 
@@ -49,6 +49,7 @@ public class GroundGenerator : MonoBehaviour
             case ChunkType.Normal:
                 break;
             case ChunkType.Bridge:
+            case ChunkType.MovingBridge:
                 {
                     // X軸方向の幅
                     int minWidth = (int)(chunkWidth / 2);
@@ -59,27 +60,20 @@ public class GroundGenerator : MonoBehaviour
                     int startCell = Random.Range(1, chunkLength / 2);
                     int endCell = Random.Range(startCell + 1, chunkLength - 1);
                     int length = endCell - startCell + 1;
-
-                    // 確率で動く橋に変更
-                    int rand = Random.Range(0, 10);
-                    int direction = 0;
-                    GroundType type = GroundType.Bridge;
-                    if (rand < 3)
-                    {
-                        direction = Random.Range(0, 2) == 0 ? 1 : -1;
-                        type = GroundType.MovingBridge;
-
-                    }
+                    // 橋の種類
+                    GroundType type = chunkType == ChunkType.Bridge
+                        ? GroundType.Bridge
+                        : GroundType.MovingBridge;
                     // データに橋の情報を適用
                     for (int i = startCell; i <= endCell; i++)
                     {
                         if (i == startCell)
                         {
-                            groundDatas[i] = CreateBridge(type, startLane, randWidth, length, direction);
+                            groundDatas[i] = CreateBridge(type, startLane, randWidth, length);
                         }
                         else
                         {
-                            groundDatas[i] = CreateBridge(GroundType.Occupied, startLane, randWidth, length, direction);
+                            groundDatas[i] = CreateBridge(GroundType.Occupied, startLane, randWidth, length);
                         }
                     }
                 }
@@ -90,17 +84,16 @@ public class GroundGenerator : MonoBehaviour
                     int startCell = Random.Range(1, chunkLength / 2);
                     int endCell = Random.Range(startCell + 1, chunkLength - 1);
                     int length = endCell - startCell + 1;
-                    int direction = Random.Range(0, 2) == 0 ? 1 : -1;
 
                     for (int i = startCell; i <= endCell; i++)
                     {
                         if (i == startCell)
                         {
-                            groundDatas[i] = CreateConveyor(GroundType.Conveyor, chunkWidth, length, direction);
+                            groundDatas[i] = CreateConveyor(GroundType.Conveyor, chunkWidth, length);
                         }
                         else
                         {
-                            groundDatas[i] = CreateConveyor(GroundType.Occupied, chunkWidth, length, direction);
+                            groundDatas[i] = CreateConveyor(GroundType.Occupied, chunkWidth, length);
                         }
                     }
                 }

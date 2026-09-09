@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
-using VoxelBusters.CoreLibrary;
+﻿using UnityEngine;
 
 public class ChunkController : MonoBehaviour
 {
@@ -17,7 +14,7 @@ public class ChunkController : MonoBehaviour
     [SerializeField] private CellController[] cells;
     [SerializeField] GroundGenerator groundGenerator;
     [SerializeField] GimmickGenerator gimmickGenerator;
-    [SerializeField] private ChunkType type;
+    [SerializeField] ChunkGenerateTable table;
 
     /// <summary>
     /// 復活地点    </summary>
@@ -40,25 +37,23 @@ public class ChunkController : MonoBehaviour
     }
 
     /// <summary>
-    /// 生成するチャンクタイプを設定    </summary>
-    private void SetChunkType(ChunkType chunkType = ChunkType.None)
+    /// 生成するチャンクを取得    </summary>
+    private ChunkType GetRandomChunk(ChunkType chunkType = ChunkType.None)
     {
-        // チャンクタイプが渡されている場合は渡された値を設定
-        if(chunkType != ChunkType.None)
+        // 指定済みなら指定された値を返す
+        if (chunkType != ChunkType.None)
         {
-            type = chunkType;
-            return;
+            return chunkType;
         }
-
         // 生成の有無によって生成方式を変更
-        if(isGenerate)
+        if (isGenerate)
         {
-            type = (ChunkType)Random.Range((int)ChunkType.Normal, (int)ChunkType.Max);
+            return table.GetRandomChunk(DifficultyManager.Instance.CurrentLevel);
         }
         else
         {
             isGenerate = true;
-            type = ChunkType.Start;
+            return ChunkType.Start;
         }
     }
 
@@ -70,17 +65,24 @@ public class ChunkController : MonoBehaviour
     }
     /// <summary>
     /// チャンクの生成    </summary>
-    private CellData[] Generate()
+    private CellData[] Generate(ChunkType chunkType = ChunkType.None)
     {
         // 各データの生成
+        ChunkType type = GetRandomChunk(chunkType);
         CellData[] cellDatas = new CellData[cells.Length];
         GroundData[] groundDatas = groundGenerator.Generate(type, width, length, cells.Length);
         GimmickData[] gimmickDatas = gimmickGenerator.Generate(type, groundDatas);
         // 各データをセルに追加
         for(int i = 0; i < cellDatas.Length; i++)
         {
-            if(!groundDatas.IsNullOrEmpty()) cellDatas[i].ground = groundDatas[i];
-            if(!gimmickDatas.IsNullOrEmpty()) cellDatas[i].gimmick = gimmickDatas[i];
+            if(groundDatas != null && groundDatas.Length != 0)
+            {
+                cellDatas[i].ground = groundDatas[i];
+            }
+            if(gimmickDatas != null && gimmickDatas.Length != 0)
+            {
+                cellDatas[i].gimmick = gimmickDatas[i];
+            }
         }
 
         return cellDatas;
@@ -104,8 +106,7 @@ public class ChunkController : MonoBehaviour
     {
         if(isLoop)  LoopPosition(chunkCount);
 
-        SetChunkType(chunkType);
-        CellData[] datas = Generate();
+        CellData[] datas = Generate(chunkType);
         Apply(datas);
 
         Debug.Log("再生成が完了しました");

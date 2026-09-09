@@ -15,8 +15,12 @@ public class DifficultyManager : MonoBehaviour
     [Header("=====")]
     [SerializeField] private PlayerMovement player;
 
+    public static DifficultyManager Instance => instance;
+    private static DifficultyManager instance;
+
     /// <summary>
     /// 現在の難易度レベル    </summary>
+    public int CurrentLevel => currentLevel;
     private int currentLevel = 0;
     /// <summary>
     /// 現在の難易度上昇に必要な距離    </summary>
@@ -27,11 +31,12 @@ public class DifficultyManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         currentStepDistance = initialStepDistance;
     }
     private void Update()
     {
-        if (currentLevel < maxLevel) return;
+        if (currentLevel >= maxLevel) return;
 
         // 一定距離の移動で難易度を上昇
         if (player.transform.position.z - lastIncreasedDistance >= currentStepDistance)

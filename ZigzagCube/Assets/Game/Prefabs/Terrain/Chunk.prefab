@@ -72,7 +72,7 @@ MonoBehaviour:
   - {fileID: 7247735869514373503}
   groundGenerator: {fileID: 5979166706442191988}
   gimmickGenerator: {fileID: 622091115013283521}
-  type: 0
+  table: {fileID: 11400000, guid: b286dc3fb0b7ee24aa2cc7a47676f2ca, type: 2}
 --- !u!114 &5979166706442191988
 MonoBehaviour:
   m_ObjectHideFlags: 0

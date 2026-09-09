@@ -4,6 +4,7 @@
     Start,
     Normal,
     Bridge,
+    MovingBridge,
     Conveyor,
 
     Max,

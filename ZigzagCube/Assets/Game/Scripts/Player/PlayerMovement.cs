@@ -10,6 +10,7 @@ public class PlayerMovement : ModuleBase<PlayerController>
     [SerializeField] private Rigidbody rb;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private EffectController directionChangeFX;
+    [SerializeField] private TrailRenderer moveTrajectoryFX;
     [SerializeField] private GameObject moveIndicateAnimation;
 
     /// <summary>
@@ -21,13 +22,19 @@ public class PlayerMovement : ModuleBase<PlayerController>
 
     public override void Activate()
     {
+        // 物理挙動の開始
         rb.useGravity = true;
-        if(moveIndicateAnimation.activeSelf) moveIndicateAnimation.SetActive(false);
+        // アニメーション・エフェクトの切り替え
+        moveIndicateAnimation.SetActive(false);
+        moveTrajectoryFX.enabled = true;
     }
     public override void Deactivate()
     {
+        // 物理挙動の停止
         rb.linearVelocity = Vector3.zero;
         rb.useGravity = false;
+        // アニメーション・エフェクトの切り替え
+        moveTrajectoryFX.enabled = false;
     }
 
     public override void Execute(InputData inputData)

@@ -11,8 +11,12 @@ public class FieldManager : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private DifficultyManager difficultyManager;
 
+    public static FieldManager Instance => instance;
+    private static FieldManager instance;
+
     private void Awake()
     {
+        instance = this;
         if(editorGuideObjects) Destroy(editorGuideObjects);
     }
     private void Start()

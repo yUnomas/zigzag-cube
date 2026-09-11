@@ -32,10 +32,18 @@ public class EffectController : MonoBehaviour
             DestroyEffect(totalLifetime);
         }
     }
+    /// <summary>
+    /// エフェクト再生    </summary>
     public virtual void Play(Vector3 pos, Quaternion rotation)
     {
         transform.position = pos;
         transform.rotation = rotation;
         Play();
+    }
+    /// <summary>
+    /// エフェクトをクリア    </summary>
+    public virtual void Clear()
+    {
+        effect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 }

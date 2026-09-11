@@ -18,12 +18,12 @@ public class StageObjectBase : MonoBehaviour
         transform.localPosition = new Vector3(data.lane, data.height, 0);
     }
 
-    public virtual void Set(Transform cell, GroundData data)
+    public virtual void Set(Transform cell, GroundData data, DifficultyParameterEntry param)
     {
         gameObject.SetActive(true);
         SetTransform(cell, data);
     }
-    public virtual void Set(Transform cell, GimmickData data)
+    public virtual void Set(Transform cell, GimmickData data, DifficultyParameterEntry para)
     {
         gameObject.SetActive(true);
         SetTransform(cell, data);

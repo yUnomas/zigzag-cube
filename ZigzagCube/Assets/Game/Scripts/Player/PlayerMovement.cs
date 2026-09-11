@@ -85,15 +85,10 @@ public class PlayerMovement : ModuleBase<PlayerController>
         AudioManager.Instance.PlaySE("PlayerChangeDirection");
     }
 
-    public void AddSpeed(float value)
+    public void SetSpeed(float value)
     {
-        forwardSpeed += value;
-        horizontalSpeed += value;
-    }
-    public void RemoveSpeed(float value)
-    {
-        forwardSpeed -= value;
-        horizontalSpeed -= value;
+        forwardSpeed = value;
+        horizontalSpeed = value;
     }
     public void AddExternalSpeed(float value) { externalHorizontalSpeed += value; }
     public void RemoveExternalSpeed(float value) { externalHorizontalSpeed -= value; }

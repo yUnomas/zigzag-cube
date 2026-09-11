@@ -79,12 +79,13 @@ public class Bullet : MonoBehaviour
     }
 
 
-    public void Set(Cannon cannon, BulletPool pool)
+    public void Set(Cannon cannon, BulletPool pool, float speed)
     {
         isHit = false;
         model.SetActive(true);
         bulletCollider.enabled = true;
         gameObject.SetActive(true);
+        this.speed = speed;
         // 値の保存
         this.cannon = cannon;
         this.pool = pool;

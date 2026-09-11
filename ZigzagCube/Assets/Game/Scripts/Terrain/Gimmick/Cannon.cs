@@ -3,9 +3,9 @@
 public class Cannon : StageObjectBase
 {
     [SerializeField, Tooltip("発射間隔")]
-    private float duration = 5f;
+    private float interval = 5f;
     [SerializeField, Tooltip("発射アニメーション時間")]
-    private float preDuration = 1f;
+    private float fireAnimTiming = 1f;
     [Header("=====")]
     [SerializeField] private Animation fireAnimation;
     [SerializeField] private EffectController cannonFireFX;
@@ -17,6 +17,9 @@ public class Cannon : StageObjectBase
     /// <summary>
     /// 発射したかどうか    </summary>
     private bool isFired;
+    /// <summary>
+    /// 砲弾の速度    </summary>
+    private float bulletSpeed;
 
     private void Awake()
     {
@@ -25,13 +28,13 @@ public class Cannon : StageObjectBase
     private void Update()
     {
         // 発射間隔に合わせてアニメーション実行
-        if (!isFired && elapsedTime >= duration - preDuration)
+        if (!isFired && elapsedTime >= interval - fireAnimTiming)
         {
             fireAnimation.Play();
             isFired = true;
         }
         // 発射間隔のリセット
-        else if(elapsedTime >= duration)
+        else if(elapsedTime >= interval)
         {
             Fire();
             elapsedTime = 0f;
@@ -51,11 +54,13 @@ public class Cannon : StageObjectBase
                 transform.position,
                 transform.rotation
             );
-        bullet.Set(this, pool);
+        bullet.Set(this, pool, bulletSpeed);
     }
-    public override void Set(Transform cell, GimmickData data)
+    public override void Set(Transform cell, GimmickData data, DifficultyParameterEntry param)
     {
         elapsedTime = 0f;
-        base.Set(cell, data);
+        interval = param.cannonInterval;
+        bulletSpeed = param.bulletSpeed;
+        base.Set(cell, data, param);
     }
 }

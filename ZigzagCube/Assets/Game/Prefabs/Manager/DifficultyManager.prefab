@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc50d9b8494abb43a2b81735aa3aa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeedIncreaseAmount: 0.2
-  difficultyIncreaseDistanceAmount: 20
-  firstDifficultyIncreaseDistance: 50
+  initialStepDistance: 0
+  distanceStepIncrease: 20
+  maxStepLevel: 5
+  maxLevel: 10
   player: {fileID: 0}
+  table: {fileID: 11400000, guid: 360428b7247765140952ef925ad84049, type: 2}

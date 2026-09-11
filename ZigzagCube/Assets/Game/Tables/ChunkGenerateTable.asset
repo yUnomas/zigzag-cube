@@ -16,32 +16,16 @@ MonoBehaviour:
   - level: 0
     entries:
     - type: 2
-      weight: 90
+      weight: 80
     - type: 3
-      weight: 10
+      weight: 20
   - level: 1
     entries:
     - type: 2
-      weight: 80
-    - type: 3
-      weight: 20
-  - level: 2
-    entries:
-    - type: 2
-      weight: 80
-    - type: 3
-      weight: 15
-    - type: 4
-      weight: 5
-  - level: 3
-    entries:
-    - type: 2
       weight: 75
     - type: 3
-      weight: 20
-    - type: 4
-      weight: 5
-  - level: 4
+      weight: 25
+  - level: 2
     entries:
     - type: 2
       weight: 75
@@ -49,7 +33,7 @@ MonoBehaviour:
       weight: 15
     - type: 4
       weight: 10
-  - level: 5
+  - level: 3
     entries:
     - type: 2
       weight: 70
@@ -57,27 +41,25 @@ MonoBehaviour:
       weight: 20
     - type: 4
       weight: 10
-  - level: 6
+  - level: 4
     entries:
     - type: 2
       weight: 65
     - type: 3
       weight: 20
     - type: 4
-      weight: 10
-    - type: 5
-      weight: 5
-  - level: 7
+      weight: 15
+  - level: 5
     entries:
     - type: 2
       weight: 60
     - type: 3
-      weight: 20
+      weight: 15
     - type: 4
-      weight: 10
+      weight: 15
     - type: 5
       weight: 10
-  - level: 8
+  - level: 6
     entries:
     - type: 2
       weight: 55
@@ -87,23 +69,43 @@ MonoBehaviour:
       weight: 15
     - type: 5
       weight: 10
-  - level: 9
-    entries:
-    - type: 2
-      weight: 55
-    - type: 3
-      weight: 15
-    - type: 4
-      weight: 15
-    - type: 5
-      weight: 15
-  - level: 10
+  - level: 7
     entries:
     - type: 2
       weight: 50
     - type: 3
       weight: 20
     - type: 4
-      weight: 15
+      weight: 20
     - type: 5
-      weight: 15
+      weight: 10
+  - level: 8
+    entries:
+    - type: 2
+      weight: 50
+    - type: 3
+      weight: 10
+    - type: 4
+      weight: 20
+    - type: 5
+      weight: 20
+  - level: 9
+    entries:
+    - type: 2
+      weight: 45
+    - type: 3
+      weight: 10
+    - type: 4
+      weight: 25
+    - type: 5
+      weight: 20
+  - level: 10
+    entries:
+    - type: 2
+      weight: 40
+    - type: 3
+      weight: 10
+    - type: 4
+      weight: 25
+    - type: 5
+      weight: 25

@@ -17,82 +17,90 @@ MonoBehaviour:
     generateCount: 2
     entries:
     - type: 1
-      weight: 100
+      weight: 90
+    - type: 2
+      weight: 10
   - level: 1
     generateCount: 2
     entries:
     - type: 1
-      weight: 90
+      weight: 80
     - type: 2
-      weight: 10
+      weight: 20
   - level: 2
     generateCount: 2
-    entries:
-    - type: 1
-      weight: 90
-    - type: 2
-      weight: 10
-  - level: 3
-    generateCount: 2
-    entries:
-    - type: 1
-      weight: 80
-    - type: 2
-      weight: 20
-  - level: 4
-    generateCount: 3
-    entries:
-    - type: 1
-      weight: 80
-    - type: 2
-      weight: 20
-  - level: 5
-    generateCount: 3
     entries:
     - type: 1
       weight: 70
     - type: 2
       weight: 30
-  - level: 6
-    generateCount: 3
+  - level: 3
+    generateCount: 2
     entries:
     - type: 1
       weight: 60
     - type: 2
       weight: 40
-  - level: 7
+  - level: 4
     generateCount: 3
-    entries:
-    - type: 1
-      weight: 70
-    - type: 2
-      weight: 20
-    - type: 3
-      weight: 10
-  - level: 8
-    generateCount: 4
-    entries:
-    - type: 1
-      weight: 70
-    - type: 2
-      weight: 20
-    - type: 3
-      weight: 10
-  - level: 9
-    generateCount: 4
     entries:
     - type: 1
       weight: 60
     - type: 2
-      weight: 20
+      weight: 30
     - type: 3
-      weight: 20
-  - level: 10
+      weight: 10
+  - level: 5
+    generateCount: 3
+    entries:
+    - type: 1
+      weight: 55
+    - type: 2
+      weight: 35
+    - type: 3
+      weight: 10
+  - level: 6
+    generateCount: 3
+    entries:
+    - type: 1
+      weight: 50
+    - type: 2
+      weight: 40
+    - type: 3
+      weight: 10
+  - level: 7
+    generateCount: 3
+    entries:
+    - type: 1
+      weight: 50
+    - type: 2
+      weight: 35
+    - type: 3
+      weight: 15
+  - level: 8
     generateCount: 4
     entries:
     - type: 1
       weight: 50
     - type: 2
-      weight: 30
+      weight: 35
+    - type: 3
+      weight: 15
+  - level: 9
+    generateCount: 4
+    entries:
+    - type: 1
+      weight: 45
+    - type: 2
+      weight: 40
+    - type: 3
+      weight: 15
+  - level: 10
+    generateCount: 4
+    entries:
+    - type: 1
+      weight: 40
+    - type: 2
+      weight: 40
     - type: 3
       weight: 20

@@ -25,11 +25,13 @@ public class GimmickGenerator : MonoBehaviour
     {
         switch (type)
         {
-            // 動く地面のないチャンク
-            case ChunkType.Normal:
-            case ChunkType.Bridge: return normalTable.GetGenerateCount(difficulty.CurrentLevel);
-            // 動く地面のあるチャンク
-            case ChunkType.MovingBridge:
+            // フルサイズ
+            case ChunkType.Normal: return normalTable.GetGenerateCount(difficulty.CurrentLevel);
+            // 狭い
+            case ChunkType.Bridge: return normalTable.GetGenerateCount(difficulty.CurrentLevel) - 1;
+            // 移動＋狭い
+            case ChunkType.MovingBridge: return movingTable.GetGenerateCount(difficulty.CurrentLevel) - 1;
+            // 移動
             case ChunkType.Conveyor: return movingTable.GetGenerateCount(difficulty.CurrentLevel);
             // それ以外
             default: return default;

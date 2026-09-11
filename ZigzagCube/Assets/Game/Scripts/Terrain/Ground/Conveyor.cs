@@ -1,5 +1,4 @@
-﻿using System.Xml.Schema;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Conveyor : StageObjectBase
 {
@@ -29,12 +28,13 @@ public class Conveyor : StageObjectBase
         sideMaterial.mainTextureOffset = topMaterial.mainTextureOffset;
     }
 
-    public override void Set(Transform cell, GroundData data)
+    public override void Set(Transform cell, GroundData data, DifficultyParameterEntry param)
     {
         flowDirection = data.direction;
+        flowSpeed = param.conveyorSpeed;
         topMaterial.mainTextureScale = new Vector3(data.width / 2f * data.direction, data.length);
         sideMaterial.mainTextureScale = new Vector3(0.5f * data.direction, data.length);
-        base.Set(cell, data);
+        base.Set(cell, data, param);
     }
 
     private void OnCollisionEnter(Collision collision)

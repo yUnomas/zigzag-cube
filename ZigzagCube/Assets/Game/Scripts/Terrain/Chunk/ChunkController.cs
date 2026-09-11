@@ -31,14 +31,10 @@ public class ChunkController : MonoBehaviour
     {
         isGenerate = isGenerateAtStart;
     }
-    private void Start()
-    {
-        Regenerate(false);
-    }
 
     /// <summary>
     /// 生成するチャンクを取得    </summary>
-    private ChunkType GetRandomChunk(ChunkType chunkType = ChunkType.None)
+    private ChunkType GetRandomChunk(int difficultyLevel, ChunkType chunkType = ChunkType.None)
     {
         // 指定済みなら指定された値を返す
         if (chunkType != ChunkType.None)
@@ -48,7 +44,7 @@ public class ChunkController : MonoBehaviour
         // 生成の有無によって生成方式を変更
         if (isGenerate)
         {
-            return table.GetRandomChunk(DifficultyManager.Instance.CurrentLevel);
+            return table.GetRandomChunk(difficultyLevel);
         }
         else
         {
@@ -65,13 +61,13 @@ public class ChunkController : MonoBehaviour
     }
     /// <summary>
     /// チャンクの生成    </summary>
-    private CellData[] Generate(ChunkType chunkType = ChunkType.None)
+    private CellData[] Generate(int difficultyLevel, ChunkType chunkType = ChunkType.None)
     {
         // 各データの生成
-        ChunkType type = GetRandomChunk(chunkType);
+        ChunkType type = GetRandomChunk(difficultyLevel, chunkType);
         CellData[] cellDatas = new CellData[cells.Length];
         GroundData[] groundDatas = groundGenerator.Generate(type, width, length, cells.Length);
-        GimmickData[] gimmickDatas = gimmickGenerator.Generate(type, cells.Length, groundDatas);
+        GimmickData[] gimmickDatas = gimmickGenerator.Generate(difficultyLevel, type, cells.Length, groundDatas);
         // 各データをセルに追加
         for(int i = 0; i < cellDatas.Length; i++)
         {
@@ -89,25 +85,25 @@ public class ChunkController : MonoBehaviour
     }
     /// <summary>
     /// チャンクの適用    </summary>
-    private void Apply(CellData[] data)
+    private void Apply(CellData[] data, DifficultyParameterEntry param)
     {
         // 各セルのオブジェクト設定
         for (int i = 0; i < cells.Length; i++)
         {
             cells[i].Clear();   // 前回の要素をあらかじめ除外
-            cells[i].SetGround(data[i].ground);
-            cells[i].SetGimmick(data[i].gimmick);
+            cells[i].SetGround(data[i].ground, param);
+            cells[i].SetGimmick(data[i].gimmick, param);
         }
     }
 
     /// <summary>
     /// チャンクの再生成    </summary>
-    public void Regenerate(bool isLoop, int chunkCount = 0, ChunkType chunkType = ChunkType.None)
+    public void Regenerate(bool isLoop, int chunkCount, DifficultyManager difficulty, ChunkType chunkType = ChunkType.None)
     {
         if(isLoop)  LoopPosition(chunkCount);
 
-        CellData[] datas = Generate(chunkType);
-        Apply(datas);
+        CellData[] datas = Generate(difficulty.Level, chunkType);
+        Apply(datas, difficulty.Parameter);
 
         Debug.Log("再生成が完了しました");
     }

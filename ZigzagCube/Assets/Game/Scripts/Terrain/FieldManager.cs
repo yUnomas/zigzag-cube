@@ -3,16 +3,21 @@ using UnityEngine;
 
 public class FieldManager : MonoBehaviour
 {
+    [Header("Objects")]
     [SerializeField] private List<ChunkController> chunks = new List<ChunkController>();
     [SerializeField] private Water water;
     [SerializeField] private GameObject editorGuideObjects;
-    
-    private PlayerController player;
+    [Header("Systems")]
+    [SerializeField] private PlayerController player;
+    [SerializeField] private DifficultyManager difficultyManager;
 
     private void Awake()
     {
-        player = FindAnyObjectByType<PlayerController>();
         if(editorGuideObjects) Destroy(editorGuideObjects);
+    }
+    private void Start()
+    {
+        Generate();
     }
     private void LateUpdate()
     {
@@ -20,7 +25,17 @@ public class FieldManager : MonoBehaviour
     }
 
     /// <summary>
-    /// チャンク確認   </summary>
+    /// フィールド生成    </summary>
+    private void Generate()
+    {
+        // 各チャンクを生成
+        foreach (var chunk in chunks)
+        {
+            chunk.Regenerate(false, chunks.Count, difficultyManager);
+        }
+    }
+    /// <summary>
+    /// チャンクを再生成するか確認   </summary>
     private void CheckChunk()
     {
         // プレイヤーから一定以上離れたら再生成
@@ -28,12 +43,11 @@ public class FieldManager : MonoBehaviour
         {
             if (player.transform.position.z - chunk.transform.position.z >= chunk.Length * 2)
             {
-                chunk.Regenerate(true, chunks.Count);
+                chunk.Regenerate(true, chunks.Count, difficultyManager);
                 water.transform.position += Vector3.forward * chunk.Length;
             }
         }
     }
-
     /// <summary>
     /// プレイヤーが復活するチャンクの準備    </summary>
     /// <returns>
@@ -54,7 +68,7 @@ public class FieldManager : MonoBehaviour
         }
 
         // 安全なチャンクに再生成
-        reviveChunk?.Regenerate(false, chunks.Count, ChunkType.Start);
+        reviveChunk?.Regenerate(false, chunks.Count, difficultyManager, ChunkType.Start);
         return revivePoint;
     }
 }

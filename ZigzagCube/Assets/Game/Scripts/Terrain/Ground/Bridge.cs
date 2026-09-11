@@ -10,9 +10,9 @@ public class Bridge : StageObjectBase
         material = meshRenderer.material;
     }
     
-    public override void Set(Transform cell, GroundData data)
+    public override void Set(Transform cell, GroundData data, DifficultyParameterEntry param)
     {
         material.mainTextureScale = new Vector3(data.width / 2f, data.length);
-        base.Set(cell, data);
+        base.Set(cell, data, param);
     }
 }

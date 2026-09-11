@@ -48,10 +48,11 @@ public class Lane : StageObjectBase
             target.position = pos;
         }
     }
-    public void Set(Transform cell, Transform target, int direction)
+    public void Set(Transform cell, Transform target, int direction, float speed)
     {
         this.target = target;
         this.direction = direction == 1 ? Vector3.right : Vector3.left;
+        this.speed = speed;
         // セル配下に配置
         transform.parent = cell.transform;
         // Transform設定

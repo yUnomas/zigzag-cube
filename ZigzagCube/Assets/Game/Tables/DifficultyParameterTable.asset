@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b519a797c4adcea48840a65f2c0494f6, type: 3}
+  m_Name: DifficultyParameterTable
+  m_EditorClassIdentifier: 
+  entries:
+  - level: 0
+    playerMoveSpeed: 5
+    movingBridgeSpeed: 1
+    conveyorSpeed: 1.5
+    spikeLaneSpeed: 1.5
+    cannonInterval: 5
+    bulletSpeed: 5
+  - level: 1
+    playerMoveSpeed: 5.25
+    movingBridgeSpeed: 1.1
+    conveyorSpeed: 1.5
+    spikeLaneSpeed: 1.6
+    cannonInterval: 5
+    bulletSpeed: 5
+  - level: 2
+    playerMoveSpeed: 5.5
+    movingBridgeSpeed: 1.2
+    conveyorSpeed: 1.5
+    spikeLaneSpeed: 1.7
+    cannonInterval: 5
+    bulletSpeed: 5
+  - level: 3
+    playerMoveSpeed: 5.5
+    movingBridgeSpeed: 1.3
+    conveyorSpeed: 1.5
+    spikeLaneSpeed: 1.8
+    cannonInterval: 5
+    bulletSpeed: 5
+  - level: 4
+    playerMoveSpeed: 6
+    movingBridgeSpeed: 1.4
+    conveyorSpeed: 1.5
+    spikeLaneSpeed: 1.9
+    cannonInterval: 5
+    bulletSpeed: 5
+  - level: 5
+    playerMoveSpeed: 6.25
+    movingBridgeSpeed: 1.5
+    conveyorSpeed: 1.5
+    spikeLaneSpeed: 2
+    cannonInterval: 5
+    bulletSpeed: 5
+  - level: 6
+    playerMoveSpeed: 6.5
+    movingBridgeSpeed: 1.6
+    conveyorSpeed: 1.6
+    spikeLaneSpeed: 2.1
+    cannonInterval: 5
+    bulletSpeed: 5
+  - level: 7
+    playerMoveSpeed: 6.75
+    movingBridgeSpeed: 1.7
+    conveyorSpeed: 1.7
+    spikeLaneSpeed: 2.2
+    cannonInterval: 4
+    bulletSpeed: 6
+  - level: 8
+    playerMoveSpeed: 7
+    movingBridgeSpeed: 1.8
+    conveyorSpeed: 1.8
+    spikeLaneSpeed: 2.3
+    cannonInterval: 4
+    bulletSpeed: 6
+  - level: 9
+    playerMoveSpeed: 7.25
+    movingBridgeSpeed: 1.9
+    conveyorSpeed: 1.9
+    spikeLaneSpeed: 2.4
+    cannonInterval: 3
+    bulletSpeed: 7
+  - level: 8
+    playerMoveSpeed: 7
+    movingBridgeSpeed: 2
+    conveyorSpeed: 2
+    spikeLaneSpeed: 2.5
+    cannonInterval: 3
+    bulletSpeed: 7

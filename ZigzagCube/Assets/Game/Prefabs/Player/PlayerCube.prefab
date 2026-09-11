@@ -276,11 +276,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 5
   horizontalSpeed: 5
-  speedIncreaseAmount: 1
-  speedIncreasePerDistance: 100
   rb: {fileID: 7363053069113109345}
   boxCollider: {fileID: 3102215522655582037}
   directionChangeFX: {fileID: 3687480619070229166}
+  moveTrajectoryFX: {fileID: 2591840618454105164}
   moveIndicateAnimation: {fileID: 3817933881841217375}
 --- !u!114 &3158086786328215193
 MonoBehaviour:
@@ -308,6 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11e57d5f349861478d9c3af0413d945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shatterFX: {fileID: 7644874207686206812}
+  gameplayUI: {fileID: 0}
 --- !u!1001 &4243827314490467977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -410,6 +411,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+--- !u!96 &2591840618454105164 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 8170009553180647084, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}
+  m_PrefabInstance: {fileID: 5951969980701729504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8129591544938035086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2471272614871373166, guid: 400ae909abb4db24ea391a7a94f9cb57, type: 3}

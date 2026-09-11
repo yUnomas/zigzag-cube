@@ -5,8 +5,7 @@ public class PlayerDeath : ModuleBase<PlayerController>
     [SerializeField, Tooltip("死亡アニメーション用の待機時間")]
     private float deathAnimationDuration = 1f;
     [Header("=====")]
-    [SerializeField, Tooltip("衝突時の砕け散るエフェクト")]
-    private EffectController shatterFX;
+    [SerializeField] private EffectController shatterFX;
 
     private async Awaitable DeathAsync()
     {

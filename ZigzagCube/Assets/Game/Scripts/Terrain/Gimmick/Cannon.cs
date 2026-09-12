@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Cannon : StageObjectBase
+public class Cannon : GimmickBase
 {
     [SerializeField, Tooltip("発射間隔")]
     private float interval = 5f;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5856082512573916429}
   - component: {fileID: 5979166706442191988}
   - component: {fileID: 622091115013283521}
+  - component: {fileID: 1814529823471758475}
   m_Layer: 0
   m_Name: Chunk
   m_TagString: Untagged
@@ -72,6 +73,7 @@ MonoBehaviour:
   - {fileID: 7247735869514373503}
   groundGenerator: {fileID: 5979166706442191988}
   gimmickGenerator: {fileID: 622091115013283521}
+  decorationGenerator: {fileID: 1814529823471758475}
   table: {fileID: 11400000, guid: b286dc3fb0b7ee24aa2cc7a47676f2ca, type: 2}
 --- !u!114 &5979166706442191988
 MonoBehaviour:
@@ -99,6 +101,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalTable: {fileID: 11400000, guid: 053220118f15d2b49850cca293842def, type: 2}
   movingTable: {fileID: 11400000, guid: ba566b8791280624e998228d2e84b5fd, type: 2}
+--- !u!114 &1814529823471758475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117766520386228274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3b52d26c12b2a43aee1ac018d51437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateCount: 4
 --- !u!1001 &278522344873572505
 PrefabInstance:
   m_ObjectHideFlags: 0

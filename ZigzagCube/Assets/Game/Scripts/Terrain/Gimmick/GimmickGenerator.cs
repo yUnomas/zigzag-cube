@@ -46,12 +46,12 @@ public class GimmickGenerator : MonoBehaviour
         };
     }
 
-    public GimmickData[] Generate(int difficultyLevel, ChunkType chunkType, int totalCells, GroundData[] groundDatas)
+    public GimmickData[] Generate(int difficultyLevel, ChunkType chunkType, int chunkLength, GroundData[] groundDatas)
     {
         if (chunkType <= ChunkType.Start) return default;
 
         // 合計セル数の配列作成
-        GimmickData[] gimmickDatas = new GimmickData[totalCells];
+        GimmickData[] gimmickDatas = new GimmickData[chunkLength];
         int generateCount = GetGenerateCount(difficultyLevel, chunkType);
         for (int i = 0; i < generateCount; i++)
         {
@@ -59,7 +59,7 @@ public class GimmickGenerator : MonoBehaviour
             int cell;
             while (true)
             {
-                cell = Random.Range(0, totalCells);
+                cell = Random.Range(0, chunkLength);
                 if (gimmickDatas[cell].type == GimmickType.None) break;
             }
             // ギミックデータの作成

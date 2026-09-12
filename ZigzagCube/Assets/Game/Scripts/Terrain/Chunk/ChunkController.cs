@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using VoxelBusters.CoreLibrary;
 
 public class ChunkController : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class ChunkController : MonoBehaviour
     [SerializeField] private CellController[] cells;
     [SerializeField] GroundGenerator groundGenerator;
     [SerializeField] GimmickGenerator gimmickGenerator;
+    [SerializeField] DecorationGenerator decorationGenerator;
     [SerializeField] ChunkGenerateTable table;
 
     /// <summary>
@@ -66,8 +69,9 @@ public class ChunkController : MonoBehaviour
         // 各データの生成
         ChunkType type = GetRandomChunk(difficultyLevel, chunkType);
         CellData[] cellDatas = new CellData[cells.Length];
-        GroundData[] groundDatas = groundGenerator.Generate(type, width, length, cells.Length);
-        GimmickData[] gimmickDatas = gimmickGenerator.Generate(difficultyLevel, type, cells.Length, groundDatas);
+        GroundData[] groundDatas = groundGenerator.Generate(type, width, length);
+        GimmickData[] gimmickDatas = gimmickGenerator.Generate(difficultyLevel, type, length, groundDatas);
+        DecorationData[] decorationDatas = decorationGenerator.Generate(width, length, groundDatas);
         // 各データをセルに追加
         for(int i = 0; i < cellDatas.Length; i++)
         {
@@ -78,6 +82,11 @@ public class ChunkController : MonoBehaviour
             if(gimmickDatas != null && gimmickDatas.Length != 0)
             {
                 cellDatas[i].gimmick = gimmickDatas[i];
+            }
+            if(decorationDatas != null && decorationDatas.Length != 0)
+            {
+                cellDatas[decorationDatas[i].cell].decorations ??= new List<DecorationData>();
+                cellDatas[decorationDatas[i].cell].decorations.Add(decorationDatas[i]);
             }
         }
 
@@ -93,6 +102,7 @@ public class ChunkController : MonoBehaviour
             cells[i].Clear();   // 前回の要素をあらかじめ除外
             cells[i].SetGround(data[i].ground, param);
             cells[i].SetGimmick(data[i].gimmick, param);
+            cells[i].SetDecoration(data[i].decorations);
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Conveyor : StageObjectBase
+public class Conveyor : GroundBase
 {
     [SerializeField, Tooltip("コンベヤーの流れる速度")]
     private float flowSpeed;

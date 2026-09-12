@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Spike : StageObjectBase
+public class Spike : GimmickBase
 {
     private void OnCollisionEnter(Collision collision)
     {

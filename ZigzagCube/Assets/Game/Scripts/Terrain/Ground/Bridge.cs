@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Bridge : StageObjectBase
+public class Bridge : GroundBase
 {
     [SerializeField] private MeshRenderer meshRenderer;
     private Material material;

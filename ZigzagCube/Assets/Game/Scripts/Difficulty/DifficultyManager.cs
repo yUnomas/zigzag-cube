@@ -10,9 +10,12 @@ public class DifficultyManager : MonoBehaviour
     private int maxStepLevel = 5;
     [SerializeField, Tooltip("難易度の上昇がストップする難易度レベル")]
     private int maxLevel = 10;
+    [SerializeField, Tooltip("エフェクトのプレイヤー座標からのオフセット値")]
+    private Vector3 effectOffset = new Vector3(-5, 6, 3);
     [Header("=====")]
     [SerializeField] private PlayerMovement player;
     [SerializeField] private DifficultyParameterTable table;
+    [SerializeField] private EffectController leavesFX;
 
     public static DifficultyManager Instance => instance;
     private static DifficultyManager instance;
@@ -44,7 +47,13 @@ public class DifficultyManager : MonoBehaviour
         if (player.transform.position.z - lastIncreasedDistance >= currentStepDistance)
         {
             IncreaseDifficulty();
+            if (level > 1) PlayEffect();
         }
+    }
+    private void LateUpdate()
+    {
+        // プレイヤーの位置 ＋ オフセット座標へ移動
+        leavesFX.transform.position = player.transform.position + effectOffset;
     }
 
     private void IncreaseDifficulty()
@@ -60,5 +69,10 @@ public class DifficultyManager : MonoBehaviour
         currentStepDistance = Mathf.Min(currentStepDistance + distanceStepIncrease, maxStepDistance);
         // 今回の難易度上昇時の距離を保持
         lastIncreasedDistance = player.transform.position.z;
+    }
+    // エフェクト・SE再生
+    private void PlayEffect()
+    {
+        leavesFX.Play();
     }
 }

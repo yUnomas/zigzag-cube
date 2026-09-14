@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VoxelBusters.CoreLibrary;
 
 public class DifficultyManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class DifficultyManager : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     [SerializeField] private DifficultyParameterTable table;
     [SerializeField] private EffectController leavesFX;
+    [SerializeField] private EffectController windLineFX;
 
     public static DifficultyManager Instance => instance;
     private static DifficultyManager instance;
@@ -54,6 +56,7 @@ public class DifficultyManager : MonoBehaviour
     {
         // プレイヤーの位置 ＋ オフセット座標へ移動
         leavesFX.transform.position = player.transform.position + effectOffset;
+        windLineFX.transform.position = player.transform.position + effectOffset;
     }
 
     private void IncreaseDifficulty()
@@ -74,5 +77,7 @@ public class DifficultyManager : MonoBehaviour
     private void PlayEffect()
     {
         leavesFX.Play();
+        windLineFX.Play();
+        AudioManager.Instance.PlaySE("Wind");
     }
 }

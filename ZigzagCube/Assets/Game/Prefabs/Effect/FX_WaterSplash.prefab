@@ -59,10 +59,10 @@ PrefabInstance:
     - target: {fileID: 2384022354925210695, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 275b3211c00e7c14ca704c43dc163a17, type: 2}
+      objectReference: {fileID: 2100000, guid: f82d9c293b9b0b944a4298b89d1afe33, type: 2}
     - target: {fileID: 6310691102145469639, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
       propertyPath: m_Name
-      value: WaterSplashFX
+      value: FX_WaterSplash
       objectReference: {fileID: 0}
     - target: {fileID: 6498262440490133412, guid: a7d98f20a8f614d4eb8d899fe72ef065, type: 3}
       propertyPath: looping

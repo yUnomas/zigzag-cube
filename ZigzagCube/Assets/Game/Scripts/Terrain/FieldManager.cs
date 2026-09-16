@@ -5,7 +5,6 @@ public class FieldManager : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private List<ChunkController> chunks = new List<ChunkController>();
-    [SerializeField] private Water water;
     [SerializeField] private GameObject editorGuideObjects;
     [Header("Systems")]
     [SerializeField] private PlayerController player;
@@ -48,7 +47,6 @@ public class FieldManager : MonoBehaviour
             if (player.transform.position.z - chunk.transform.position.z >= chunk.Length * 2)
             {
                 chunk.Regenerate(true, chunks.Count, difficultyManager);
-                water.transform.position += Vector3.forward * chunk.Length;
             }
         }
     }

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 81
       objectReference: {fileID: 0}
+    - target: {fileID: 272009198888521164, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1471953488822001212, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -88,6 +92,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2902855856600904739, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902855856600904739, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4800943005752767119, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_Name
       value: ShareButton
@@ -99,6 +111,34 @@ PrefabInstance:
     - target: {fileID: 5741227898738715771, guid: be91c955ace0aec45978d2520240ee86, type: 3}
       propertyPath: m_fontSize
       value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800054892549217816, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800054892549217816, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282186149307181299, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648054956362908384, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d5cdfc9155876643b075bd2182051fe, type: 3}
+    - target: {fileID: 6648054956362908384, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967970975963810963, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6d5cdfc9155876643b075bd2182051fe, type: 3}
+    - target: {fileID: 7967970975963810963, guid: be91c955ace0aec45978d2520240ee86, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

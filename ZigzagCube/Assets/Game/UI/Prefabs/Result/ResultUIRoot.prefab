@@ -860,11 +860,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2949086855594731979, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_text
-      value: \>
+      value: OK
       objectReference: {fileID: 0}
     - target: {fileID: 2949086855594731979, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_fontSize
-      value: 200
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949086855594731979, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4493227407121658255, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_Pivot.x
@@ -972,11 +976,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321369995404559304, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_text
-      value: \>
+      value: OK
       objectReference: {fileID: 0}
     - target: {fileID: 7321369995404559304, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_fontSize
-      value: 200
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321369995404559304, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7536258689303502140, guid: c3da91254b961644d98c9a79d473bb68, type: 3}
       propertyPath: m_Name

@@ -25,7 +25,7 @@ public class PlayerDeath : ModuleBase<PlayerController>
                 {
                     // エフェクト・SEの再生
                     shatterFX.Play();
-                    AudioManager.Instance.PlaySE("PlayerBreak", false);
+                    AudioManager.Instance.PlaySE("PlayerShatter", false);
                 }
                 break;
         }

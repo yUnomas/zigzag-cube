@@ -9,7 +9,7 @@ public class ResultManager : SceneManagerBase<ResultManager>
     {
         resultUI = FindAnyObjectByType<ResultUIController>();
         resultUI.Show();
-        AudioManager.Instance.PlaySE("ResultClear");
+        AudioManager.Instance.PlaySE("PopupOpen");
     }
     protected override void OnStart()
     {

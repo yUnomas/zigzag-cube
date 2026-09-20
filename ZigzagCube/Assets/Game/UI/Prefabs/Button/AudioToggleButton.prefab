@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234e4790de3afbc41a1a02101e5bb25d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioID: UIButtonConfirm
+  audioID: Confirm
   idleButton: {fileID: 79110523580095500}
   type: 0
   buttonIdleImage: {fileID: 5541930679737188478}

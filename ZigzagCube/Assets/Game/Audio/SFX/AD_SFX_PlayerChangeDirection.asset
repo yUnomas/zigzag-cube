@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62f8f1a0368cffe4a8c9842a4566c8a2, type: 3}
-  m_Name: sfx_wind
+  m_Name: AD_SFX_PlayerChangeDirection
   m_EditorClassIdentifier: 
-  id: Wind
-  clip: {fileID: 8300000, guid: d9e653131eb183b4fa32d7ad5eaca586, type: 3}
+  id: PlayerChangeDirection
+  clip: {fileID: 8300000, guid: 36ea15444b98df249bc7742cfbb3aac3, type: 3}
   mixerGroup: {fileID: -1138199545658143175, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 0

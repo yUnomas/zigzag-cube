@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62f8f1a0368cffe4a8c9842a4566c8a2, type: 3}
-  m_Name: se_new_record
+  m_Name: AD_UI_Cancel
   m_EditorClassIdentifier: 
-  id: NewRecord
-  clip: {fileID: 8300000, guid: ed9b5be3001e7d945936d766fb543bdd, type: 3}
+  id: Cancel
+  clip: {fileID: 8300000, guid: 6670cbbdac81021428641ddaca82e230, type: 3}
   mixerGroup: {fileID: -7838678155760449193, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 0

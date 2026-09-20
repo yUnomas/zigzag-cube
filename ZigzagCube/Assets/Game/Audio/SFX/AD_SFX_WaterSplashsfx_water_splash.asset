@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62f8f1a0368cffe4a8c9842a4566c8a2, type: 3}
-  m_Name: se_ui_button_confirm
+  m_Name: AD_SFX_WaterSplashsfx_water_splash
   m_EditorClassIdentifier: 
-  id: UIButtonConfirm
-  clip: {fileID: 8300000, guid: cf8b92848cd0d51479fc876233d630e6, type: 3}
-  mixerGroup: {fileID: -7838678155760449193, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
+  id: WaterSplash
+  clip: {fileID: 8300000, guid: 9e09c60391be28542b0e03c478923301, type: 3}
+  mixerGroup: {fileID: -1138199545658143175, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 0

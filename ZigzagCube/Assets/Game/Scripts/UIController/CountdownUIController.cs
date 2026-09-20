@@ -13,7 +13,7 @@ public class CountdownUIController : UIControllerBase
         while (timer > 0)
         {
             countdownTMP.SetText($"{timer}");
-            AudioManager.Instance.PlaySE("UIButtonClose");
+            AudioManager.Instance.PlaySE("Cancel");
 
             await Awaitable.WaitForSecondsAsync(1f);
             timer--;

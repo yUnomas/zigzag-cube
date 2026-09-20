@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62f8f1a0368cffe4a8c9842a4566c8a2, type: 3}
-  m_Name: bgm_title_main
+  m_Name: AD_BGM_Title_Main
   m_EditorClassIdentifier: 
   id: TitleMain
   clip: {fileID: 8300000, guid: abcce405a0575ff48accc62c67b9abfc, type: 3}

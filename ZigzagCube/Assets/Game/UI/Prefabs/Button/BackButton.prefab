@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 68.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5872741036422461323, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
+      propertyPath: audioID
+      value: Cancel
+      objectReference: {fileID: 0}
     - target: {fileID: 6542658812349400992, guid: 4c8c48ba84ae6ee4fa768e3f923d7496, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

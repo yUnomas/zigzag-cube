@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62f8f1a0368cffe4a8c9842a4566c8a2, type: 3}
-  m_Name: se_result_clear
+  m_Name: AD_UI_Confirm
   m_EditorClassIdentifier: 
-  id: ResultClear
-  clip: {fileID: 8300000, guid: ea57fd7df6f30144ca8e3d84ea61faa9, type: 3}
+  id: Confirm
+  clip: {fileID: 8300000, guid: cf8b92848cd0d51479fc876233d630e6, type: 3}
   mixerGroup: {fileID: -7838678155760449193, guid: df9456bafe98509469440614bc8d9cc0, type: 2}
   volume: 1
   isLoop: 0

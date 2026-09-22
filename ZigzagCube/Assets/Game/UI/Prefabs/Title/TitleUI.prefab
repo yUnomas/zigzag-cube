@@ -453,9 +453,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8171952243509557294, guid: 0013174e4c1473948b9699aeae44574f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171952243509557294, guid: 0013174e4c1473948b9699aeae44574f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171952243509557294, guid: 0013174e4c1473948b9699aeae44574f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8741356093942883840}
+    - target: {fileID: 8171952243509557294, guid: 0013174e4c1473948b9699aeae44574f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8171952243509557294, guid: 0013174e4c1473948b9699aeae44574f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClickCloseSettings
@@ -463,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 8171952243509557294, guid: 0013174e4c1473948b9699aeae44574f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TitleUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171952243509557294, guid: 0013174e4c1473948b9699aeae44574f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

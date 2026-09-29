@@ -1576,6 +1576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SupportTextButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5190646678603241036, guid: 98dc895307d59f14a929d69b2f2262c0, type: 3}
+      propertyPath: url
+      value: https://forms.gle/RE3mMtGQ66vJhBee8
+      objectReference: {fileID: 0}
     - target: {fileID: 7300987000413107819, guid: 98dc895307d59f14a929d69b2f2262c0, type: 3}
       propertyPath: m_text
       value: SUPPORT

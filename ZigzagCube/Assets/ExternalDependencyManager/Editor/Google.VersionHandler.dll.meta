@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 7f5716a99eb1476d9ee5f077d6b54c11
+guid: f736fb05b69e849908b70d9ee85b9198
 labels:
 - gvh
 - gvh_version-1.2.187
-- gvhp_exportpath-ExternalDependencyManager/Editor/1.2.187/Google.JarResolver.dll
+- gvhp_exportpath-ExternalDependencyManager/Editor/Google.VersionHandler.dll
 - gvhp_targets-editor
 timeCreated: 1480838400
 PluginImporter:
@@ -40,5 +40,5 @@ AssetOrigin:
   packageName: Essential Kit Lite for Mobile & TV - Sharing, Rate My App, Shortcuts
     & More
   packageVersion: 3.7.4
-  assetPath: Assets/ExternalDependencyManager/Editor/1.2.187/Google.JarResolver.dll
+  assetPath: Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll
   uploadId: 891732

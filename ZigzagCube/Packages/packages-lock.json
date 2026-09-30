@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.apple.unityplugin.core": {
+      "version": "file:/Users/yunomi/Documents/GitHub/unityplugins/Build/com.apple.unityplugin.core-3.3.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
+    "com.apple.unityplugin.gamekit": {
+      "version": "file:/Users/yunomi/Documents/GitHub/unityplugins/Build/com.apple.unityplugin.gamekit-4.1.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.apple.unityplugin.core": "3.3.0"
+      }
+    },
     "com.google.ads.mobile": {
       "version": "11.3.0",
       "depth": 0,

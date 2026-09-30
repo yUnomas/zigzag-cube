@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <projectSettings>
-  <projectSetting />
-  <projectSetting name="com.google.external-dependency-managerAnalyticsEnabled" value="False" />
+  <projectSetting name="com.google.external-dependency-managerAnalyticsCookie" value="01fe147915a1442bbf75721ca8657b3a" />
+  <projectSetting name="com.google.external-dependency-managerAnalyticsEnabled" value="True" />
 </projectSettings>

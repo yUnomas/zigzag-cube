@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour
         if (availableSource) return availableSource;
         else
         {
-            Debug.LogWarning($"再生可能な3D用SEソースが見つかりません");
+            Debug.LogWarning($"再生可能な2D用SEソースが見つかりません");
             return null;
         }
     }

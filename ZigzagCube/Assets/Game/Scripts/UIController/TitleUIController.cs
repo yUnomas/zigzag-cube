@@ -30,8 +30,7 @@ public class TitleUIController : UIControllerBase
     /// ランキング画面を開くボタンが押された際のイベント    </summary>
     public void OnClickOpenRanking()
     {
-        Hide();
-        rankingUI.Show();
+        GameCenterManager.Instance.ShowLeaderboard();
     }
     /// <summary>
     /// 設定画面を閉じるボタンが押された際のイベント    </summary>
